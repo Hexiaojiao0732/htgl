@@ -15,7 +15,7 @@ function initSpNew(){
                     // var imageUrl = "../../memory/common/imageshow.do?path="+escape(row.spzp);
                     var imageUrl = "images/lisl-pic.jpg";
                     sytjUlHtml += '<li><a href="spshow/spshow.html?id='+row.id+'"><p class="bg"></p><p class="img">' +
-                        '<img src="'+imageUrl+'"/></p></a></li>';
+                        '<img src="'+imageUrl+'"/></p><p class="name">"'+row.spmc+'"</p></a></li>';
                 }
                 $("#tjul").html(sytjUlHtml);
             }

@@ -12,6 +12,7 @@
 <!--begin：container -->
 <div class="container">
 	<div class="law-cont">
+		<p id="xmSpMcP"></p>
 		<div class="sparea" id="videoShowDiv"></div>
 		<p id="xmSpNameP"></p>
         <p id="xmSpJjP"></p>
@@ -60,6 +61,7 @@ $(function(){
                         initAppVideo(data);
                     } else {
                         initVideo(data);
+                        $("#xmSpMcP").html("&nbsp;&nbsp;"+data.spmc);
                         $("#xmSpNameP").html("主讲人："+data.zjr);
                         $("#xmSpJjP").html("简介："+data.nrjj);
                     }
