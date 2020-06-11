@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 特殊符号转义 &gt; > &lt;&gt; <> &amp; & &apos; ' &quot; " -->
+
+	<!-- <settings> <setting name="cacheEnabled" value="true" /> <setting name="useGeneratedKeys" 
+		value="true" /> <setting name="defaultExecutorType" value="REUSE" /> <setting 
+		name="lazyLoadingEnabled" value="true"/> <setting name="defaultStatementTimeout" 
+		value="25000"/> </settings> -->
+
+	<!-- <mappers> <mapper resource="user_mapper_keystone.xml" /> </mappers> -->
+
+	<!-- jdbcType: BIGINT BINARY BIT BLOB BOOLEAN CHAR CLOB CURSOR DATE DECIMAL 
+		DOUBLE FLOAT INTEGER LONGVARBINARY LONGVARCHAR NCHAR NCLOB NULL NUMERIC NVARCHAR 
+		OTHER REAL SMALLINT STRUCT TIME TIMESTAMP TINYINT UNDEFINED VARBINARY VARCHAR 
+		<plugins> <plugin interceptor="com.ideal.netcare.v5.mws.common.interceptor.TestInterceptor"> 
+		</plugin> </plugins> <properties> <property name="dialect" value="oracle"/> 
+		</properties> -->
+<!--  
+	<properties>
+ 　　　　<property name="dialect" value="oracle"></property>
+ 　　 </properties>
+-->
+
+	<typeAliases>
+		<!-- for interface oracle -->
+		<!--  
+		<typeAlias alias="InOutRecordEntity"
+			type="com.zhixin.rd.interrogate.web.entity.InOutRecordEntity" />
+		-->	
+		
+		
+	</typeAliases>
+	
+</configuration>

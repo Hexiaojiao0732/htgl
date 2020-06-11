@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.write.application.IInterfaceApplicationWriteMapper">
+
+	<resultMap id="InterfaceApplicationResultMap" type="InterfaceApplicationEntity">
+		<id property="id" column="id" />
+		<result column="application_person" property="applicationPerson" />
+		<result column="application_org" property="applicationOrg" />
+		<result column="application_ip" property="applicationIp" />
+		<result column="application_use" property="applicationUse" />
+		<result column="status" property="status" />
+		<result column="created_time" property="createdTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<resultMap id="ApplicationDetailResultMap" type="InterfaceApplicationDetailEntity">
+		<id property="id" column="id" />
+		<result column="appliction_id" property="applictionId" />
+		<result column="tag_id" property="tagId" />
+		<result column="tag_colunm_name" property="tagColumnName" />
+	</resultMap>
+
+	<!--提交 -->
+	<insert id="insertInterface" parameterType="java.util.Map">
+		insert into interface_application_detail VALUES (#{id},#{application_id},#{tag_id},#{tag_column_name})
+	</insert>
+
+    <!--删除applicationId-->
+    <delete id="deleteInterface" parameterType="java.lang.Integer">
+    	delete from interface_application_detail where appliction_id=#{applicationId}
+    </delete>
+    <!--删除tagId-->
+    <delete id="deleteInterfaceByTagId" parameterType="java.lang.Integer">
+    	delete from interface_application_detail where tag_id=#{tagId} and appliction_id=#{applicationId}
+    </delete>
+    
+	<!-- 增加信息 -->
+	<insert id="addApplication" parameterType="InterfaceApplicationEntity">
+		<!-- insert into interface_application (application_person,application_org,application_ip,application_use,status,created_time,update_time) values(#{applicationPerson},#{applicationOrg},#{applicationIp},#{applicationUse},0,now(),now()) -->
+		insert into interface_application
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="applicationPerson != null">
+				application_person,
+			</if>
+			<if test="applicationOrg != null">
+				application_org,
+			</if>
+			<if test="applicationIp != null">
+				application_ip,
+			</if>
+			<if test="applicationUse != null">
+				application_use,
+			</if>
+
+			status,
+			created_time,
+			update_time,
+
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="applicationPerson != null">
+				#{applicationPerson},
+			</if>
+			<if test="applicationOrg != null">
+				#{applicationOrg},
+			</if>
+			<if test="applicationIp != null">
+				#{applicationIp},
+			</if>
+			<if test="applicationUse != null">
+				#{applicationUse},
+			</if>
+			0,
+			now(),
+			now(),
+		</trim>
+
+	</insert>
+	<!-- 更新信息 -->
+	<update id="updateById" parameterType="map">
+		update interface_application
+		set
+		status = 1
+		where id=#{id}
+	</update>
+	<!-- 注销信息 -->
+	<update id="logoutById" parameterType="map">
+		update interface_application
+		set
+		status = 2
+		where id=#{id}
+	</update>
+
+	<!-- 重启信息 -->
+	<update id="restartById" parameterType="map">
+		update interface_application
+		set
+		status = 0
+		where id=#{id}
+	</update>
+
+	<!-- 修改信息 -->
+	<update id="editById" parameterType="com.zhixin.rd.rkjc.web.entity.InterfaceApplicationEntity">
+		update interface_application
+		set
+		application_person=#{applicationPerson},application_org=#{applicationOrg},application_use=#{applicationUse},
+		status = #{status},update_time=now()
+		where id=#{id}
+	</update>
+</mapper>

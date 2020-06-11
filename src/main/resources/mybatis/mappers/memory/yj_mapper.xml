@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.yj.IYjMapper">
+	<resultMap id="yjMapper" type="yj">
+    	<id property="id" column="id"/>
+    	<result property="nr" column="nr"/>
+    	<result property="tjsj" column="tjsj"/>
+    </resultMap>
+
+    <select id="queryYj" resultMap="yjMapper" parameterType="java.util.Map" >
+        select  *  from syyj limit ${pageIndex},${rows}
+    </select>
+    <select id="countYj" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM syyj
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertZt" parameterType="yj">
+		insert into syyj
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ztmc != null">
+				ztmc,
+			</if>
+			<if test="kssj != null">
+				kssj,
+			</if>
+			<if test="jssj != null">
+				jssj,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="zttp != null">
+				zttp,
+			</if>
+			<if test="wzjj != null">
+				wzjj,
+			</if>
+			<if test="yxtdwldz != null">
+				yxtdwldz,
+			</if>
+			<if test="xcpsp != null">
+				xcpsp,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="ztmc != null">
+				#{ztmc},
+			</if>
+			<if test="kssj != null">
+				#{kssj},
+			</if>
+			<if test="jssj != null">
+				#{jssj},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="zttp != null">
+				#{zttp},
+			</if>
+			<if test="wzjj != null">
+				#{wzjj},
+			</if>
+			<if test="yxtdwldz != null">
+				#{yxtdwldz},
+			</if>
+			<if test="xcpsp != null">
+				#{xcpsp},
+			</if>
+		</trim>
+	</insert>
+</mapper>
+
+

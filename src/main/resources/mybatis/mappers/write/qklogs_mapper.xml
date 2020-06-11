@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.write.qk.IQkLogsMapper" >
+  <!--<resultMap id="BaseResultMap" type="com.zhixin.rd.rkjc.web.entity.PoliceQueryLogsEntity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="police_name" property="policeName" jdbcType="VARCHAR" />
+    <result column="query_time" property="queryTime" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+  </resultMap>-->
+
+	<insert id="add" parameterType="java.util.Map" keyProperty="id" useGeneratedKeys="true">
+		insert into police_query_logs
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="policeName != null and policeName != ''" >
+                police_name,
+            </if>
+                query_time,
+            <if test="description != null and description != ''" >
+                description,
+            </if>
+            <if test="loginIp != null and loginIp != ''" >
+                login_ip,
+            </if>
+        </trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="policeName != null and policeName != ''" >
+                #{policeName},
+            </if>
+            NOW(),
+            <if test="description != null and description != ''" >
+                #{description},
+            </if>
+            <if test="loginIp != null and loginIp != ''" >
+                #{loginIp},
+            </if>
+        </trim>
+	</insert>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.dq.IAjJbxxDqMysqlMapper">
+	<resultMap id="AjJbxxMapper" type="ajJbxx">
+    	<id property="ajbh" column="ajbh"/>
+    	<result property="ajzt" column="ajzt"/>
+    	<result property="ajmc" column="ajmc"/>
+    	<result property="ajlb" column="ajlb"/>
+    	<result property="ajlb1" column="ajlb1"/>
+    	<result property="ajlb2" column="ajlb2"/>
+    	<result property="ajxz" column="ajxz"/>
+    	<result property="ajsx" column="ajsx"/>
+    	<result property="mj" column="mj"/>
+    	<result property="basj" column="basj"/>
+    	<result property="fasjxx" column="fasjxx"/>
+    	<result property="fasjsx" column="fasjsx"/>
+    	<result property="fadzssxq" column="fadzssxq"/>
+    	<result property="fadzmlxz" column="fadzmlxz"/>
+    	<result property="fady" column="fady"/>
+    	<result property="fabw" column="fabw"/>
+    	<result property="slsj" column="slsj"/>
+    	<result property="zbdw" column="zbdw"/>
+    	<result property="zbr" column="zbr"/>
+    	<result property="scrhjksj" column="scrhjksj"/>
+    	<result property="hjkxgsj" column="hjkxgsj"/>
+		<result property="jyaq" column="jyaq"/>
+    </resultMap>
+
+    <select id="listAjJbxxDq" resultMap="AjJbxxMapper" parameterType="java.util.Map" >
+        	SELECT * FROM aj_jbxx_dq where 1=1
+    </select>
+
+    <select id="getAjJbxxDqByAjbh" resultMap="AjJbxxMapper" parameterType="java.util.Map" >
+        	SELECT * FROM aj_jbxx_dq where ajbh=#{ajbh} LIMIT  0,1
+    </select>
+</mapper>
+
+

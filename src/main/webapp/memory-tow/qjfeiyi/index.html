@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1,width=device-width,initial-scale=1,user-scalable=no" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>首页</title>
+  <link type="text/css" rel="stylesheet" href="../css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="index.css"/>
+  <link type="text/css" rel="stylesheet" href="swiper.min.css" />
+</head>
+<body>
+<!--begin:header-->
+<header>
+	<div class="head app_silde">
+		<a class="font-index fl" href="../index/index.html" target="_parent">首页</a>
+		<!-- nav展开 -->
+		<a class="aap_navbar_icon fr" href="#"><span>全部项目列表</span></a>
+	</div>
+</header>
+<!--end:header-->
+<!--begin：banner -->
+<div class="banner">
+	<!-- Swiper -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide"><a href="http://cn.mikecrm.com/3cGza25"><img src="images/banner01.jpg"></a></div>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
+	<!-- Swiper End-->
+</div>
+<!--end：banner -->
+<!--begin：chinese-memory-banner -->
+<div class="chinese-memory-con"><img src="images/banner02.png"/></div>
+<!--end：chinese-memory-banner -->
+<!--begin：container -->
+<div class="container">
+	 <!--begin：index_main -->
+	 <div class="index_main">
+	 	 <!--优秀影片展映-->
+	 	 <div class="index_box clearfix">
+	 	 	<div class="title"><img src="images/tit-pic.png"/></div>
+	 	 	<div class="tags-box">
+	 	 		<div class="fl">全部<span id="xmCount">（0）</span></div>
+	 	 		<div class="fr">
+				 	<select id="leixing" class="record-select" name="shengf"  onchange="change()">
+				 		<option vlaue="">非遗类型</option>
+						<option value="1">民间文学</option>
+						<option value="2">传统音乐</option>
+						<option value="3">传统舞蹈</option>
+						<option value="4">传统戏剧</option>
+						<option value="5">曲艺</option>
+						<option value="6">传统体育、游艺、杂技</option>
+						<option value="7">传统美术</option>
+						<option value="8">传统技艺</option>
+						<option value="9">传统医药</option>
+						<option value="10">民俗</option>
+				 	</select>
+
+				 	<select id="dqS" class="record-select" name="sel" onchange="change()">
+				 		<option vlaue="">省份</option><option value="11">北京市</option><option value="12">天津市</option><option value="13">河北省</option><option value="14">山西</option><option value="15">内蒙古自治区</option><option value="21">辽宁省</option><option value="22">吉林省</option><option value="23">黑龙江省</option><option value="31">上海市</option><option value="32">江苏省</option><option value="33">浙江省</option><option value="34">安徽省</option><option value="35">福建省</option><option value="36">江西省</option><option value="37">山东省</option><option value="41">河南省</option><option value="42">湖北省</option><option value="43">湖南省</option><option value="44">广东省</option><option value="45">广西壮族自治区</option><option value="46">海南省</option><option value="50">重庆市</option><option value="51">四川省</option><option value="52">贵州省</option><option value="53">云南省</option><option value="54">西藏自治区</option><option value="61">陕西省</option><option value="62">甘肃省</option><option value="63">青海省</option><option value="64">宁夏回族自治区</option><option value="65">新疆维吾尔自治区</option><option value="71">台湾省</option><option value="81">香港特别行政区</option><option value="82">澳门特别行政区</option>
+				 	</select>	 			
+	 	 		</div>
+			</div>
+ 	   		<ul class="index_boxlist clearfix" id="xmList">
+
+ 	   		</ul>
+	 	 </div>
+	 </div>
+	<!--end：index_main -->
+	<!--begin：index_main -->
+	<div class="page">
+	  	<span onclick="topPage()">&lt;</span>
+		<span id="currPage" class="active">0</span>/<span id="totalPage">0</span>
+		<span onclick="nextPage()">&gt;</span>
+	</div>
+	<!--end -->
+</div>
+<!--end：container -->
+<!--begin:footer-->
+<!--调查问卷-->
+<div class="questionnaire clearfix">
+	<div class="ques_main_right">
+		<p><img src="../images/gzh_ewm.jpg"/><span>公众号</span></p>
+	</div>
+</div>
+<footer>
+	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="../law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
+</footer>
+<!--end:footer-->
+<!-- 回到顶部 -->
+<div id="tbox">
+	<a class="gotop"  id="gotop" title="回到顶部"></a>
+</div>
+<!-- 回到顶部 -->
+<!--js -->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/gotop.js"></script>
+<script src="swiper.min.js"></script>
+<script>
+	//banner
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true,
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+		loop: true,
+		autoplay: false,
+	});
+</script>
+<!-- 菜单收缩 -->
+<script type="text/javascript">
+	$(function(){
+		$(".mpicpoint").hover(
+				function(){
+					$(this).addClass('shubon');
+					$(this).parent().find('.mpicfont').show('fast');
+				},
+				function(){
+					$(this).removeClass('shubon');
+					$(this).parent().find('.mpicfont').hide('fast');
+				}
+
+		);
+	});
+</script>
+<script src="index.js"></script>
+</body>
+</html>

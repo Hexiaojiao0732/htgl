@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.dq.IRkJbxxDqMysqlMapper">
+	<resultMap id="RkJbxxDqMapper" type="com.zhixin.rd.rkjc.entity.mysql.RkJbxxDqMysqlEntity">
+    	<result property="rh" column="rh"/>
+    	<result property="ssssxqDm" column="ssssxq_dm"/>
+    	<result property="ssgajgDm" column="ssgajg_dm"/>
+    	<result property="hh" column="hh"/>
+    	<result property="jtgxDm" column="jtgx_dm"/>
+    	<result property="gmsfhm" column="gmsfhm"/>
+    	<result property="zjlxDm" column="zjlx_dm"/>
+    	<result property="sfzqfrq" column="sfzqfrq"/>
+    	<result property="sfzSlyyDm" column="sfz_slyy_dm"/>
+    	<result property="sfzYxqxDm" column="sfz_yxqx_dm"/>
+    	<result property="xm" column="xm"/>
+    	<result property="cym" column="cym"/>
+    	<result property="xbDm" column="xb_dm"/>
+    	<result property="mzDm" column="mz_dm"/>
+    	<result property="csrq" column="csrq"/>
+    	<result property="cszqfrq" column="cszqfrq"/>
+    	<result property="csdgj" column="csdgj"/>
+    	<result property="csdssx" column="csdssx"/>
+    	<result property="csdxz" column="csdxz"/>
+    	<result property="jggj" column="jggj"/>
+    	<result property="jgssx" column="jgssx"/>
+    	<result property="zjxyDm" column="zjxy_dm"/>
+    	<result property="whcdDm" column="whcd_dm"/>
+    	<result property="hyzkDm" column="hyzk_dm"/>
+    	<result property="byzkDm" column="byzk_dm"/>
+    	<result property="sg" column="sg"/>
+    	<result property="xxDm" column="xx_dm"/>
+    	<result property="zy" column="zy"/>
+    	<result property="fwcs" column="fwcs"/>
+    	<result property="dhhm" column="dhhm"/>
+    	<result property="xxjb" column="xxjb"/>
+    	<result property="czrBs" column="czr_bs"/>
+    	<result property="zz" column="zz"/>
+    	<result property="lrrq" column="lrrq"/>
+    	<result property="scrhjksj" column="scrhjksj"/>
+    	<result property="yzbm" column="yzbm"/>
+    	<result property="xmpy" column="xmpy"/>
+    	<result property="qtZh" column="qt_zh"/>
+    	<result property="crSj" column="cr_sj"/>
+    	<result property="gxSj" column="gx_sj"/>
+    	<result property="crLy" column="cr_ly"/>
+    	<result property="lybzjzd" column="lybzjzd"/>
+    	<result property="fpzd" column="fpzd"/>
+    </resultMap>
+    
+    <!-- listAllRkJbxxPq -->
+    <select id="listAllRkJbxxDq" resultMap="RkJbxxDqMapper" >
+       		<!-- no ";" at the end -->   
+        	SELECT * FROM rk_jbxx_dq
+		<where>
+			<if test="gmsfhm !=null and gmsfhm !=''">
+				and gmsfhm =#{gmsfhm}
+			</if>
+
+			<if test="xm !=null and xm !=''">
+				and xm like '%${xm}%'
+			</if>
+
+			<if test="xb !=null and xb !=''">
+				and xb_dm = #{xb}
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and gmsfhm like '${hjd}%'
+			</if>
+			<if test="ajlx !=null and ajlx !=''">
+				and lybzjzd like '%${ajlx}%'
+			</if>
+
+			<if test="csrqStart !=null and csrqStart !='' and csrqEnd !=null and csrqEnd !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${csrqStart} and ${csrqEnd}
+			</if>
+			<if test="rd !=null and rd !=''">
+				and rd &gt;#{rd}
+			</if>
+
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and gmsfhm in (${sfzhAll})
+			</if>
+
+			<if test="lyd !=null and lyd !=''">
+				and cr_ly in (${lyd})
+			</if>
+		</where>
+		limit #{pageIndex}, 8
+    </select>
+
+	<select id="listCount" resultType="java.lang.Long" >
+
+		SELECT  count(1) from rk_jbxx_dq
+
+		<where>
+			<if test="gmsfhm !=null and gmsfhm !=''">
+				and gmsfhm =#{gmsfhm}
+			</if>
+
+			<if test="xm !=null and xm !=''">
+				and xm like '%${xm}%'
+			</if>
+
+			<if test="xb !=null and xb !=''">
+				and xb_dm like #{xb}
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and gmsfhm like '${hjd}%'
+			</if>
+
+			<if test="csrqStart !=null and csrqStart !='' and csrqEnd !=null and csrqEnd !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${csrqStart} and ${csrqEnd}
+			</if>
+			<if test="rd !=null and rd !=''">
+				and rd &gt;#{rd}
+			</if>
+
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and gmsfhm in (${sfzhAll})
+			</if>
+
+			<if test="lyd !=null and lyd !=''">
+				and cr_ly in (${lyd})
+			</if>
+			<if test="ajlx !=null and ajlx !=''">
+				and lybzjzd like '%${ajlx}%'
+			</if>
+		</where>
+	</select>
+	<select id="queryOneBySfzh" resultMap="RkJbxxDqMapper" parameterType="java.util.Map">
+
+		SELECT * FROM rk_jbxx_dq where gmsfhm =#{gmsfhm} limit 1
+	</select>
+	
+	<select id="getSjly" resultType="RKCXEntity">
+	     select cr_ly,count(*) rkCount from rk_jbxx_dq GROUP BY cr_ly
+	</select>
+
+    <select id="getSqrk" resultType="RKCXEntity">
+        select b.sq,count(1) rkCount from (select 
+               case when a.sfz = '4101' then '郑州市' else 
+               case when a.sfz = '4102' then '开封市' else  
+               case when a.sfz = '4103' then '洛阳市' else 
+               case when a.sfz = '4104' then '平顶山市' else  
+               case when a.sfz = '4105' then '安阳市' else
+               case when a.sfz = '4106' then '鹤壁市' else 
+               case when a.sfz = '4107' then '新乡市' else 
+               case when a.sfz = '4108' then '焦作市' else 
+               case when a.sfz = '4109' then '濮阳市' else 
+               case when a.sfz = '4110' then '许昌市' else 
+               case when a.sfz = '4111' then '漯河市' else 
+               case when a.sfz = '4112' then '三门峡市' else 
+               case when a.sfz = '4113' then '南阳市' else 
+               case when a.sfz = '4114' then '商丘市' else 
+               case when a.sfz = '4115' then '信阳市' else 
+               case when a.sfz = '4127' then '周口市' else 
+               case when a.sfz = '4128' then '驻马店市' else 
+               case when a.sfz = '4190' then '济源市' else '其他' 
+               end end end end end end end end end end end end end END end end end end sq
+               from (select SUBSTRING(gmsfhm, 1,4) sfz from rk_jbxx_dq) a ) b GROUP BY b.sq
+    </select>
+    
+    <select id="getDq" resultType="RKCXEntity">
+        select * from 
+        (select count(1) dqrkCount from rk_jbxx_dq) h, 
+        (select count(1)sjlyCount from (select distinct cr_ly from rk_jbxx_dq)a) j 
+    </select>
+    
+</mapper>
+
+

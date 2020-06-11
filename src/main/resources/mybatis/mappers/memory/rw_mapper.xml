@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.rw.IRwMapper">
+	<resultMap id="rwMapper" type="rw">
+    	<id property="id" column="id"/>
+    	<result property="ztId" column="zt_id"/>
+    	<result property="fl" column="fl"/>
+    	<result property="sf" column="sf"/>
+    	<result property="xb" column="xb"/>
+    	<result property="nl" column="nl"/>
+    	<result property="yz" column="yz"/>
+    	<result property="mz" column="mz"/>
+    	<result property="xm" column="xm"/>
+    	<result property="pssj" column="pssj"/>
+    	<result property="psdd" column="psdd"/>
+    	<result property="jj" column="jj"/>
+    	<result property="wzjj" column="wzjj"/>
+    	<result property="nbbsh" column="nbbsh"/>
+    	<result property="szn" column="szn"/>
+    	<result property="gb" column="gb"/>
+    	<result property="qtxm" column="qtxm"/>
+    	<result property="jg" column="jg"/>
+    	<result property="ly" column="ly"/>
+    	<result property="zp" column="zp"/>
+    	<result property="rwzp" column="rwzp"/>
+    </resultMap>
+
+    <select id="queryRwMc" resultMap="rwMapper" >
+        	SELECT * FROM rw
+    </select>
+    <select id="queryById" resultMap="rwMapper" parameterType="Long" >
+        	SELECT * FROM rw where  id=#{id}
+    </select>
+    <select id="queryAllRw" resultMap="rwMapper">
+        	SELECT * FROM rw
+    </select>
+    <select id="countRw" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM rw
+    </select>
+    <delete id="deleteRwById" parameterType="Long">
+    delete from rw where  id=#{id}
+    </delete>
+	<!-- 增加信息 -->
+	<insert id="insertRw" parameterType="rw" useGeneratedKeys="true" keyProperty="id">
+		insert into rw
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ztId != null">
+				zt_id,
+			</if>
+			<if test="fl != null">
+				fl,
+			</if>
+			<if test="sf != null">
+				sf,
+			</if>
+			<if test="xb != null">
+				xb,
+			</if>
+			<if test="nl != null">
+				nl,
+			</if>
+			<if test="yz != null">
+				yz,
+			</if>
+			<if test="mz != null">
+				mz,
+			</if>
+			<if test="xm != null">
+				xm,
+			</if>
+			<if test="pssj != null">
+				pssj,
+			</if>
+			<if test="psdd != null">
+				psdd,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="wzjj != null">
+				wzjj,
+			</if>
+			<if test="nbbsh != null">
+				nbbsh,
+			</if>
+			<if test="szn != null">
+				szn,
+			</if>
+			<if test="gb != null">
+				gb,
+			</if>
+			<if test="qtxm != null">
+				qtxm,
+			</if>
+			<if test="jg != null">
+				jg,
+			</if>
+			<if test="ly != null">
+				ly,
+			</if>
+			<if test="zp != null">
+				zp,
+			</if>
+			<if test="rwzp != null">
+				rwzp,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="ztId != null">
+				#{ztId},
+			</if>
+			<if test="fl != null">
+				#{fl},
+			</if>
+			<if test="sf != null">
+				#{sf},
+			</if>
+			<if test="xb != null">
+				#{xb},
+			</if>
+			<if test="nl != null">
+				#{nl},
+			</if>
+			<if test="yz != null">
+				#{yz},
+			</if>
+			<if test="mz != null">
+				#{mz},
+			</if>
+			<if test="xm != null">
+				#{xm},
+			</if>
+			<if test="pssj != null">
+				#{pssj},
+			</if>
+			<if test="psdd != null">
+				#{psdd},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="wzjj != null">
+				#{wzjj},
+			</if>
+			<if test="nbbsh != null">
+				#{nbbsh},
+			</if>
+			<if test="szn != null">
+				#{szn},
+			</if>
+			<if test="gb != null">
+				#{gb},
+			</if>
+			<if test="qtxm != null">
+				#{qtxm},
+			</if>
+			<if test="jg != null">
+				#{jg},
+			</if>
+			<if test="ly != null">
+				#{ly},
+			</if>
+			<if test="zp != null">
+				#{zp},
+			</if>
+			<if test="rwzp != null">
+				#{rwzp},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateRw" parameterType="rw">
+		UPDATE rw SET 
+				zt_id=#{ztId},
+				fl=#{fl},
+				sf=#{sf},
+				xb=#{xb},
+				nl=#{nl},
+				yz=#{yz},
+				mz=#{mz},
+				xm=#{xm},
+				pssj=#{pssj},
+				psdd=#{psdd},
+				jj=#{jj},
+				wzjj=#{wzjj},
+				nbbsh=#{nbbsh},
+				szn=#{szn},
+				gb=#{gb},
+				qtxm=#{qtxm},
+				jg=#{jg},
+				ly=#{ly},
+				zp=#{zp}
+            WHERE 
+	    		id=#{id}
+	</update>
+	<update id="updateRwTp" parameterType="rw">
+		UPDATE rw SET 
+				rwzp=#{rwzp}
+            WHERE 
+	    		id=#{id}
+	</update>
+</mapper>
+
+

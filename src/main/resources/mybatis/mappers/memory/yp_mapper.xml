@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.zaiti.IYpMapper">
+	<resultMap id="ypMapper" type="yp">
+    	<id property="id" column="id"/>
+    	<result property="mc" column="mc"/>
+    	<result property="wyid" column="wyid"/>
+    	<result property="ztId" column="zt_id"/>
+    	<result property="rwId" column="rw_id"/>
+    	<result property="jlId" column="jl_id"/>
+    	<result property="sc" column="sc"/>
+    	<result property="wjlx" column="wjlx"/>
+    	<result property="pssj" column="pssj"/>
+    	<result property="psdd" column="psdd"/>
+    	<result property="jj" column="jj"/>
+    	<result property="gxzId" column="gxz_id"/>
+    		<result property="ztmc" column="ztmc"/>
+    	<result property="rwxm" column="rwxm"/>
+    		<result property="jlmc" column="jlmc"/>
+    	<result property="gxzxm" column="gxzxm"/>
+    	
+    	<result property="ypdz" column="ypdz"/>
+    	<result property="userId" column="user_id"/>
+    	<result property="sfGk" column="sf_gk"/>
+    	<result property="syz" column="syz"/>
+    	<result property="bz" column="bz"/>
+    </resultMap>
+
+    <select id="queryAllYp3" resultMap="ypMapper"  parameterType="java.util.HashMap">
+        SELECT *,(select ztmc from zt where zt.id = wd.zt_id ) ztmc ,
+(SELECT xm  from rw where  rw.id =  wd.rw_id) rwxm ,
+(SELECT xm from  gxz  where  gxz.id = wd.gxz_id) gxzxm,
+(select mc from jl where jl.id=wd.jl_id ) jlmc FROM    yp wd where wd.wyid !="" limit ${pageIndex},${rows}
+    </select>
+    <select id="countYp3" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM yp where  wyid !=""
+    </select>
+    <select id="queryAllYp2" resultMap="ypMapper"  parameterType="java.util.HashMap">
+        SELECT *,(select ztmc from zt where zt.id = wd.zt_id ) ztmc ,
+(SELECT xm  from rw where  rw.id =  wd.rw_id) rwxm ,
+(SELECT xm from  gxz  where  gxz.id = wd.gxz_id) gxzxm,
+(select mc from jl where jl.id=wd.jl_id ) jlmc FROM    yp wd where wd.wyid="" limit ${pageIndex},${rows}
+    </select>
+    <select id="countYp2" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM yp where  wyid=""
+    </select>
+    <select id="queryYp" resultMap="ypMapper"  parameterType="java.util.HashMap">
+        SELECT *,(select ztmc from zt where zt.id = wd.zt_id ) ztmc ,
+(SELECT xm  from rw where  rw.id =  wd.rw_id) rwxm ,
+(SELECT xm from  gxz  where  gxz.id = wd.gxz_id) gxzxm,
+(select mc from jl where jl.id=wd.jl_id ) jlmc FROM    yp wd  ORDER BY id  desc  limit ${pageIndex},${rows}
+    </select>
+    <select id="countYp" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM yp
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertYp" parameterType="yp">
+		insert into yp
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				mc,
+			</if>
+			<if test="wyid != null">
+				wyid,
+			</if>
+			<if test="ztId != null">
+				zt_id,
+			</if>
+			<if test="rwId != null">
+				rw_id,
+			</if>
+			<if test="jlId != null">
+				jl_id,
+			</if>
+			<if test="sc != null">
+				sc,
+			</if>
+			<if test="wjlx != null">
+				wjlx,
+			</if>
+			<if test="pssj != null">
+				pssj,
+			</if>
+			<if test="psdd != null">
+				psdd,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="gxzId != null">
+				gxz_id,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="mc != null">
+				#{mc},
+			</if>
+			<if test="wyid != null">
+				#{wyid},
+			</if>
+			<if test="ztId != null">
+				#{ztId},
+			</if>
+			<if test="rwId != null">
+				#{rwId},
+			</if>
+			<if test="jlId != null">
+				#{jlId},
+			</if>
+			<if test="sc != null">
+				#{sc},
+			</if>
+			<if test="wjlx != null">
+				#{wjlx},
+			</if>
+			<if test="pssj != null">
+				#{pssj},
+			</if>
+			<if test="psdd != null">
+				#{psdd},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="gxzId != null">
+				#{gxzId},
+			</if>
+		</trim>
+	</insert>
+	
+	  <delete id="deleteById" parameterType="Long">  
+            DELETE FROM yp WHERE id=#{id}
+    </delete> 
+    
+       <update id="updateYp" parameterType="yp">  
+            UPDATE yp SET 
+	    		mc=#{mc},
+	    		wyid=#{wyid},
+	    		zt_id=#{ztId},
+	    		rw_id=#{rwId},
+	    		jl_id=#{jlId},
+	    		sc=#{sc},
+	    		jj=#{jj},
+	    		wjlx=#{wjlx},
+	    		pssj=#{pssj},
+	    		psdd=#{psdd},
+	    		jj=#{jj},
+	    		gxz_id=#{gxzId}
+            WHERE 
+	    		id=#{id}
+    </update>
+       <update id="updateShYp" parameterType="yp">  
+            UPDATE yp SET 
+	    		wyid=#{wyid}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

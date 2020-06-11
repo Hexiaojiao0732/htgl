@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.zt.IZtMapper">
+	<resultMap id="ztMapper" type="zt">
+    	<id property="id" column="id"/>
+    	<result property="ztmc" column="ztmc"/>
+    	<result property="kssj" column="kssj"/>
+    	<result property="jssj" column="jssj"/>
+    	<result property="jj" column="jj"/>
+    	<result property="zttp" column="zttp"/>
+    	<result property="wzjj" column="wzjj"/>
+    	<result property="yxtdwldz" column="yxtdwldz"/>
+    	<result property="xcpsp" column="xcpsp"/>
+    </resultMap>
+
+    <select id="queryZtmc" resultMap="ztMapper"  >
+        select  *  from zt
+    </select>
+    <select id="queryAllZt" resultMap="ztMapper" >
+        	SELECT * FROM zt
+    </select>
+    <select id="countZt" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM zt
+    </select>
+      <delete id="deleteZtById" parameterType="Long">  
+            DELETE FROM zt WHERE id=#{id}
+    </delete> 
+    <select id="queryZtById" resultMap="ztMapper" parameterType="Long" >
+        	SELECT * FROM zt  WHERE id=#{id}
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertZt" parameterType="zt">
+		insert into zt
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ztmc != null">
+				ztmc,
+			</if>
+			<if test="kssj != null">
+				kssj,
+			</if>
+			<if test="jssj != null">
+				jssj,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="zttp != null">
+				zttp,
+			</if>
+			<if test="wzjj != null">
+				wzjj,
+			</if>
+			<if test="yxtdwldz != null">
+				yxtdwldz,
+			</if>
+			<if test="xcpsp != null">
+				xcpsp,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="ztmc != null">
+				#{ztmc},
+			</if>
+			<if test="kssj != null">
+				#{kssj},
+			</if>
+			<if test="jssj != null">
+				#{jssj},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="zttp != null">
+				#{zttp},
+			</if>
+			<if test="wzjj != null">
+				#{wzjj},
+			</if>
+			<if test="yxtdwldz != null">
+				#{yxtdwldz},
+			</if>
+			<if test="xcpsp != null">
+				#{xcpsp},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="updateZt" parameterType="zt">  
+            update zt SET 
+	    		ztmc=#{ztmc},
+	    		jj=#{jj},
+	    		kssj=#{kssj},
+	    		jssj=#{jssj},
+	    		yxtdwldz=#{yxtdwldz},
+	    		wzjj=#{wzjj}
+            WHERE 
+	    		id=#{id}
+    </update>   
+	<update id="updateZtTp" parameterType="zt">  
+            update zt SET 
+	    		zttp=#{zttp}
+            WHERE 
+	    		id=#{id}
+    </update>   
+</mapper>
+
+

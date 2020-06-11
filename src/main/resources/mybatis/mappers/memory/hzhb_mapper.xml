@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.hzhb.IHzhbMapper">
+	<resultMap id="hzhbMapper" type="hzhb">
+    	<id property="id" column="id"/>
+    	<result property="mc" column="mc"/>
+    	<result property="tp" column="tp"/>
+    	<result property="jj" column="jj"/>
+    	<result property="dlyhm" column="dlyhm"/>
+    	<result property="dlmm" column="dlmm"/>
+    </resultMap>
+
+<select id="queryHzhb" resultMap="hzhbMapper"  >
+        	SELECT * FROM hzhb  
+    </select>
+<select id="queryHzhbById" resultMap="hzhbMapper" parameterType="Long" >
+        	SELECT * FROM hzhb  WHERE id=#{id}
+    </select>
+
+<select id="countHzhb" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM hzhb
+    </select>
+    
+    <delete id="deleteHzhbById" parameterType="Long">  
+            DELETE FROM hzhb WHERE id=#{id}
+    </delete> 
+<!-- 增加信息 -->
+	<insert id="insertHzhb" parameterType="gxz">
+		insert into hzhb
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				mc,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="tp != null">
+				tp,
+			</if>
+			<if test="dlyhm != null">
+				dlyhm,
+			</if>
+			<if test="dlmm != null">
+				dlmm,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="mc != null">
+				#{mc},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="tp != null">
+				#{tp},
+			</if>
+			<if test="dlyhm != null">
+				#{dlyhm},
+			</if>
+			<if test="dlmm != null">
+				#{dlmm},
+			</if>
+		</trim>
+	</insert>
+
+       <update id="updateHzhb" parameterType="hzhb">  
+            update hzhb SET 
+	    		mc=#{mc},
+	    		jj=#{jj},
+	    		dlyhm=#{dlyhm},
+	    		dlmm=#{dlmm}
+            WHERE 
+	    		id=#{id}
+    </update>   
+       <update id="updateHzhbTp" parameterType="hzhb">  
+            update hzhb SET 
+	    		tp=#{tp}
+            WHERE 
+	    		id=#{id}
+    </update>   
+    
+</mapper>
+
+

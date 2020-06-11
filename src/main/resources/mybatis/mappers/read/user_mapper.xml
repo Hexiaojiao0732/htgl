@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.user.IUserReadMapper" >
+  
+  <resultMap id="userResultMap" type="AUser">
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="job_title" property="jobTitle" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="certificate_type_id" property="certificateTypeId" jdbcType="INTEGER" />
+    <result column="certificate_no" property="certificateNo" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="is_active" property="isActive" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="certificate_name" property="certificateName" jdbcType="VARCHAR" />
+    <result column="organization_name" property="organizationName" jdbcType="VARCHAR" />
+    <result column="organization_type" property="organizationType" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+  </resultMap>
+  
+
+  
+  <sql id="user_Column_List" >
+    id, login_name, real_name, job_title, password, mobile, email, telephone, address, 
+    certificate_type_id, certificate_no, sex, is_active, description, created_time, updated_time
+  </sql>
+  
+  <!-- 获取所有用户信息 -->
+  <select id="getAllUsers" resultMap="userResultMap" >
+    select 
+    *
+    from user
+  </select>
+  
+  <!-- 根据模糊查询获取用户信息 -->
+  <select id="getUsersByLike" resultMap="userResultMap" parameterType="java.util.Map">
+    select u.id, u.login_name, u.real_name, u.job_title, u.password, u.mobile, u.email, u.telephone, 
+    u.address, u.certificate_type_id, u.certificate_no, u.sex, u.is_active, u.description, u.created_time, 
+    u.updated_time,u.type,ct.`name` certificate_name 
+    from user as u left join certificate_type ct on u.certificate_type_id=ct.id 
+    <where>
+    	<if test="login_name != null and login_name != ''">
+    		and u.login_name like '%${login_name}%'
+    	</if>
+    	<if test="real_name != null and real_name != ''">
+    		and u.real_name like '%${real_name}%'
+    	</if>
+    	<if test="job_title != null and job_title != ''">
+    		and u.job_title like '%${job_title}%'
+    	</if>
+    	<if test="mobile != null and mobile != ''">
+    		and u.mobile like '%${mobile}%'
+    	</if>
+    	<if test="certificate_type_id != null and certificate_type_id != ''">
+    		and u.certificate_type_id like '%${certificate_type_id}%'
+    	</if>
+    	<if test="certificate_no != null and certificate_no != ''">
+    		and u.certificate_no like '%${certificate_no}%'
+    	</if>
+    	<if test="is_active != null and is_active != ''">
+    		and u.is_active like '%${isActive}%'
+    	</if>
+    	<if test="start_date!=null and start_date!=''">
+			and u.created_time &gt;=#{start_date}
+		</if>
+		<if test="end_date!=null and end_date!=''">
+			and u.created_time &lt;=#{end_date}
+		</if>
+		<if test="type!=null and type!=''">
+			and u.type =#{type}
+		</if>
+    </where>
+    limit ${pageStart},${rows}
+  </select>
+  
+  <!-- 计算查询结果大小  -->
+  <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map">
+	select count(1)  
+	 from user as u left join certificate_type ct on u.certificate_type_id=ct.id 
+    <where>
+    	<if test="login_name != null and login_name != ''">
+    		and u.login_name like '%${login_name}%'
+    	</if>
+    	<if test="real_name != null and real_name != ''">
+    		and u.real_name like '%${real_name}%'
+    	</if>
+    	<if test="job_title != null and job_title != ''">
+    		and u.job_title like '%${job_title}%'
+    	</if>
+    	<if test="mobile != null and mobile != ''">
+    		and u.mobile like '%${mobile}%'
+    	</if>
+    	<if test="certificate_type_id != null and certificate_type_id != ''">
+    		and u.certificate_type_id like '%${certificate_type_id}%'
+    	</if>
+    	<if test="certificate_no != null and certificate_no != ''">
+    		and u.certificate_no like '%${certificate_no}%'
+    	</if>
+    	<if test="is_active != null and is_active != ''">
+    		and u.is_active like '%${isActive}%'
+    	</if>
+    	<if test="start_date!=null and start_date!=''">
+			and u.created_time &gt;=#{start_date}
+		</if>
+		<if test="end_date!=null and end_date!=''">
+			and u.created_time &lt;=#{end_date}
+		</if>
+		<if test="type!=null and type!=''">
+			and u.type =#{type}
+		</if>
+    </where>
+</select>
+
+
+  
+  <!-- 根据id获取用户信息 -->
+  <select id="getUserByID" resultMap="userResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="user_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据login_name和password获取用户信息 -->
+  <select id="getUserByLoginNameAndPassword" resultMap="userResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="user_Column_List" />
+    from user
+    where login_name = #{loginName,jdbcType=VARCHAR} and password= #{password,jdbcType=VARCHAR}
+  </select>
+  
+   <!-- 根据certificateNo获取用户信息 -->
+  <select id="getUserByCertificateNo" resultMap="userResultMap" parameterType="java.lang.String" >
+    select * from user where certificate_no = #{certificateNo,jdbcType=VARCHAR} and certificate_type_id=191
+  </select>
+  
+  <!-- 根据id删除用户 -->
+  <delete id="deleteUserByID" parameterType="java.lang.Integer" >
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 插入用户 信息-->
+  <insert id="insertUser" parameterType="AUser" useGeneratedKeys="true" keyProperty="id">
+    insert into user (login_name, real_name, 
+      job_title, password, mobile, 
+      email, telephone, address, 
+      certificate_type_id, certificate_no, sex, 
+      is_active, description, created_time)
+    values (#{loginName,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+      #{jobTitle,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{certificateTypeId,jdbcType=INTEGER}, #{certificateNo,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
+      #{isActive,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, now())
+  </insert>
+  
+  <!-- 判空插入用户信息 -->
+  <insert id="insertSelectiveUser" parameterType="AUser" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="jobTitle != null" >
+        job_title,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="certificateTypeId != null" >
+        certificate_type_id,
+      </if>
+      <if test="certificateNo != null" >
+        certificate_no,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="isActive != null" >
+        is_active,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null" >
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateTypeId != null" >
+        #{certificateTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo != null" >
+        #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 判空更新用户信息 -->
+  <update id="updateSelectiveUserByID" parameterType="AUser" >
+    update user
+    <set >
+      <if test="loginName != null" >
+        login_name = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobTitle != null" >
+        job_title = #{jobTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateTypeId != null" >
+        certificate_type_id = #{certificateTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="certificateNo != null" >
+        certificate_no = #{certificateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="isActive != null" >
+        is_active = #{isActive,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 更新用户信息-->
+  <update id="updateUserByID" parameterType="AUser" >
+    update user
+    set login_name = #{loginName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      job_title = #{jobTitle,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      certificate_type_id = #{certificateTypeId,jdbcType=INTEGER},
+      certificate_no = #{certificateNo,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      is_active = #{isActive,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      updated_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 根据证据号码查询用户w.xb-->
+   <select id="selectinfo" resultMap="userResultMap" parameterType="java.lang.String" >
+    select * from user where certificate_no = #{certificateNo,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据id获取用户原密码 -->
+  <select id="getoldPsw" resultMap="userResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="user_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER} and password= #{oldPwd}
+  </select>
+   <!-- 根据id获取用户新密码 -->
+  <select id="getnewPsw" resultMap="userResultMap" parameterType="java.util.Map">
+    select 
+    <include refid="user_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER} and password= #{newPwd}
+  </select>
+  <update id="updatePsw" parameterType="AUser" >
+    update user
+    <set >
+      <if test="newPwd != null" >
+        password = #{newPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getUserByRole" parameterType="java.lang.Long" resultType="java.lang.Long">
+      select
+          u.id
+      from user u,user_role ur
+      where u.id = ur.user_id and ur.role_id = 1
+  </select>
+  <!-- queryUserNoById -->
+    <select id="queryUserNoById" parameterType="java.lang.Long"  resultMap="userResultMap">
+      SELECT u.certificate_no as certificateNo FROM `user`u WHERE u.id =#{pid}
+  </select>
+  
+  <!-- 修改警察电话 -->
+  <update id="updateMobileNo" parameterType="AUser" >
+    update user
+    <set>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+        updated_time = now(),
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+   <!-- 看押 查询民警是否跟主办民警是同一个单位 -->
+	<select id="queryPoliceByCuffNo" resultMap="userResultMap" parameterType="java.util.Map">
+		select t.certificate_no,t.real_name ,t.id from (
+		select org.id,org.organization ,u.certificate_no,u.real_name  from organization org left join user_organization uorg on org.id=uorg.organization_id 
+	    LEFT JOIN `user` u on u.id=uorg.user_id
+		WHERE u.id=(
+		select ped.police_id from police_entrance_detail ped where ped.out_time is null and  ped.cuff_id=(select cf.id from cuff cf where cf.cuff_no=#{cuffNo})))t
+		WHERE t.id=(select org2.id from organization org2 left join user_organization uorg2 on org2.id=uorg2.organization_id WHERE uorg2.user_id=
+		(select u2.id from `user` u2 left join interrogate_serial ints on u2.id=ints.in_user_id1 WHERE ints.id=#{serialId}))
+	</select>
+  
+  <!-- 根据中心民警证件号 查询中心民警-->
+  <select id="queryPoliceByCardNo" resultMap="userResultMap" parameterType="java.lang.String">
+    select * from `user` WHERE police_card_no =#{cuffNo}
+  </select>
+  
+</mapper>

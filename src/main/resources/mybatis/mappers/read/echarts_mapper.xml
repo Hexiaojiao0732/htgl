@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.echarts.IEchartsReadMapper">
+
+    <select id="getAccessLogTagType"  resultType="java.util.Map">
+        select count(*) as sum,DATE_FORMAT(a.response_time,'%e') as date,a.table_name,
+        t.tag_name,a.access_interface_type
+        FROM access_log a
+        LEFT JOIN tag_type t
+        on a.table_name = t.tag_table_name
+        where DATE_FORMAT(a.response_time,'%m')=DATE_FORMAT(now(),'%m')
+        GROUP BY a.table_name ,date,a.access_interface_type
+    </select>
+</mapper>
+

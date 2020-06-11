@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.wffzqk.IBkyjMapper">
+
+    <resultMap id="bkyjResultMap" type="com.zhixin.rd.rkjc.web.entity.BkyjEntity">
+        <id property="id" column="id"/>
+        <result column="gzryxm" property="gzryxm"/>
+        <result column="gzrysfzh" property="gzrysfzh"/>
+        <result column="bkdw" property="bkdw"/>
+        <result column="bksj" property="bksj"/>
+        <result column="bkmjxm1" property="bkmjxm1" />
+        <result column="bkmjzjhm1" property="bkmjzjhm1"/>
+        <result column="bkmjlxdh1" property="bkmjlxdh1"/>
+        <result column="bkmjxm2" property="bkmjxm2" />
+        <result column="bkmjzjhm2" property="bkmjzjhm2"/>
+        <result column="bkmjlxdh2" property="bkmjlxdh2"/>
+        <result column="bkzt" property="bkzt"/>
+        <result column="createTime" property="createTime" />
+        <result column="updateTime" property="updateTime"/>
+        <result column="updateMjxm" property="updateMjxm"/>
+    </resultMap>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT count(*) FROM bkyj where 1=1
+        <if test="gzryxm != null and gzryxm != ''">
+            and gzryxm like '%${gzryxm}%'
+        </if>
+        <if test="gzrysfzh != null and gzrysfzh != ''">
+            and gzrysfzh like '%${gzrysfzh}%'
+        </if>
+        <if test="bkdw != null and bkdw != ''">
+            and bkdw like '%${bkdw}%'
+        </if>
+    </select>
+    <select id="list" resultMap="bkyjResultMap" parameterType="java.util.Map">
+        SELECT * FROM  bkyj where 1=1
+        <if test="gzryxm != null and gzryxm != ''">
+            and gzryxm like '%${gzryxm}%'
+        </if>
+        <if test="gzrysfzh != null and gzrysfzh != ''">
+            and gzrysfzh like '%${gzrysfzh}%'
+        </if>
+        <if test="bkdw != null and bkdw != ''">
+            and bkdw like '%${bkdw}%'
+        </if>
+        limit ${pageStart},${rows}
+    </select>
+    <insert id="add" parameterType="com.zhixin.rd.rkjc.web.form.BkyjForm" keyProperty="id" useGeneratedKeys="true">
+        insert into bkyj
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="gzryxm != null and gzryxm != ''" >
+                gzryxm,
+            </if>
+            <if test="gzrysfzh != null and gzrysfzh != ''" >
+                gzrysfzh,
+            </if>
+            <if test="bkdw != null and bkdw != ''" >
+                bkdw,
+            </if>
+            <if test="bksj != null and bksj != ''" >
+                bksj,
+            </if>
+            <if test="bkmjxm1 != null and bkmjxm1 != ''" >
+                bkmjxm1,
+            </if>
+            <if test="bkmjzjhm1 != null and bkmjzjhm1 != ''" >
+                bkmjzjhm1,
+            </if>
+            <if test="bkmjlxdh1 != null and bkmjlxdh1 != ''" >
+                bkmjlxdh1,
+            </if>
+            <if test="bkmjxm2 != null and bkmjxm2 != ''" >
+                bkmjxm2,
+            </if>
+            <if test="bkmjzjhm2 != null and bkmjzjhm2 != ''" >
+                bkmjzjhm2,
+            </if>
+            <if test="bkmjlxdh2 != null and bkmjlxdh2 != ''" >
+                bkmjlxdh2,
+            </if>
+            <if test="bkzt != null and bkzt != ''" >
+                bkzt,
+            </if>
+            createTime,
+            <if test="updateTime != null and updateTime != ''" >
+                updateTime,
+            </if>
+            <if test="updateMjxm != null and updateMjxm != ''" >
+                updateMjxm,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="gzryxm != null and gzryxm != ''" >
+                #{gzryxm},
+            </if>
+            <if test="gzrysfzh != null and gzrysfzh != ''" >
+                #{gzrysfzh},
+            </if>
+            <if test="bkdw != null and bkdw != ''" >
+                #{bkdw},
+            </if>
+            <if test="bksj != null and bksj != ''" >
+                #{bksj},
+            </if>
+            <if test="bkmjxm1 != null and bkmjxm1 != ''" >
+                #{bkmjxm1},
+            </if>
+            <if test="bkmjzjhm1 != null and bkmjzjhm1 != ''" >
+                #{bkmjzjhm1},
+            </if>
+            <if test="bkmjlxdh1 != null and bkmjlxdh1 != ''" >
+                #{bkmjlxdh1},
+            </if>
+            <if test="bkmjxm2 != null and bkmjxm2 != ''" >
+                #{bkmjxm2},
+            </if>
+            <if test="bkmjzjhm2 != null and bkmjzjhm2 != ''" >
+                #{bkmjzjhm2},
+            </if>
+            <if test="bkmjlxdh2 != null and bkmjlxdh2 != ''" >
+                #{bkmjlxdh2},
+            </if>
+            <if test="bkzt != null and bkzt != ''" >
+                #{bkzt},
+            </if>
+            now(),
+            <if test="updateTime != null and updateTime != ''" >
+                #{updateTime},
+            </if>
+            <if test="updateMjxm != null and updateMjxm != ''" >
+                #{updateMjxm},
+            </if>
+        </trim>
+    </insert>
+    <update id="update" parameterType="com.zhixin.rd.rkjc.web.form.BkyjForm" >
+        update bkyj
+        <set>
+            <if test="gzryxm != null and gzryxm != ''" >
+                gzryxm = #{gzryxm},
+            </if>
+            <if test="gzrysfzh != null and gzrysfzh != ''" >
+                gzrysfzh = #{gzrysfzh},
+            </if>
+            <if test="bkdw != null and bkdw != ''" >
+                bkdw = #{bkdw},
+            </if>
+            <if test="bksj != null and bksj != ''" >
+                bksj = #{bksj},
+            </if>
+            <if test="bkmjxm1 != null and bkmjxm1 != ''" >
+                bkmjxm1 = #{bkmjxm1},
+            </if>
+            <if test="bkmjzjhm1 != null and bkmjzjhm1 != ''" >
+                bkmjzjhm1 = #{bkmjzjhm1},
+            </if>
+            <if test="bkmjlxdh1 != null and bkmjlxdh1 != ''" >
+                bkmjlxdh1 = #{bkmjlxdh1},
+            </if>
+            <if test="bkmjxm2 != null and bkmjxm2 != ''" >
+                bkmjxm2 = #{bkmjxm2},
+            </if>
+            <if test="bkmjzjhm2 != null and bkmjzjhm2 != ''" >
+                bkmjzjhm2 = #{bkmjzjhm2},
+            </if>
+            <if test="bkmjlxdh2 != null and bkmjlxdh2 != ''" >
+                bkmjlxdh2 = #{bkmjlxdh2},
+            </if>
+            <if test="bkzt != null and bkzt != ''" >
+                bkzt = #{bkzt},
+            </if>
+            <if test="createTime != null and createTime != ''" >
+                createTime = #{createTime},
+            </if>
+            <if test="updateTime != null and updateTime != ''" >
+                updateTime = #{updateTime},
+            </if>
+            <if test="updateMjxm != null and updateMjxm != ''" >
+                updateMjxm = #{updateMjxm}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
+

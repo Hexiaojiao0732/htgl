@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.pl.IPlMapper">
+	<resultMap id="plMapper" type="pl">
+    	<id property="id" column="id"/>
+    	<result property="nr" column="nr"/>
+    	<result property="plsj" column="plsj"/>
+    	<result property="userId" column="user_id"/>
+    	<result property="spId" column="sp_id"/>
+    	<result property="ypId" column="yp_id"/>
+    	<result property="hzhbZyId" column="hzhb_zy_id"/>
+    	<result property="cbwId" column="cbw_id"/>
+    	<result property="spmc" column="spmc"/>
+    	<result property="ypmc" column="ypmc"/>
+    	<result property="cbwmc" column="cbwmc"/>
+    	<result property="wjmc" column="wjmc"/>
+    	<result property="xm" column="xm"/>
+    	<result property="zt" column="zt"/>
+    	
+    </resultMap>
+
+    <select id="queryAllPl" resultMap="plMapper"  parameterType="java.util.HashMap">
+    select *  ,(select mc  from  sp sp where  sp.id=pl.sp_id) spmc ,
+(SELECT mc from  yp yp  where  yp.id= pl.yp_id) ypmc ,
+(select mc  from  cbw  cbw  where  cbw.id=pl.cbw_id) cbwmc ,
+(select wjmc from  hzhb_zt_zy hzhbzy  where hzhbzy.id= pl.hzhb_zy_id )wjmc,
+(select  xm  from  user  user  where  user.id=  pl.user_id) xm
+from pl pl
+        	 limit ${pageIndex},${rows} 
+    </select>
+    <select id="countPl" resultType="java.lang.Integer"   parameterType="java.util.HashMap">
+        	SELECT count(*) FROM pl
+    </select>
+    
+    <delete id="deletePlById" parameterType="Long">
+    delete from  pl  where id=#{id}
+    </delete>
+    <update id="shPlById" parameterType="long">
+    update pl set zt=1 where id=#{id}
+    </update>
+    <update id="cancelShPlById" parameterType="long">
+    update pl set zt=0 where id=#{id}
+    </update>
+    
+    
+</mapper>
+
+

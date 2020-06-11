@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.wjdc.IWjdcMapper">
+	<resultMap id="wjdcMapper" type="wjdc">
+    	<id property="id" column="id"/>
+    	<result property="xm" column="xm"/>
+    	<result property="xb" column="xb"/>
+    	<result property="csrq" column="csrq"/>
+    	<result property="lxfs" column="lxfs"/>
+    	<result property="szdq" column="szdq"/>
+    	<result property="gznr" column="gznr"/>
+    	<result property="zyyxgjy" column="zyyxgjy"/>
+    	<result property="zwyy" column="zwyy"/>
+    	<result property="tgzynr" column="tgzynr"/>
+    </resultMap>
+
+    <select id="list" resultMap="wjdcMapper" parameterType="java.util.Map" >
+        	SELECT * FROM wjdc  
+    </select>
+    <select id="queryAllWjdc" resultMap="wjdcMapper" parameterType="java.util.Map" >
+        	SELECT * FROM wjdc  limit ${pageIndex},${rows}
+    </select>
+    <select id="countWjdc" resultType="java.lang.Integer">
+        	SELECT count(*) FROM wjdc
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertZx" parameterType="zx">
+		insert into zx
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bt != null">
+				bt,
+			</if>
+			<if test="fssj != null">
+				fssj,
+			</if>
+			<if test="nr != null">
+				nr,
+			</if>
+			<if test="tp != null">
+				tp,
+			</if>
+			<if test="dlx != null">
+				dlx,
+			</if>
+			<if test="zlx != null">
+				zlx,
+			</if>
+			<if test="xsurl != null">
+				xsurl,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="bt != null">
+				#{bt},
+			</if>
+			<if test="fssj != null">
+				#{fssj},
+			</if>
+			<if test="nr != null">
+				#{nr},
+			</if>
+			<if test="tp != null">
+				#{tp},
+			</if>
+			<if test="dlx != null">
+				#{dlx},
+			</if>
+			<if test="zlx != null">
+				#{zlx},
+			</if>
+			<if test="xsurl != null">
+				#{xsurl},
+			</if>
+		</trim>
+	</insert>
+	
+	  <delete id="deleteWjdcById" parameterType="Long">  
+            DELETE FROM wjdc WHERE id=#{id}
+    </delete> 
+    
+       <update id="updateWjdc" parameterType="wjdc">  
+            UPDATE wjdc SET 
+	    		xm=#{xm},
+	    		xb=#{xb},
+	    		csrq=#{csrq},
+	    		lxfs=#{lxfs},
+	    		szdq=#{szdq},
+	    		gznr=#{gznr},
+	    		zyyxgjy=#{zyyxgjy},
+	    		zwyy=#{zwyy},
+	    		tgzynr=#{tgzynr}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

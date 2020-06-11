@@ -1,0 +1,89 @@
+@charset "utf-8";
+/*share*/
+*{margin:0; padding:0;}
+html,body{min-height:100%; }
+body,input,textarea,select,pre{color:#333;background:#f9fafa;font-size:14px;line-height:1.785;font-family:"Microsoft YaHei", Arial,"微软雅黑","Microsoft yahei","Hiragino Sans GB","冬青黑体简体中文 w3",STXihei,"华文细黑",SimSun,"宋体",Heiti,"黑体",sans-serif;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;font-style:normal;}
+a{blr:expression(this.onFocus=this.blur());/*IE*/outline:none;/*火狐*/color:#333; text-decoration:none;cursor: pointer;}
+a:focus{outline: none;}
+a:hover{text-decoration:none;}
+a:active{star:expression(this.onfocus=this.blur());}
+img{vertical-align:middle;max-width:100%;}
+button{outline:none;border:none;cursor:pointer;background:transparent;}
+pre{display:block;word-break: break-all;word-wrap: break-word;white-space: pre-wrap;background:transparent;}
+ul, ol{list-style: none;}
+::-webkit-input-placeholder{color:#999}
+:-moz-placeholder{color:#999}
+::-moz-placeholder{color:#999}
+:-ms-input-placeholder{color:#999}
+img, fieldset{border: 0 none;}
+input, textarea{outline: none;background:transparent;-webkit-highlight: none;}
+table{border-collapse:separate; border-spacing: 0;}
+button, input, select, label{vertical-align:middle;}
+select{outline: none;appearance:none;-o-appearance:none;-moz-appearance:none;-webkit-appearance:none;}
+select::-ms-expand { display: none; }
+i{display:inline-block;vertical-align:top;}
+.clearfix{_zoom:1; /*height:1%;*/}
+.clearfix:after{content:""; clear: both; display:block;}
+/*main*/
+.main{ width:1200px; margin:30px auto ;position:relative; background: url(../images/admin_bg.gif) repeat-y 230px top;}
+/*main-content*/
+.main-content{width:930px;height: 700px; overflow-y:auto; float:right;position:relative; padding: 10px;}
+/*header*/
+header{width:100%;height:70px;background:#080808;box-shadow:5px 5px 5px rgba(0,0,0,.5);}
+.logo{display:block;width:110px;height:35px; margin:0 auto; padding-top: 17px;}
+/*aside*/
+.main-side{width:230px; float: left;}
+.menulist{ height: 700px; overflow-y:auto;}
+.menulist > li{border:1px solid #c5ac8f; width: 75px; height: 75px; float: left; border-radius: 11px; margin:13px;}
+.menulist li.active,.menulist li:hover{background: #bea281;}
+.menulist li.active > a,.menulist li:hover > a{color: #fff;}
+.menulist li a{display: block;color:#1b1b1b;}
+.menulist li a.fcfff{color:#fff;}
+.menulist li a div{height:75px;position: relative;white-space: nowrap;}
+.menulist li a div span{line-height:25px;display:block;width:73px;overflow: hidden; text-align: center; }
+.menulist li i.icon{width:49px;height:36px;vertical-align:top; margin:8px auto 0 auto; display: block;}
+.icon-menu1{ background: url(../images/menu01.png) no-repeat left top;}
+.icon-menu2{background: url(../images/menu02.png) no-repeat left top;}
+.icon-menu3{background: url(../images/menu03.png) no-repeat left top;}
+.icon-menu4{background: url(../images/menu04.png) no-repeat left top;}
+.icon-menu5{background: url(../images/menu05.png) no-repeat left top;}
+.icon-menu6{background: url(../images/menu06.png) no-repeat left top;}
+.icon-menu7{background: url(../images/menu07.png) no-repeat left top;}
+.icon-menu8{background: url(../images/menu08.png) no-repeat left top;}
+.icon-menu9{background: url(../images/menu09.png) no-repeat left top;}
+.icon-menu10{background: url(../images/menu10.png) no-repeat left top;}
+.icon-menu11{background: url(../images/menu11.png) no-repeat left top;}
+.menulist li.active .icon-menu1,.menulist li:hover .icon-menu1{background: url(../images/menu01_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu2,.menulist li:hover .icon-menu2{background: url(../images/menu02_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu3,.menulist li:hover .icon-menu3{background: url(../images/menu03_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu4,.menulist li:hover .icon-menu4{background: url(../images/menu04_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu5,.menulist li:hover .icon-menu5{background: url(../images/menu05_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu6,.menulist li:hover .icon-menu6{background: url(../images/menu06_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu7,.menulist li:hover .icon-menu7{background: url(../images/menu07_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu8,.menulist li:hover .icon-menu8{background: url(../images/menu08_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu9,.menulist li:hover .icon-menu9{background: url(../images/menu09_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu10,.menulist li:hover .icon-menu10{background: url(../images/menu10_hover.png) no-repeat left top;}
+.menulist li.active .icon-menu11,.menulist li:hover .icon-menu11{background: url(../images/menu11_hover.png) no-repeat left top;}
+/*footer*/
+footer{width:100%;height:64px;line-height:64px;color:#bea281;text-align: center;background: #000000;}
+
+/*login*/
+.login-haeder{ position: fixed; left: 0; top: 0; width: 100%;}
+.login-body{ background: url(../images/admin01.jpg) no-repeat center top; background-size: 100% 100%; }
+.login-main{ width: 100%;}
+.login-footer{ position: fixed; bottom: 0; left: 0; width: 100%;}
+.login-title{ text-align: center; color: #f7f6f5; font-size: 36px; text-align: center; margin: 30px 0;}
+.login-con{width:700px; height:357px; position:relative;background:#fff;border-radius: 50px; margin: 0 auto;}
+.register_list{ width:360px; margin: 0 auto; padding: 80px 0 36px 0;}
+.register_list li{ height: 58px; position: relative;}
+.register_list li i{width:32px; height:36px; float: left; display: block; background-position: left top; background-repeat: no-repeat;}
+.register_list li i.id{ background-image: url(../images/login_icon01.png);}
+.register_list li i.login_password{ background-image: url(../images/login_icon05.png);}
+.register_list li p{ clear: both; color: #9d0000; padding-left: 60px; line-height: 20px;}
+.register_list li .text{font-family: Arial,"Microsoft yahei"; width:300px;height: 35px; line-height: 35px; border-bottom: 1px solid #bea281; float: right; border-top: 0;border-right: 0;border-left: 0; font-size: 14px; color: #333;}
+/*按钮样式*/
+.btns{width:100%;text-align:center;margin:20px auto 20px auto;}
+.btn{display:inline-block;width:354px;height:40px;font-family:"Microsoft yahei";line-height:40px;font-size:16px;color:#3e3a39;text-align:center;background:#bea281;border-radius:20px;margin:0 20px; cursor:pointer;}
+.btn:active{background:#a58d71;}
+.btn[disabled="disabled"]{background:#d6d6d6;cursor:default;color:#fff;}

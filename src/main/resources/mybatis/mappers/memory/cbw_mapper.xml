@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.cbw.ICbwMapper">
+	<resultMap id="cbwMapper" type="cbw">
+    	<id property="id" column="id"/>
+    	<result property="mc" column="mc"/>
+    	<result property="tp" column="tp"/>
+    	<result property="zz" column="zz"/>
+    	<result property="ms" column="ms"/>
+    </resultMap>
+
+    <select id="queryAllCbw" resultMap="cbwMapper"  parameterType="java.util.HashMap">
+     SELECT *  FROM  cbw  
+        	limit ${pageIndex},${rows}
+    </select>
+    <select id="countCbw" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM cbw
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertCbw" parameterType="cbw">
+		insert into cbw
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				mc,
+			</if>
+			<if test="wyid != null">
+				wyid,
+			</if>
+			<if test="ztId != null">
+				zt_id,
+			</if>
+			<if test="rwId != null">
+				rw_id,
+			</if>
+			<if test="jlId != null">
+				jl_id,
+			</if>
+			<if test="ys != null">
+				ys,
+			</if>
+			<if test="wjlx != null">
+				wjlx,
+			</if>
+			<if test="pssj != null">
+				pssj,
+			</if>
+			<if test="psdd != null">
+				psdd,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="gxzId != null">
+				gxz_id,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="mc != null">
+				#{mc},
+			</if>
+			<if test="wyid != null">
+				#{wyid},
+			</if>
+			<if test="ztId != null">
+				#{ztId},
+			</if>
+			<if test="rwId != null">
+				#{rwId},
+			</if>
+			<if test="jlId != null">
+				#{jlId},
+			</if>
+			<if test="ys != null">
+				#{ys},
+			</if>
+			<if test="wjlx != null">
+				#{wjlx},
+			</if>
+			<if test="pssj != null">
+				#{pssj},
+			</if>
+			<if test="psdd != null">
+				#{psdd},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="gxzId != null">
+				#{gxzId},
+			</if>
+		</trim>
+	</insert>
+	
+	  <delete id="deleteCbw" parameterType="Long">  
+            DELETE FROM cbw WHERE id=#{id}
+    </delete> 
+    
+       <update id="updateCbw" parameterType="cbw">  
+            UPDATE wd SET 
+	    		mc=#{mc},
+	    		tp=#{tp},
+	    		zz=#{zz},
+	    		ms=#{ms}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

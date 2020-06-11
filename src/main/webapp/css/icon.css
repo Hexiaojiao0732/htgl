@@ -1,0 +1,66 @@
+.menu {
+	background: url("../image/icon/tree/folder.gif") no-repeat;
+}
+.page {
+	background: url("../image/icon/tree/folder.gif") no-repeat;
+}
+
+.icons-save2{
+	background:url('icons/save2.png') no-repeat center center;
+}
+.icons-system{
+	background:url('icons/system.png') no-repeat center center;
+}
+.icons-select{
+	background:url('icons/select.png') no-repeat center center;
+}
+.icons-map{
+	background:url('icons/map.png') no-repeat center center;
+}
+.icons-layout{
+	background:url('icons/layout.png') no-repeat center center;
+}
+.icons-configure{
+	background:url('icons/configure.gif') no-repeat center center;
+}
+.icons-domain{
+	background:url('icons/domain.jpg') no-repeat center center;
+}
+.icons-key{
+	background:url('icons/key.png') no-repeat center center;
+}
+.icons-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icons-subNetwork{
+	background:url('icons/subNetwork_icon.png') no-repeat center center;
+}
+.icons-word{
+	background:url('icons/word.gif') no-repeat center center;
+}
+.icons-waring{
+	background:url('icons/waring.gif') no-repeat center center;
+}
+.icons-refresh{
+	background:url('icons/refresh.gif') no-repeat center center;
+}
+
+.icons-left{
+	background:url('icons/jt_left.gif') no-repeat center center;
+}
+.icons-right{
+	background:url('icons/jt_right.gif') no-repeat center center;
+}
+.icons-up{
+	background:url('icons/jt_up.gif') no-repeat center center;
+}
+.icons-down{
+	background:url('icons/jt_down.gif') no-repeat center center;
+}
+.icons-connect{
+	background:url('icons/connect.gif') no-repeat center center;
+}
+.icons-cog{
+	background:url('icons/cog.png') no-repeat center center;
+}
+

@@ -1,0 +1,84 @@
+.icon-combo {
+	background: url("../image/combo.png") no-repeat;
+}
+.icon-other {
+	background: url("../image/other.png") no-repeat;
+}
+.icon-tree {
+	background: url("../image/tree.png") no-repeat;
+}
+.icon-layout {
+	background: url("../image/layout.png") no-repeat;
+}
+.icon-menu {
+	background: url("../image/menu.png") no-repeat;
+}
+.icon-button {
+	background: url("../image/button.png") no-repeat;
+}
+.icon-form {
+	background: url("../image/form.png") no-repeat;
+}
+.icon-window {
+	background: url("../image/window.png") no-repeat;
+}
+.icon-datagrid {
+	background: url("../image/grid.png") no-repeat;
+}
+.icon-gears {
+	background: url("../image/gears.png") no-repeat;
+}
+.icon-logout {
+	background: url("../image/logout-icon.png") no-repeat;
+}
+
+a.my1:link { text-decoration: none;color: blue}
+a.my1:visited { text-decoration: none;color: blue}
+
+.form-style{
+	margin:0;
+	padding:10px 30px;
+}
+.ftitle{
+	font-size:14px;
+	font-weight:bold;
+	color:#666;
+	padding:5px 0;
+	margin-bottom:10px;
+	border-bottom:1px solid #ccc;
+}
+.fitem{
+	margin-bottom:5px;
+}
+.fitem label{
+	display:inline-block;
+	width:100px;
+}
+
+.btnHide{
+	visibility: hidden;
+	width: 1px;
+}
+
+.btnShow{
+	visibility: visible;
+}
+body{
+	padding:0px;
+	margin:0px;
+}
+
+  .colinfo_table {   
+        border-collapse: collapse;   
+        border: none;   
+    }   
+    .colinfo_table td {   
+        border: solid #000 1px;   
+        height:45px;
+        width:120px;
+    }  
+    #tooltip{
+			display:none;
+			position:absolute;
+		} 
+

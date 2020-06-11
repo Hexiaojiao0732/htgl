@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.wffzqk.IRkJbxxWffzqkMapper">
+ <resultMap id="RkJbxxWffzqkMapper" type="com.zhixin.rd.rkjc.entity.mysql.RkJbxxQkMysqlEntity">
+    	<result property="rh" column="rh"/>
+    	<result property="ssssxqDm" column="ssssxq_dm"/>
+    	<result property="ssgajgDm" column="ssgajg_dm"/>
+    	<result property="hh" column="hh"/>
+    	<result property="jtgxDm" column="jtgx_dm"/>
+    	<result property="gmsfhm" column="gmsfhm"/>
+    	<result property="zjlxDm" column="zjlx_dm"/>
+    	<result property="sfzqfrq" column="sfzqfrq"/>
+    	<result property="sfzSlyyDm" column="sfz_slyy_dm"/>
+    	<result property="sfzYxqxDm" column="sfz_yxqx_dm"/>
+    	<result property="xm" column="xm"/>
+    	<result property="cym" column="cym"/>
+    	<result property="xbDm" column="xb_dm"/>
+    	<result property="mzDm" column="mz_dm"/>
+    	<result property="csrq" column="csrq"/>
+    	<result property="cszqfrq" column="cszqfrq"/>
+    	<result property="csdgj" column="csdgj"/>
+    	<result property="csdssx" column="csdssx"/>
+    	<result property="csdxz" column="csdxz"/>
+    	<result property="jggj" column="jggj"/>
+    	<result property="jgssx" column="jgssx"/>
+    	<result property="zjxyDm" column="zjxy_dm"/>
+    	<result property="whcdDm" column="whcd_dm"/>
+    	<result property="hyzkDm" column="hyzk_dm"/>
+    	<result property="byzkDm" column="byzk_dm"/>
+    	<result property="sg" column="sg"/>
+    	<result property="xxDm" column="xx_dm"/>
+    	<result property="zy" column="zy"/>
+    	<result property="fwcs" column="fwcs"/>
+    	<result property="dhhm" column="dhhm"/>
+    	<result property="xxjb" column="xxjb"/>
+    	<result property="czrBs" column="czr_bs"/>
+    	<result property="zz" column="zz"/>
+    	<result property="lrrq" column="lrrq"/>
+    	<result property="scrhjksj" column="scrhjksj"/>
+    	<result property="yzbm" column="yzbm"/>
+    	<result property="xmpy" column="xmpy"/>
+    	<result property="qtZh" column="qt_zh"/>
+    	<result property="crSj" column="cr_sj"/>
+    	<result property="gxSj" column="gx_sj"/>
+    	<result property="crLy" column="cr_ly"/>
+    	<result property="lybzjzd" column="lybzjzd"/>
+    	<result property="fpzd" column="fpzd"/>
+    	<result property="xyrSfzh" column="xyrSfzh"/>
+    	<result property="gzs" column="gzs"/>
+    </resultMap>
+    
+    <!-- listAllRkJbxxQk -->
+    <select id="listAllRkJbxxWffzqk" resultMap="RkJbxxWffzqkMapper" >
+       		<!-- no ";" at the end -->   
+        	SELECT * FROM rk_jbxx_qk
+		<where>
+			<if test="gmsfhm !=null and gmsfhm !=''">
+				and gmsfhm like '%${gmsfhm}%'
+			</if>
+
+			<if test="xm !=null and xm !=''">
+				and xm like '%${xm}%'
+			</if>
+
+			<if test="xb !=null and xb !=''">
+				and xb_dm like #{xb}
+			</if>
+
+			<!--<if test="jyzt !=null and jyzt !='' and jyzt != 0">
+				and jyzt like #{jyzt}
+			</if>-->
+			<if test="hjd !=null and hjd !=''">
+				and gmsfhm like '${hjd}%'
+			</if>
+
+			<if test="csrqStart !=null and csrqStart !='' and csrqEnd !=null and csrqEnd !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${csrqStart} and ${csrqEnd}
+			</if>
+			<if test="rd !=null and rd !=''">
+				and rd &gt;#{rd}
+			</if>
+
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and gmsfhm in (${sfzhAll})
+			</if>
+
+			<if test="lyd !=null and lyd !=''">
+				and cr_ly in (${lyd})
+			</if>
+		</where>
+		<if test="pageIndex == -1">
+			limit #{pageIndex}, 8
+		</if>
+    </select>
+
+	<select id="listCount" resultType="java.lang.Long" >
+
+		SELECT  count(1) from rk_jbxx_qk
+
+		<where>
+			<if test="gmsfhm !=null and gmsfhm !=''">
+				and gmsfhm like '%${gmsfhm}%'
+			</if>
+
+			<if test="xm !=null and xm !=''">
+				and xm like '%${xm}%'
+			</if>
+
+			<if test="xb !=null and xb !=''">
+				and xb_dm like #{xb}
+			</if>
+
+			<!--<if test="jyzt !=null and jyzt !='' and jyzt != 0">
+				and jyzt like #{jyzt}
+			</if>-->
+			<if test="hjd !=null and hjd !=''">
+				and gmsfhm like '${hjd}%'
+			</if>
+
+			<if test="csrqStart !=null and csrqStart !='' and csrqEnd !=null and csrqEnd !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${csrqStart} and ${csrqEnd}
+			</if>
+			<if test="rd !=null and rd !=''">
+				and rd &gt;#{rd}
+			</if>
+
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and gmsfhm in (${sfzhAll})
+			</if>
+
+			<if test="lyd !=null and lyd !=''">
+				and cr_ly in (${lyd})
+			</if>
+		</where>
+	</select>
+	<!--<select id="queryOneBySfzh" resultMap="RkJbxxWffzqkMapper" parameterType="java.util.Map">
+
+		SELECT * FROM rk_jbxx_qk where gmsfhm =#{gmsfhm} limit 1
+	</select>-->
+
+    
+</mapper>
+
+

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.lbt.ILbtMapper">
+	<resultMap id="lbtMapper" type="lbt">
+    	<id property="id" column="id"/>
+    	<result property="tpmc" column="tpmc"/>
+    	<result property="tplj" column="tplj"/>
+    	<result property="lbsx" column="lbsx"/>
+    	<result property="lbsc" column="lbsc"/>
+    	<result property="lbwz" column="lbwz"/>
+    	<result property="lblx" column="lblx"/>
+		<result property="url" column="url"/>
+    </resultMap>
+
+    <select id="queryLbt" resultMap="lbtMapper"  parameterType="java.util.HashMap">
+        	SELECT * FROM lbt ORDER BY id  desc  limit ${pageIndex},${rows}
+    </select>
+    <select id="countLbt" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM lbt
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertLbt" parameterType="lbt">
+		insert into lbt
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tpmc != null">
+				tpmc,
+			</if>
+			<if test="tplj != null">
+				tplj,
+			</if>
+			<if test="lbsx != null">
+				lbsx,
+			</if>
+			<if test="lbsc != null">
+				lbsc,
+			</if>
+			<if test="lbwz != null">
+				lbwz,
+			</if>
+			<if test="lblx != null">
+				lblx,
+			</if>
+			<if test="url != null">
+				url,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="tpmc != null">
+				#{tpmc},
+			</if>
+			<if test="tplj != null">
+				#{tplj},
+			</if>
+			<if test="lbsx != null">
+				#{lbsx},
+			</if>
+			<if test="lbsc != null">
+				#{lbsc},
+			</if>
+			<if test="lbwz != null">
+				#{lbwz},
+			</if>
+			<if test="lblx != null">
+				#{lblx},
+			</if>
+			<if test="url != null">
+				#{url},
+			</if>
+		</trim>
+	</insert>
+	
+	  <delete id="deleteLbtById" parameterType="Long">  
+            DELETE FROM lbt WHERE id=#{id}
+    </delete> 
+    
+       <update id="updateLbt" parameterType="lbt">  
+            UPDATE lbt SET 
+	    		tpmc=#{tpmc},
+	    		lbsx=#{lbsx},
+	    		lbsc=#{lbsc},
+	    		lbwz=#{lbwz},
+	    		lblx=#{lblx},
+	    		url=#{url}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

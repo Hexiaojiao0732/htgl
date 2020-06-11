@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.write.area.IAreaWriteMapper" >
+  <resultMap id="BaseResultMap" type="com.zhixin.rd.rkjc.web.entity.AreaEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="organization_name" property="organizationName"/>
+  </resultMap>
+
+	<insert id="insertArea" parameterType="com.zhixin.rd.rkjc.web.entity.AreaEntity" keyProperty="id" useGeneratedKeys="true">
+		insert into interrogate_area (id, name, type,
+      description, organization_id, address,
+      telephone, postcode, created_time,
+      updated_time)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+      #{description,jdbcType=VARCHAR}, #{organizationId,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR},
+      #{telephone,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP},
+      #{updatedTime,jdbcType=TIMESTAMP})
+	</insert>
+
+	<update id="updateArea" parameterType="com.zhixin.rd.rkjc.web.entity.AreaEntity">
+		 update interrogate_area
+      set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      organization_id = #{organizationId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      postcode = #{postcode,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP}
+    where id = #{id}
+	</update>
+
+	<delete id="deleteArea" parameterType="Long">
+		delete from interrogate_area where id=#{id}
+	</delete>
+
+</mapper>

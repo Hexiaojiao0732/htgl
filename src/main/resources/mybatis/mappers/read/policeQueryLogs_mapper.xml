@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.wffzqk.IPoliceQueryLogsMapper" >
+  <resultMap id="PoliceQueryLogsResultMap" type="com.zhixin.rd.rkjc.web.entity.PoliceQueryLogsEntity" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="police_name" property="policeName" jdbcType="VARCHAR" />
+    <result column="query_time" property="queryTime" />
+    <result column="describe" property="describe" jdbcType="VARCHAR" />
+    <result column="login_ip" property="loginIp" jdbcType="VARCHAR" />
+  </resultMap>
+
+    <select id="list" resultMap="PoliceQueryLogsResultMap" parameterType="java.util.Map">
+        select * from police_query_logs where 1=1
+        <if test="policeName != null and policeName != ''">
+            and police_name like '%${policeName}%'
+        </if>
+        <if test="queryTime1 != null and queryTime1 != ''">
+            and query_time <![CDATA[ >]]> CONCAT(#{queryTime1}, 'yyyy-MM-dd hh24:mi:ss')
+        </if>
+        <if test="queryTime2 != null and queryTime2 != ''">
+            and query_time <![CDATA[ <]]> CONCAT(#{queryTime2}, 'yyyy-MM-dd hh24:mi:ss')
+        </if>
+        <if test="describe != null and describe != ''">
+            and `describe` like '%${describe}%'
+
+        </if>
+        <if test="loginIp != null and loginIp != ''">
+            and login_ip like '%${loginIp}%'
+        </if>
+        order by query_time desc
+        limit ${pageStart},${rows}
+        <!--<if test="pageStart != null and pageStart != '' and rows != null and rows != ''">
+        </if>-->
+    </select>
+
+    <select id="count" resultType="int" parameterType="java.util.Map">
+        select count(1) from police_query_logs
+        <where>
+            <if test="policeName != null and policeName != ''">
+                and police_name like '%${policeName}%'
+            </if>
+            <if test="queryTime1 != null and queryTime1 != ''">
+                and query_time <![CDATA[ >]]> CONCAT(#{queryTime1}, 'yyyy-MM-dd hh24:mi:ss')
+            </if>
+            <if test="queryTime2 != null and queryTime2 != ''">
+                and query_time <![CDATA[ <]]> CONCAT(#{queryTime2}, 'yyyy-MM-dd hh24:mi:ss')
+            </if>
+            <if test="describe != null and describe != ''">
+                and `describe` like '%${describe}%'
+            </if>
+            <if test="loginIp != null and loginIp != ''">
+                and login_ip like '%${loginIp}%'
+            </if>
+        </where>
+    </select>
+</mapper>

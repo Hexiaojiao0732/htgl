@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.pq.IPqaWfryWsMysqlMapper">
+	<resultMap id="PqaWfryWsMapper" type="com.zhixin.rd.rkjc.entity.mysql.PqaWfryWsMysqlEntity">
+    	<id property="id" column="id"/>
+    	<result property="xm" column="xm"/>
+    	<result property="xb" column="xb"/>
+    	<result property="gmsfhm" column="gmsfhm"/>
+    	<result property="csrq" column="csrq"/>
+    	<result property="hjd" column="hjd"/>
+    	<result property="xzz" column="xzz"/>
+    	<result property="zbdw" column="zbdw"/>
+    	<result property="djcs" column="djcs"/>
+    	<result property="jyaq" column="jyaq"/>
+    	<result property="lyd" column="lyd"/>
+    	<result property="sclrsj" column="sclrsj"/>
+		<result property="rd" column="rd"/>
+    </resultMap>
+    
+    <!-- listAllPqaWfryWs -->
+    <select id="listAllPqaWfryWs" resultMap="PqaWfryWsMapper"  parameterType="java.util.Map">
+       		<!-- no ";" at the end -->   
+        	SELECT * FROM pqa_wfry_ws
+		<where>
+			<if test="gmsfhm !=null and gmsfhm !=''">
+				and gmsfhm =#{gmsfhm}
+			</if>
+
+			<if test="xm !=null and xm !=''">
+				and xm like '%${xm}%'
+			</if>
+
+			<if test="xb !=null and xb !=''">
+				and xb like #{xb}
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and gmsfhm like '${hjd}%'
+			</if>
+
+			<if test="csrqStart !=null and csrqStart !='' and csrqEnd !=null and csrqEnd !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${csrqStart} and ${csrqEnd}
+			</if>
+
+			<if test="rd !=null and rd !=''">
+				and rd &gt;#{rd}
+			</if>
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and gmsfhm in (${sfzhAll})
+			</if>
+		</where>
+
+    </select>
+    
+
+</mapper>
+
+

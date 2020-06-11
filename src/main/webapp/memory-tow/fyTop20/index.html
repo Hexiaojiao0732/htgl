@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1,width=device-width,initial-scale=1,user-scalable=no" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>非遗项目</title>
+  <link type="text/css" rel="stylesheet" href="../css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="index.css"/>
+  <link type="text/css" rel="stylesheet" href="swiper.min.css" />
+</head>
+<body>
+<!--begin：banner -->
+<div class="banner">
+	<!-- Swiper -->
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide1">
+				<a href=""><img src="images/6.png"></a>
+			</div>
+		</div>
+		<div class="swiper-pagination"></div>
+		<div class="j-swiperbtn">
+			<!-- Add Arrows -->
+			<div class="swiper-button-next"></div>
+			<div class="swiper-button-prev"></div>
+		</div>
+	</div>
+	<!-- Swiper End-->
+</div>
+<!--end：banner -->
+<!--begin：container -->
+<div class="container">
+	 <!--begin：index_main -->
+	 <div class="index_main">
+	 	 <!--优秀影片展映-->
+	 	 <div class="index_box clearfix">
+	 	 	<div class="title"><img src="images/aaa.png"/></div>
+ 	   		<ul id="tjul" class="index_boxlist clearfix">
+ 	   		</ul>
+	 	 </div>
+	 </div>
+	<!--end：index_main -->
+</div>
+<!--end：container -->
+<!--begin:footer-->
+<!--调查问卷-->
+<div class="questionnaire clearfix">
+	<div class="ques_main_right">
+		<p><img src="../images/gzh_ewm.jpg"/><span>公众号</span></p>
+	</div>
+</div>
+<footer>
+	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
+</footer>
+<!--end:footer-->
+<!-- 回到顶部 -->
+<div id="tbox">
+	<a class="gotop"  id="gotop" title="回到顶部"></a>
+</div>
+<!-- 回到顶部 -->
+<!--js -->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/gotop.js"></script>
+<script src="swiper.min.js"></script>
+<script>
+	//banner
+	var swiper = new Swiper('.swiper-container', {
+		pagination: '.swiper-pagination',
+		paginationClickable: true,
+		nextButton: '.swiper-button-next',
+		prevButton: '.swiper-button-prev',
+		loop: true,
+		autoplay: 5000
+	});
+</script>
+<!-- 菜单收缩 -->
+<script type="text/javascript">
+	$(function(){
+		$(".mpicpoint").hover(
+				function(){
+					$(this).addClass('shubon');
+					$(this).parent().find('.mpicfont').show('fast');
+				},
+				function(){
+					$(this).removeClass('shubon');
+					$(this).parent().find('.mpicfont').hide('fast');
+				}
+
+		);
+	});
+</script>
+<script src="index.js"></script>
+<script src="test.js"></script>
+</body>
+</html>

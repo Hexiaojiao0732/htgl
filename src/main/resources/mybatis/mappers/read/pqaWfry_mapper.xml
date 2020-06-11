@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.pq.IPqaWfryMysqlMapper">
+	<!-- <typeAlias alias="pqaWfry" type="com.zhixin.rd.rkjc.entity.mysql.PqaWfryMysqlEntity" /> -->
+	<resultMap id="PqaWfryMapper" type="com.zhixin.rd.rkjc.entity.mysql.PqaWfryMysqlEntity">
+    	<result property="xb" column="xb"/>
+    	<result property="xm" column="xm"/>
+    	<result property="sfzh" column="sfzh"/>
+    	<result property="csrq" column="csrq"/>
+    	<result property="hjd" column="hjd"/>
+    	<result property="jzd" column="jzd"/>
+    	<result property="ajxh" column="ajxh"/>
+    	<result property="jddw" column="jddw"/>
+    	<result property="ajbh" column="ajbh"/>
+    	<result property="djclsj" column="djclsj"/>
+    	<result property="djcldm" column="djcldm"/>
+    	<result property="ajms" column="ajms"/>
+    	<result property="scrhjksj" column="scrhjksj"/>
+		<result property="rd" column="rd"/>
+    </resultMap>
+    
+    <!-- listAllPqaWfry -->
+    <select id="listAllPqaWfry" resultMap="PqaWfryMapper" >  
+       		<!-- no ";" at the end -->   
+        	SELECT * FROM pqa_wfry
+		<where>
+			<if test="sfzh !=null and sfzh !=''">
+				and sfzh =#{sfzh}
+			</if>
+
+			<if test="xm !=null and xm !=''">
+				and xm like '%${xm}%'
+			</if>
+
+			<if test="xb !=null and xb !=''">
+				and xb like #{xb}
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and sfzh like '${hjd}%'
+			</if>
+
+			<if test="csrqStart !=null and csrqStart !='' and csrqEnd !=null and csrqEnd !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${csrqStart} and ${csrqEnd}
+			</if>
+
+
+			<if test="rd !=null and rd !=''">
+				and rd &gt;#{rd}
+			</if>
+
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and sfzh in (${sfzhAll})
+			</if>
+		</where>
+
+    </select>
+
+    
+</mapper>
+
+

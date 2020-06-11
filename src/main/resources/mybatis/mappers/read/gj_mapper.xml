@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.rkjcxxSearch.IGjMapper">
+
+    <resultMap id="gjResultMap" type="Gj">
+        <id property="id" column="id"/>
+        <result column="zjhm" property="zjhm"/>
+        <result column="cyzjdm" property="cyzjdm"/>
+        <result column="dzmc" property="dzmc"/>
+        <result column="sjms" property="sjms"/>
+        <result column="ly" property="ly" />
+        <result column="ywsj" property="ywsj"/>
+        <result column="rkjc" property="rkjc"/>
+    </resultMap>
+	<!-- 根据证件号码查询全部 -->
+    <select id="selectAll" resultMap="gjResultMap" parameterType="java.lang.String">
+        SELECT * FROM gj where zjhm = #{zjhm}
+    </select>
+    <!-- 根据前后时间查询 -->
+    <select id="selectGjByTime" resultMap="gjResultMap" parameterType="java.util.Map">
+        select * from gj
+        <where>
+           zjhm = #{zjhm} and ywsj &gt; ${startTime} and ywsj &lt; ${endTime}
+       </where>
+    </select>
+    <!-- 根据证件号码查询 -->
+    <select id="selectGjByZjhm" resultMap="gjResultMap" parameterType="java.lang.String">
+        select * from gj
+        <where>
+           zjhm = #{zjhm}
+       </where>
+    </select>
+    <!-- 查询最新 -->
+    <select id="selectgjByNew" resultMap="gjResultMap" parameterType="java.lang.String">
+         SELECT * FROM  gj where zjhm = #{zjhm}  ORDER BY id desc
+    </select>
+</mapper>
+

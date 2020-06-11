@@ -1,0 +1,22 @@
+.ul_li_style{
+    height: 46px;
+    line-height: 46px;
+}
+.ul_li_style span a{
+    font-size: 18px;
+    padding-left: 50px;
+}
+.click_style{
+    background-color:#76B9E5;
+}
+#ptcxInfo table tr td{
+    height: 35px;
+    line-height: 35px;
+}
+#ptcxInfo table tr td input{
+    width: 300px;
+    height: 25px;
+}
+#ptcxInfo table tr td select{
+    height: 30px;
+}

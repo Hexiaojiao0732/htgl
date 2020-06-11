@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.application.IInterfaceApplicationReadMapper">
+
+	<resultMap id="InterfaceApplicationResultMap" type="InterfaceApplicationEntity">
+		<id property="id" column="id" />
+		<result column="application_person" property="applicationPerson" />
+		<result column="application_org" property="applicationOrg" />
+		<result column="application_ip" property="applicationIp" />
+		<result column="application_use" property="applicationUse" />
+		<result column="status" property="status" />
+		<result column="created_time" property="createdTime" />
+		<result column="update_time" property="updateTime" />
+	</resultMap>
+
+	<resultMap id="ApplicationDetailResultMap" type="InterfaceApplicationDetailEntity">
+		<id property="id" column="id" />
+		<result column="appliction_id" property="applictionId" />
+		<result column="tag_id" property="tagId" />
+		<result column="tag_colunm_name" property="tagColumnName" />
+	</resultMap>
+	<!--查询全部 -->
+	<select id="selectAll" resultMap="InterfaceApplicationResultMap">
+		select * FROM interface_application 
+	</select>
+
+    <!-- 下拉框点击查询 -->
+    <select id="selectAllByApplicationId" parameterType="java.lang.Integer" resultMap="ApplicationDetailResultMap">
+        select * FROM interface_application_detail where appliction_id = #{applicationId}
+    </select>
+
+	<!-- 查询所有的信息 -->
+	<select id="getAllApplication" resultMap="InterfaceApplicationResultMap" parameterType="java.util.HashMap">
+		SELECT * from interface_application limit ${pageStart},${rows}
+	</select>
+	<!-- 查询分页count -->
+	<select id="queryCount"  resultType="java.lang.Integer">
+		SELECT count(*) from interface_application 
+	</select>
+	<!-- 搜索信息 -->
+	<select id="searchAll" resultMap="InterfaceApplicationResultMap" parameterType="java.util.HashMap">
+		SELECT * from interface_application  where status like "%${status}%"  and application_person like "%${applicationPerson}%" limit ${pageStart},${rows}
+	</select>
+	<!-- 搜索信息分页 count-->
+	<select id="searchCount"  resultType="java.lang.Integer">
+		SELECT count(*) from interface_application where status like "%${status}%"  and application_person like "%${applicationPerson}%"
+	</select>
+
+	<!-- 根据id查询信息 -->
+	<select id="queryById" resultMap="InterfaceApplicationResultMap">
+		SELECT * from interface_application where id=#{id}
+	</select>
+
+    <!--根据token值查询有效的申请记录信息-->
+    <select id="selectApplicationByTokenId" parameterType="String" resultMap="InterfaceApplicationResultMap">
+        SELECT a.* FROM interface_application a LEFT JOIN token_history b
+         ON a.id=b.application_id where b.token_value=#{token_value} AND b.status=1 AND a.status=1
+    </select>
+</mapper>

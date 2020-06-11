@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.pq.IAjRyclcsPqMysqlMapper">  
+	<!-- <typeAlias alias="ajRyclcs" type="com.zhixin.rd.rkjc.entity.mysql.AjRyclcsMysqlEntity" /> -->
+	<resultMap id="AjRyclcsMapper" type="ajRyclcs">
+    	<id property="rycsbh" column="rycsbh"/>
+    	<result property="cslb" column="cslb"/>
+    	<result property="csly" column="csly"/>
+    	<result property="flyj" column="flyj"/>
+    	<result property="cbdw" column="cbdw"/>
+    	<result property="cbr" column="cbr"/>
+    	<result property="cbrq" column="cbrq"/>
+    	<result property="zm" column="zm"/>
+    	<result property="rybh" column="rybh"/>
+    	<result property="ajbh" column="ajbh"/>
+    	<result property="scrhjksj" column="scrhjksj"/>
+    	<result property="hjkxgsj" column="hjkxgsj"/>
+    </resultMap>
+    
+
+    
+    <!-- listAjRyclcs -->
+    <select id="listAjRyclcsPqByRybh" resultMap="AjRyclcsMapper" parameterType="java.util.Map" >  
+       		<!-- no ";" at the end -->   
+        	SELECT * FROM aj_ryclcs_pq where rybh=#{rybh} and ajbh=#{ajbh}
+    </select>
+    
+    
+    
+    
+</mapper>
+
+

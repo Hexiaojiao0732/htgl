@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.shouye.IShouYeMapper">
+	<resultMap id="shouyeMapper" type="shouye">
+    	<id property="id" column="id"/>
+    	<result property="lx" column="lx"/>
+    	<result property="z" column="z"/>
+    	<result property="bz" column="bz"/>
+    	<result property="mc" column="mc"/>
+    	<result property="spzp" column="spzp"/>
+    </resultMap>
+
+    <select id="queryList" resultMap="shouyeMapper" >
+     SELECT *  FROM  sysz where lx="rksl"
+    </select>
+    <select id="queryBigBz" resultType="string"   >
+    select  MAX(bz+0) bz from sysz
+    </select>
+    
+    <select id="querySpTj" resultMap="shouyeMapper" >
+SELECT sz.id,sp.mc,sp.spzp ,sz.bz FROM  sysz sz
+RIGHT  JOIN sp sp on sz.z=sp.id 
+ where lx="sptj"
+order by sz.bz+0 DESC
+    </select>
+    
+       <update id="updateShouYe" parameterType="shouye">  
+            UPDATE sysz SET 
+	    		z=#{z}
+            WHERE 
+	    		id=#{id}
+    </update>
+       <update id="zdSptj" parameterType="shouye">  
+            UPDATE sysz SET 
+	    		bz=#{bz}
+            WHERE 
+	    		id=#{id}
+    </update>
+    
+    <delete id="deleteSpTj" parameterType="Long">
+    delete from sysz where id=#{id}
+    </delete>
+    <insert id="insertSptj" parameterType="shouye">
+    	insert into sysz
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="z != null">
+				z,
+			</if>
+			<if test="lx != null">
+				lx,
+			</if>
+			<if test="bz != null">
+				bz,
+			</if>
+			
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="z != null">
+				#{z},
+			</if>
+			<if test="lx != null">
+				#{lx},
+			</if>
+			<if test="bz != null">
+				#{bz},
+			</if>
+			
+		</trim>
+	</insert>
+</mapper>
+
+

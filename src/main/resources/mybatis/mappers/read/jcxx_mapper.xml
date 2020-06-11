@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.rkjcxxSearch.IRkjcxxMapper">
+	<resultMap id="JcxxMapper" type="com.zhixin.rd.rkjc.web.entity.RkjcxxEntity">
+		<result property="zjhm" column="zjhm" />
+		<result property="xm" column="xm" />
+		<result property="wwx" column="wwx" />
+		<result property="wwm" column="wwm" />
+		<result property="cym" column="cym" />
+		<result property="bmch" column="bmch" />
+		<result property="xb" column="xb" />
+		<result property="csrq" column="csrq" />
+		<result property="mz" column="mz" />
+		<result property="zjxy" column="zjxy" />
+		<result property="sg" column="sg" />
+		<result property="xx" column="xx" />
+		<result property="jgGjdm" column="jg_gjdm" />
+		<result property="jgGj" column="jg_gj" />
+		<result property="jgssxdm" column="jgssxdm" />
+		<result property="jgssx" column="jgssx" />
+		<result property="csdGjdm" column="csd_gjdm" />
+		<result property="csdGj" column="csd_gj" />
+		<result property="csdssxdm" column="csdssxdm" />
+		<result property="csdssx" column="csdssx" />
+		<result property="csdxz" column="csdxz" />
+		<result property="hjdSssxqdm" column="hjd_sssxqdm" />
+		<result property="hjdSssxq" column="hjd_sssxq" />
+		<result property="hjdSsgajgdm" column="hjd_ssgajgdm" />
+		<result property="hjdSsgajg" column="hjd_ssgajg" />
+		<result property="hjdXz" column="hjd_xz" />
+		<result property="hkxzfldm" column="hkxzfldm" />
+		<result property="hkxz" column="hkxz" />
+		<result property="hh" column="hh" />
+		<result property="yhzgxdm" column="yhzgxdm" />
+		<result property="yhzgx" column="yhzgx" />
+		<result property="xzzXz" column="xzz_xz" />
+		<result property="xl" column="xl" />
+		<result property="zzmm" column="zzmm" />
+		<result property="hyzk" column="hyzk" />
+		<result property="byzk" column="byzk" />
+		<result property="zy" column="zy" />
+		<result property="zw" column="zw" />
+		<result property="grsf" column="grsf" />
+		<result property="fwcs" column="fwcs" />
+		<result property="swrq" column="swrq" />
+		<result property="czrkbs" column="czrkbs" />
+		<result property="zxsj" column="zxsj" />
+		<result property="jlsj" column="jlsj" />
+		<result property="gxsj" column="gxsj" />
+		<result property="cyzjdm" column="cyzjdm" />
+		<result property="rylbdm" column="rylbdm" />
+	</resultMap>
+
+	<resultMap id="codeMap" type="com.zhixin.rd.rkjc.web.entity.CodeEntity">
+		<result property="id" column="id" />
+		<result property="type" column="type" />
+		<result property="codeKey" column="codeKey" />
+		<result property="codeValue" column="codeValue" />
+	</resultMap>
+	<sql id="BASE_COLUMN_LIST">
+		xb,xm
+	</sql>
+	<!-- 通过身份证补全信息 -->
+	<select id="queryJcxxBySfzh" resultType="com.zhixin.rd.rkjc.web.entity.RkjcxxEntity"
+		parameterType="com.zhixin.rd.rkjc.web.entity.QkryajEntity">
+		SELECT
+		<include refid="BASE_COLUMN_LIST" />
+		FROM jcxx
+		<where>
+			<if test="sfzh !=null and sfzh !=''">
+				and zjhm = #{sfzh}
+			</if>
+		</where>
+	</select>
+
+	<select id="queryAll" resultMap="JcxxMapper">
+		SELECT * FROM jcxx LIMIT 1,10
+	</select>
+	<select id="queryAllById" resultType="java.lang.String"
+		parameterType="java.lang.String">
+		SELECT xm FROM jcxx where zjhm=#{zjhm}
+	</select>
+	<!--身份证号码为空就查询所有 -->
+	<select id="queryAlljcxxByYasr" resultType="com.zhixin.rd.rkjc.web.entity.RkjcxxEntity">
+		SELECT * FROM jcxx
+	</select>
+
+	<!-- queryRkjcxxByYasr 以案搜人基础信息查询 -->
+	<select id="queryRkjcxxByYasr" resultType="com.zhixin.rd.rkjc.web.entity.RkjcxxEntity"
+		parameterType="com.zhixin.rd.rkjc.web.entity.QkryajEntity">
+		SELECT *FROM jcxx
+		<where>
+			<if test="xm !=null and xm != ''">
+				AND xm LIKE '%${xm}%'
+			</if>
+			<if test="xb !=null and xb !='' ">
+				AND xb LIKE '%${xb}%'
+			</if>
+			<if test="sfzh !=null and sfzh !=''">
+				and zjhm like '%${sfzh}%'
+			</if>
+			<if test="mz !=null and mz !=''">
+				and mz like '%${mz}%'
+			</if>
+
+			<if test="csrq !=null and csrq !='' ">
+				and csrq LIKE '%${csrq}%'
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and zjhm like '${hjd}%'
+			</if>
+
+		</where>
+	</select>
+	<select id="queryRkjcxxCountByYasr" resultType="java.lang.Long">
+		SELECT count(1)FROM jcxx
+		<where>
+			<if test="xm !=null and xm != ''">
+				AND xm LIKE '%${xm}%'
+			</if>
+
+			<if test="xb !=null and xb !='' ">
+				AND xb LIKE '%${xb}%'
+			</if>
+
+			<if test="sfzh !=null and sfzh !=''">
+				and zjhm like '%${sfzh}%'
+			</if>
+			<if test="mz !=null">
+				and mz = #{mz}
+			</if>
+			<if
+				test="startAge !=null and startAge !='' and endAge !=null and endAge !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;=
+				DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${startAge} and ${endAge}
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and zjhm like '${hjd}%'
+			</if>
+		</where>
+	</select>
+
+
+	<!-- 根据证件号码查询人口信息 -->
+	<select id="queryRkjcxxByZjhm" resultMap="JcxxMapper"
+		parameterType="java.lang.String">
+		SELECT * FROM jcxx where zjhm=#{zjhm}
+	</select>
+
+	<!--统计 总人数,非河南省，昨日新增 -->
+	<select id="rkJcxxStatistics" resultType="com.zhixin.rd.rkjc.web.entity.CodeEntity">
+		select 'zs' as codeKey,
+		count(1) as codeValue from jcxx union all
+		select 'fhn' as codeKey
+		,count(1) as codeValue from jcxx where rylbdm='999' union all
+		select
+		'zrxz' as codeKey, count(1) as codeValue from jcxx where jlsj>
+		DATE_SUB(NOW(), INTERVAL -1 DAY);
+	</select>
+
+
+	<!-- 统计总人数 -->
+	<select id="rkJcxxStatisticsByZs" resultType="java.lang.Long">
+		select count(1) from jcxx
+	</select>
+
+	<!-- 统计非河南 -->
+	<select id="rkJcxxStatisticsByFhn" resultType="java.lang.Long">
+		select count(1) from jcxx where rylbdm='999'
+	</select>
+
+	<!-- 统计昨日新增 -->
+	<select id="rkJcxxStatisticsByZrxz" resultType="java.lang.Long">
+		select count(1) from jcxx where jlsj> DATE_SUB(NOW(), INTERVAL -1 DAY)
+	</select>
+
+</mapper>
+
+

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.qk.IYtsrQkMysqlMapper">
+
+
+	<resultMap id="qkryaResultMapper" type="com.zhixin.rd.rkjc.web.entity.QkryajEntity">
+		<id column="id" property="id"></id>
+		<result column="sfzh" property="sfzh"/>
+		<result column="xm" property="xm"/>
+		<result column="ajbh" property="ajbh"/>
+		<result column="xb" property="xb"/>
+		<result column="csrq" property="csrq"/>
+		<result column="mz" property="mz"/>
+		<result column="lad" property="lad"/>
+		<result column="hjd" property="hjd"/>
+		<result column="sjly" property="sjly"/>
+		<result column="sjlx" property="sjlx" />
+		<result column="rksj" property="rksj"/>
+		<result column="zhgxsj" property="zhgxsj"/>
+
+	</resultMap>
+	<select id="listAllRkJbxxQk" parameterType="com.zhixin.rd.rkjc.web.form.YtsrForm" resultType="com.zhixin.rd.rkjc.web.entity.QkryajEntity">
+		SELECT  * from qkryaj
+		<where>
+
+			<if test="ytsrxb !=null and ytsrxb !='' ">
+				AND  xb = #{ytsrxb}
+			</if>
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and sfzh in (${sfzhAll})
+			</if>
+			<if test="mz !=null and mz !=''">
+				and mz = #{mz}
+			</if>
+
+			<if test="startAge !=null and startAge !='' and endAge !=null and endAge !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${startAge} and ${endAge}
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and hjd like '${hjd}%'
+			</if>
+
+		</where>
+		<if test="pageIndex != -1">
+			limit #{pageIndex}, 8
+		</if>
+	</select>
+
+
+	<resultMap id="Rkjcxx" type="com.zhixin.rd.rkjc.web.entity.RkjcxxEntity">
+		<result property="zjhm" column="zjhm"/>
+		<result property="xm" column="xm"/>
+		<result property="wwx" column="wwx"/>
+		<result property="wwm" column="wwm"/>
+		<result property="cym" column="cym"/>
+		<result property="bmch" column="bmch"/>
+		<result property="xb" column="xb"/>
+		<result property="csrq" column="csrq"/>
+		<result property="mz" column="mz"/>
+		<result property="zjxy" column="zjxy"/>
+		<result property="sg" column="sg"/>
+		<result property="xx" column="xx"/>
+		<result property="jgGjdm" column="jg_gjdm"/>
+		<result property="jgGj" column="jg_gj"/>
+		<result property="jgssxdm" column="jgssxdm"/>
+		<result property="jgssx" column="jgssx"/>
+		<result property="csdGjdm" column="csd_gjdm"/>
+		<result property="csdGj" column="csd_gj"/>
+		<result property="csdssxdm" column="csdssxdm"/>
+		<result property="csdssx" column="csdssx"/>
+		<result property="csdxz" column="csdxz"/>
+		<result property="hjdSssxqdm" column="hjd_sssxqdm"/>
+		<result property="hjdSssxq" column="hjd_sssxq"/>
+		<result property="hjdSsgajgdm" column="hjd_ssgajgdm"/>
+		<result property="hjdSsgajg" column="hjd_ssgajg"/>
+		<result property="hjdXz" column="hjd_xz"/>
+		<result property="hkxzfldm" column="hkxzfldm"/>
+		<result property="hkxz" column="hkxz"/>
+		<result property="hh" column="hh"/>
+		<result property="yhzgxdm" column="yhzgxdm"/>
+		<result property="yhzgx" column="yhzgx"/>
+		<result property="xzzXz" column="xzz_xz"/>
+		<result property="xl" column="xl"/>
+		<result property="zzmm" column="zzmm"/>
+		<result property="hyzk" column="hyzk"/>
+		<result property="byzk" column="byzk"/>
+		<result property="zy" column="zy"/>
+		<result property="zw" column="zw"/>
+		<result property="grsf" column="grsf"/>
+		<result property="fwcs" column="fwcs"/>
+		<result property="swrq" column="swrq"/>
+		<result property="czrkbs" column="czrkbs"/>
+		<result property="zxsj" column="zxsj"/>
+		<result property="jlsj" column="jlsj"/>
+		<result property="gxsj" column="gxsj"/>
+		<result property="cyzjdm" column="cyzjdm"/>
+		<result property="rylbdm" column="rylbdm"/>
+	</resultMap>
+
+	<select id="queryRkjcxxByYtsr" parameterType="com.zhixin.rd.rkjc.web.entity.QkryajEntity" resultMap="Rkjcxx">
+
+			SELECT * FROM jcxx
+			<where>
+
+				<if test="sfzh !=null and sfzh !=''">
+					and zjhm = #{sfzh}
+				</if>
+
+			</where>
+		</select>
+
+
+	<!-- 总条数-->
+	<select id="listCount" parameterType="com.zhixin.rd.rkjc.web.form.YtsrForm" resultType="java.lang.Long">
+		SELECT  count(*) from qkryaj
+		<where>
+			<if test="ytsrxb !=null and ytsrxb !='' ">
+				AND  xb = #{ytsrxb}
+			</if>
+			<if test="sfzhAll !=null and sfzhAll !=''">
+				and sfzh in (${sfzhAll})
+			</if>
+			<if test="mz !=null and mz !=''">
+				and mz = #{mz}
+			</if>
+			<if test="startAge !=null and startAge !='' and endAge !=null and endAge !='' ">
+				and ((year(now())-year(csrq)-1) + ( DATE_FORMAT(csrq, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') )) BETWEEN ${startAge} and ${endAge}
+			</if>
+			<if test="hjd !=null and hjd !=''">
+				and hjd like '${hjd}%'
+			</if>
+
+		</where>
+
+	</select>
+
+</mapper>
+
+

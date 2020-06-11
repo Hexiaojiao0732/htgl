@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>记录-详情</title>
+  <link type="text/css" rel="stylesheet" href="../css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="picshow.css"/>
+</head>
+<body>
+<!--begin:header-->
+<header>
+	<div class="head app_silde">
+		<a class="font-index fl" href="../index/index.html" target="_parent">首页</a>
+		<!-- nav展开 -->
+		<a class="aap_navbar_icon fr" href="../qjfeiyi/index.html"><span>全部项目列表</span></a>
+	</div>
+</header>
+<!--end:header-->
+<!--begin：container -->
+<div class="container">
+	<div class="law-cont">
+    <a href="#" class="colse"></a>
+    <a href="#" class="pre"></a>
+    <a href="#" class="next"></a>
+		<div class="sparea"><img src="../images/spshow.jpg" alt=""></div>
+		<p>雷雨霖</p>
+	</div>
+</div>
+<footer>
+	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="../law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
+</footer>
+<!--end:footer-->
+<!-- 回到顶部 -->
+<div id="tbox">
+	<a class="gotop"  id="gotop" title="回到顶部"></a>
+</div>
+<!-- 回到顶部 -->
+<!--js -->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/gotop.js"></script>
+<script>
+//简单jq tab   index从0开始
+$(function(){
+    $("#nav a").off("click").on("click",function(){
+       var index = $(this).index();
+       $(this).addClass("on").siblings().removeClass("on");
+       $("#contentBox .box").eq(index).addClass("active").siblings().removeClass("active");
+     });
+  }); 
+</script>
+</body>
+</html>

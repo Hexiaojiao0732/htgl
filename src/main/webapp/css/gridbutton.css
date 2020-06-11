@@ -1,0 +1,268 @@
+.griddel { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/delete.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+} 
+
+.gridedit { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/edit.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+width:150px;
+text-decoration:none;
+} 
+
+.gridprint { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/print.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridpreview { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/preview.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+
+.gridanswer { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/answer.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridseeinfo { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/seeinfo.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.griddownload { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/download.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridupload { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/upload.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.griddetail { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/detail.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridupper { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/upper.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.griddown { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/down.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+
+.icon_disk { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/disk.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.spanRow{ 
+float: left;
+} 
+
+.spanRow2{ 
+width:75px; 
+float: left; 
+} 
+
+.gridin { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/in.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridout { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/out.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridopenbox { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/openbox.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridcancel { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/cancel.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+.gridarraign { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/arraign.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+} 
+
+.gridarrive { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/arrive.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+} 
+
+
+.griddelay { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/delay.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+} 
+
+
+.gridmsprint { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/ms-print.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+
+.gridcontrast { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/contrast.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+
+.gridpicture { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/camera.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+
+.gridundo { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/undo.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+
+.gridhammer { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/hammer.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}
+
+
+.gridcog { 
+width: 100%; 
+display: block; 
+background: url(../image/newicons/cog.png) no-repeat; 
+text-indent: 18px; 
+line-height: 13px; 
+height: 20px; 
+text-decoration:none;
+}

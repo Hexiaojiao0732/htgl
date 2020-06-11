@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.ztmapinfo.IZtMapInfoMapper">
+	<resultMap id="zymapinfoMapper" type="ztmapinfo">
+    	<id property="id" column="id"/>
+    	<result property="x" column="x"/>
+    	<result property="y" column="y"/>
+    	<result property="dd" column="dd"/>
+    	<result property="ms" column="ms"/>
+    	<result property="ztId" column="zt_id"/>
+    	<result property="ztmc" column="ztmc"/>
+    </resultMap>
+
+    <select id="selectAllList" resultMap="zymapinfoMapper"  parameterType="java.util.HashMap">
+     SELECT * ,(select ztmc from  zt zt where  zt.id= z.zt_id) ztmc FROM  zt_map_info  z where z.zt_id=#{id} ORDER BY id  desc 
+        	limit ${pageIndex},${rows} 
+    </select>
+    <select id="count" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+        	SELECT count(*) FROM zt_map_info  where zt_id =#{id}
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertZtMapInfo" parameterType="ztmapinfo">
+		insert into zt_map_info 
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="x != null">
+				x,
+			</if>
+			<if test="y != null">
+				y,
+			</if>
+			<if test="dd != null">
+				dd,
+			</if>
+			<if test="ms != null">
+				ms,
+			</if>
+			<if test="ztId != null">
+				zt_id,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="x != null">
+				#{x},
+			</if>
+			<if test="y != null">
+				#{y},
+			</if>
+			<if test="dd != null">
+				#{dd},
+			</if>
+			<if test="ms != null">
+				#{ms},
+			</if>
+			<if test="ztId != null">
+				#{ztId},
+			</if>
+		</trim>
+	</insert>
+	
+	  <delete id="deleteZtMapInfo" parameterType="Long">  
+            DELETE FROM zt_map_info WHERE id=#{id}
+    </delete> 
+    
+       <update id="updateCbw" parameterType="ztmapinfo">  
+            UPDATE zt_map_info  SET 
+	    		mc=#{mc},
+	    		tp=#{tp},
+	    		zz=#{zz},
+	    		ms=#{ms}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

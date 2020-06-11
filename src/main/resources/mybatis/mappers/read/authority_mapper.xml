@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.user.IAuthorityReadMapper2">
+
+    <resultMap id="authorityResultMap" type="com.zhixin.rd.rkjc.web.entity.AuthorityEntity">
+       <id property="id" column="ID"/>
+       <result property="title" column="TITLE"/>
+       <result property="englishTitle" column="ENGLISH_TITLE"/>
+       <result property="description" column="DESCRIPTION"/>
+       <result property="type" column="AUTHORITY_TYPE"/>
+       <result property="parentId" column="PARENT_ID"/>
+       <result property="rootId" column="ROOT_ID"/>
+       <result property="sortNumber" column="SORT_NUMBER"/>
+       <result property="url" column="URL"/>
+       <result property="jsMethod" column="JS_METHOD"/>
+       <result property="icon" column="ICON"/>
+       <result property="bigIcon" column="big_icon"/>
+       <result property="smallIcon" column="small_icon"/>
+       <result property="authorityId" column="id"/>
+    </resultMap>
+	<resultMap id="userAuth" type="com.zhixin.rd.rkjc.web.entity.UserAuthority">
+		<result property="userId" column="userid"/>
+		<result property="authId" column="authId"/>
+	</resultMap>
+    <select id="listAuthority" resultMap="authorityResultMap">
+        	SELECT * FROM authority order by parent_id,id
+    </select>
+
+    <select id="listAuthorityNotHide" resultMap="authorityResultMap">
+        SELECT * FROM authority where authority_type!=5
+    </select>
+
+    <select id="queryAuthorityIdsByRole" resultType="java.lang.Long" parameterType="java.lang.Long">
+        select ra.authority_id from role_authority ra where ra.role_id = #{roleId}
+    </select>
+
+	<select id="queryCodeKeyByRole" resultType="java.lang.String" parameterType="java.lang.Long">
+         select code_id from other_role  WHERE role_id=  #{roleId}
+    </select>
+    
+    <!-- 添加页面查询树结构 -->
+       <select id="listAuthorityData" resultMap="authorityResultMap" parameterType="com.zhixin.rd.rkjc.web.form.AuthorityForm">
+        SELECT *  FROM authority a WHERE 1=1
+        <!--
+      <if test="id != 5 and  id != 6" >    
+        and  a.authority_type NOT IN (2)
+         </if>
+          -->   
+      <if test="id == 5" > 
+       and  a.authority_type =2 
+        </if>
+      <if test="id == 6" > 
+       and  a.authority_type =0 
+        </if>    
+    </select>
+    <!-- rootid   -->
+    <select id="queryRootid" resultMap="authorityResultMap">
+       SELECT a.root_id  as rootId FROM authority a WHERE a.id=#{parentId}
+    </select>
+	 <!-- queryMaxRootId -->
+	 <select id="queryMaxRootId" resultType="java.lang.Integer">
+	         SELECT max(a.root_id) as rootId   FROM authority a
+	 </select>
+
+    <select id="queryByUserId" parameterType="java.lang.Long" resultMap="authorityResultMap">
+        select distinct a.* from authority a,user u,user_role ur,role_authority ra
+        where u.id = ur.user_id and ur.role_id = ra.role_id and a.id = ra.authority_id
+        and u.id = #{userId} and a.authority_type!=5
+    </select>
+
+  <!-- 查询菜单  -->
+      <select id="getlistMenu" resultMap="authorityResultMap">
+SELECT a.id,a.title,a.url,a.parent_id,a.root_id FROM user_role ur INNER JOIN role_authority ra ON ur.role_id=ra.role_id LEFT JOIN authority a  ON a.id=ra.authority_id 
+WHERE ur.user_id= #{userId} AND a.parent_id IS null
+    </select>
+  <!-- listAuthorityById-web -->
+    <select id="listAuthorityById" resultMap="authorityResultMap" parameterType="java.lang.Long">
+SELECT * FROM authority WHERE root_id=#{pid} AND parent_id  IS NOT null and parent_id=#{pid}
+    </select>
+
+    <select id="listHideUrlByPid" resultType="java.lang.String" parameterType="java.lang.Long">
+        select url from authority where parent_id = #{pid} and authority_type=5
+    </select>
+    <select id="listAllUserAuth" resultMap="userAuth" >
+	select distinct u.id as userId,a.id as authId from authority a,user u,user_role ur,role_authority ra
+        where u.id = ur.user_id and ur.role_id = ra.role_id and a.id = ra.authority_id order by userId,authId
+    </select>
+    
+    
+    <!--查询权限附加菜单 -->
+    <select id="listAuthorityExtraMenu" resultMap="authorityResultMap">
+        	SELECT * FROM authority where parent_id=1 and authority_type=7 order by parent_id,id
+    </select>
+    
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.user.IAuthorityExtraReadMapper">
+	<!-- <typeAlias alias="authorityExtra" type="com.zhixin.rd.population.web.entity.AuthorityExtraEntity" /> -->
+	<resultMap id="AuthorityExtraMapper" type="authorityExtra">
+    	<id property="id" column="id"/>
+    	<result property="authorityId" column="authority_id"/>
+    	<result property="areaId" column="area_id"/>
+    	<result property="description" column="description"/>
+    	<result property="url" column="url"/>
+    	
+    	<result property="authorityName" column="authorityName"/>
+    	<result property="areaName" column="areaName"/>
+    </resultMap>
+    
+    <!-- listAllAuthorityExtra -->
+    <select id="listAllAuthorityExtra" resultMap="AuthorityExtraMapper" >  
+       		<!-- no ";" at the end -->   
+        	SELECT ae.*,a.title as authorityName,ia.`name` as areaName FROM `authority_extra` ae
+			LEFT JOIN authority a on ae.authority_id =a.id
+			LEFT JOIN interrogate_area ia on ia.id=ae.area_id
+    </select>
+    
+    <!-- countAllAuthorityExtra -->
+    <select id="countAllAuthorityExtra" resultType="int" >
+        	SELECT COUNT(1) FROM authority_extra ae
+        	LEFT JOIN authority a on ae.authority_id =a.id
+			LEFT JOIN interrogate_area ia on ia.id=ae.area_id
+    </select>
+    
+    <!-- getAuthorityExtraById -->
+    <select id="getAuthorityExtraById" resultMap="AuthorityExtraMapper" parameterType="Long" >  
+       		<!-- no ";" at the end -->   
+        	SELECT * FROM authority_extra where authority_id=#{id}
+    </select>
+    
+    <!-- getAuthorityExtraById -->
+    <select id="listAuthorityExtraByAreaId" resultMap="AuthorityExtraMapper" parameterType="Long" >  
+       		<!-- no ";" at the end -->   
+        	SELECT ae.*,a.title as authorityName 
+        	FROM authority_extra ae
+        	LEFT JOIN authority a on ae.authority_id =a.id
+        	where area_id=#{areaId}
+        	order by ae.authority_id asc
+    </select>
+    
+    <select id="listAuthorityExtraByAreaIdAndUserId" resultMap="AuthorityExtraMapper" parameterType="java.util.Map" >  
+       		<!-- no ";" at the end -->   
+        	SELECT ae.*,a.title AS authorityName 
+        	FROM authority_extra ae
+        	JOIN role_authority ra ON ae.authority_id =ra.authority_id
+        	JOIN user_role ur ON ur.role_id=ra.role_id
+        	LEFT JOIN authority a ON ae.authority_id =a.id
+        	WHERE area_id=#{areaId} AND ur.user_id=#{userId}
+        	ORDER BY ae.authority_id ASC
+    </select>
+</mapper>
+
+

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.jl.IJlMapper">
+	<resultMap id="jlMapper" type="jl">
+    	<id property="id" column="id"/>
+    	<result property="ssztId" column="sszt_id"/>
+    	<result property="dyS" column="dy_s"/>
+    	<result property="yz" column="yz"/>
+    	<result property="sc" column="sc"/>
+    	<result property="mc" column="mc"/>
+    	<result property="pssj" column="pssj"/>
+    	<result property="psdd" column="psdd"/>
+    	<result property="jj" column="jj"/>
+    	<result property="wzjj" column="wzjj"/>
+    	<result property="dyC" column="dy_c"/>
+    	<result property="dyX" column="dy_x"/>
+    	<result property="jltp" column="jltp"/>
+    	<result property="fl" column="fl"/>
+    </resultMap>
+
+  <select id="queryJlById" resultMap="jlMapper" parameterType="Long" >
+        	SELECT * FROM jl  WHERE id=#{id}
+    </select>
+
+    <select id="queryJlMc" resultMap="jlMapper" >
+        	SELECT * FROM jl
+    </select>
+
+    <select id="queryAlljl" resultMap="jlMapper" >
+        	SELECT * FROM jl
+    </select>
+    <select id="countJl" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM jl
+    </select>
+     <delete id="deleteJlById" parameterType="Long">  
+            DELETE FROM jl WHERE id=#{id}
+    </delete> 
+	<!-- 增加信息 -->
+	<insert id="insertJl" parameterType="jl">
+		insert into jl
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ssztId != null">
+				sszt_id,
+			</if>
+			<if test="dyS != null">
+				dy_s,
+			</if>
+			<if test="dyC != null">
+				dy_c,
+			</if>
+			<if test="dyX != null">
+				dy_x,
+			</if>
+			<if test="yz != null">
+				yz,
+			</if>
+			<if test="zt != null">
+				zt,
+			</if>
+			<if test="sc != null">
+				sc,
+			</if>
+			<if test="mc != null">
+				mc,
+			</if>
+			<if test="pssj != null">
+				pssj,
+			</if>
+			<if test="psdd != null">
+				psdd,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="wzjj != null">
+				wzjj,
+			</if>
+			<if test="jltp != null">
+				jltp,
+			</if>
+			<if test="fl != null">
+				fl,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="ssztId != null">
+				#{ssztId},
+			</if>
+			<if test="dyS != null">
+				#{dyS},
+			</if>
+			<if test="dyC != null">
+				#{dyC},
+			</if>
+			<if test="dyX != null">
+				#{dyX},
+			</if>
+			<if test="yz != null">
+				#{yz},
+			</if>
+			<if test="zt != null">
+			#{zt},
+			</if>
+			<if test="sc != null">
+				#{sc},
+			</if>
+			<if test="mc != null">
+				#{mc},
+			</if>
+			<if test="pssj != null">
+				#{pssj},
+			</if>
+			<if test="psdd != null">
+				#{psdd},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="wzjj != null">
+				#{wzjj},
+			</if>
+			<if test="jltp != null">
+			#{jltp},
+			</if>
+			<if test="fl != null">
+				#{fl},
+			</if>
+		</trim>
+	</insert>
+	
+	 <update id="updateJl" parameterType="jl">  
+            UPDATE jl SET 
+				sszt_id=#{ssztId},
+				dy_s=#{dyS},
+				dy_c=#{dyC},
+				dy_x=#{dyX},
+				yz=#{yz},
+				zt=#{zt},
+				sc=#{sc},
+				mc=#{mc},
+				pssj=#{pssj},
+				psdd=#{psdd},
+				jj=#{jj},
+				wzjj=#{wzjj},
+				fl=#{fl}
+            WHERE 
+	    		id=#{id}
+    </update>
+	
+	 <update id="updateJlTp" parameterType="jl">  
+            UPDATE jl SET 
+				jltp=#{jltp}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.user.IUserRoleMapper" >
+  
+  <resultMap id="userRoleResultMap" type="AUserRole" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- +++++++++++++++++++++ 批量添加、删除、修改用户角色表  +++++++++++++++++++++++++++  -->
+  <!-- 批量添加用户角色 -->
+	<insert id="batchInsertUserRoles" parameterType="java.util.List">
+		insert into user_role (user_id,role_id)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.userId,jdbcType=INTEGER},#{item.roleId,jdbcType=INTEGER})
+		</foreach>
+	</insert>
+
+  <!-- 删除用户角色关联信息 -->
+  <delete id="deleteUserRoleByUserID" parameterType="java.lang.Integer" >
+    delete from user_role
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- +++++++++++++++++++++   +++++++++++++++++++++++++++  -->
+  <!-- 根据用户id获取用户角色信息 -->
+  <select id="getUserRoleByUserId" resultMap="userRoleResultMap" parameterType="java.lang.Integer">
+        	select * from user_role where user_id=#{userId,jdbcType=INTEGER}
+    </select>
+  
+  <!-- 获取所有用户角色关联信息 -->
+  <select id="getAllUserRole" resultMap="userRoleResultMap" >  
+        	select * from user_role
+  </select>
+  
+  <!-- 删除用户角色关联信息 -->
+  <delete id="deleteUserRole" parameterType="AUserRole" >
+    delete from user_role
+    where user_id = #{userId,jdbcType=INTEGER}
+      and role_id = #{roleId,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 添加用户角色关联信息 -->
+  <insert id="insertUserRole" parameterType="AUserRole" >
+    insert into user_role (user_id, role_id)
+    values (#{userId,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER})
+  </insert>
+  
+  <!-- 添加用户角色关联信息 -->
+  <insert id="insertSelectiveUserRole" parameterType="AUserRole" >
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <!-- queryRoleByUser -->
+    <select id="queryRoleByUser" resultMap="userRoleResultMap" parameterType="java.lang.Integer" >  
+        SELECT * FROM user_role WHERE user_id=#{id}
+  </select>
+  <!-- 根据用户id删除userrole信息  -->
+   <delete id="deleteUserRoleById" parameterType="java.lang.Integer" >
+	DELETE FROM user_role  WHERE user_id = #{id}
+  </delete>
+</mapper>

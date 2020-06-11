@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="reportView" class="com.zhixin.rd.memory.web.entity.ReportView"></bean> 
+ 	<!--<bean id="ReportViewCaseCount" class="com.zhixin.rd.population.web.entity.ReportViewCaseCount"></bean>-->
+	<!--<bean id="reportViewAskManage" class="com.zhixin.rd.population.web.entity.ReportViewManagement"></bean>-->
+	<!--<bean id="reportViewEscort" class="com.zhixin.rd.population.web.entity.ReportViewEscort"></bean>-->
+	<!--<bean id="reportViewOtherEntrance" class="com.zhixin.rd.population.web.entity.ReportViewOtherEntrance"></bean>-->
+	<!-- -->
+	<!--&lt;!&ndash; for involved  &ndash;&gt;-->
+	<!--<bean id="exportOutRecordService" class="com.zhixin.rd.population.involved.service.outrecord.ExportOutRecordService"></bean>-->
+	<!--<bean id="exportInRecordService" class="com.zhixin.rd.population.involved.service.inrecord.ExportInRecordService"></bean>-->
+	<!--<bean id="exportInvolvedService" class="com.zhixin.rd.population.involved.service.involved.ExportInvolvedService"></bean>-->
+</beans>

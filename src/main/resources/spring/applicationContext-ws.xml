@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- 查询身份证信息的webservice实现类 -->
+	<bean id="bjQueryPerson" class="com.zhixin.rd.rkjc.ws.BjQueryPersonFactoryBean">
+		<property name="namespaceUri" value="http://10.8.6.13/rsServer/services/Query_BJ"></property>
+		<property name="address" value="http://10.8.6.13/rsServer/services/Query_BJ"></property>
+		<property name="portName" value="Query_BJ"/>
+	</bean>	
+
+</beans>

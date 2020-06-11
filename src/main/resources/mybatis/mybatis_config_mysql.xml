@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+	<typeAlias alias="ztmapinfo"
+				   type="com.zhixin.rd.memory.web.entity.ZtMapInfoEntity" />
+	<typeAlias alias="shouye"
+				   type="com.zhixin.rd.memory.web.entity.SySzEntity" />
+	<typeAlias alias="lbt"
+				   type="com.zhixin.rd.memory.web.entity.LbtEntity" />
+	<typeAlias alias="pl"
+				   type="com.zhixin.rd.memory.web.entity.PlEntity" />
+	<typeAlias alias="cbw"
+				   type="com.zhixin.rd.memory.web.entity.CbwEntity" />
+	<typeAlias alias="tk"
+				   type="com.zhixin.rd.memory.web.entity.TkEntity" />
+	<typeAlias alias="wd"
+				   type="com.zhixin.rd.memory.web.entity.WdEntity" />
+	<typeAlias alias="yp"
+				   type="com.zhixin.rd.memory.web.entity.YpEntity" />
+	<typeAlias alias="sp"
+				   type="com.zhixin.rd.memory.web.entity.SpEntity" />
+	<typeAlias alias="hzhbzt"
+				   type="com.zhixin.rd.memory.web.entity.HzhbZtEntity" />
+	<typeAlias alias="hzhbztzy"
+				   type="com.zhixin.rd.memory.web.entity.HzhbZtZyEntity" />
+	<typeAlias alias="hzhb"
+				   type="com.zhixin.rd.memory.web.entity.HzhbEntity" />
+		<typeAlias alias="gxz"
+				   type="com.zhixin.rd.memory.web.entity.GxzEntity" />
+		<typeAlias alias="dsj"
+				   type="com.zhixin.rd.memory.web.entity.DsjEntity" />
+		<typeAlias alias="yj"
+				   type="com.zhixin.rd.memory.web.entity.SyYjEntity" />
+		<typeAlias alias="wjdc"
+				   type="com.zhixin.rd.memory.web.entity.WjdcEntity" />
+		<typeAlias alias="zx"
+				   type="com.zhixin.rd.memory.web.entity.ZxEntity" />
+		<typeAlias alias="rwgx"
+				   type="com.zhixin.rd.memory.web.entity.RwGxRwEntity" />
+		<typeAlias alias="rw"
+				   type="com.zhixin.rd.memory.web.entity.RwEntity" />
+		<typeAlias alias="jl"
+				   type="com.zhixin.rd.memory.web.entity.JlEntity" />
+		<typeAlias alias="zt"
+				   type="com.zhixin.rd.memory.web.entity.ZtEntity" />
+		<typeAlias alias="AUser"
+				   type="com.zhixin.rd.rkjc.web.entity.UserEntity" />
+		<typeAlias alias="authorityExtra"
+			type="com.zhixin.rd.rkjc.web.entity.AuthorityExtraEntity" />
+
+		<typeAlias alias="UserOrganization"
+				   type="com.zhixin.rd.rkjc.web.entity.UserOrganizationEntity" />
+		<typeAlias alias="AUserRole"
+				   type="com.zhixin.rd.rkjc.web.entity.UserRoleEntity" />
+		<typeAlias alias="Organization"
+				   type="com.zhixin.rd.rkjc.web.entity.OrganizationEntity" />
+		<typeAlias alias="ARole"
+				   type="com.zhixin.rd.rkjc.web.entity.RoleEntity" />
+		<typeAlias alias="RoleAuthority"
+				   type="com.zhixin.rd.rkjc.web.entity.RoleAuthorityEntity" />
+		<typeAlias alias="ROrganization"
+				   type="com.zhixin.rd.rkjc.web.entity.ROrganizationEntity" />
+
+		<typeAlias alias="RY_WLCZHKRY" type="com.zhixin.rd.rkjc.web.entity.RyWlczhkryEntity" />
+		<typeAlias alias="XZ_XZHDFWJDS" type="com.zhixin.rd.rkjc.web.entity.XzXzhdfwjdsEntity" />
+		<typeAlias alias="ZA_CSTYTXL" type="com.zhixin.rd.rkjc.web.entity.ZaCstytxlEntity" />
+
+		<typeAlias alias="xzzhxzjljds"
+				   type="com.zhixin.rd.rkjc.web.entity.XzZhxzjljdsEntity" />
+		<typeAlias alias="ajxyrxx"
+				   type="com.zhixin.rd.rkjc.web.entity.AjXyrxxEntity" />
+
+		<typeAlias alias="jcjJbxxEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.JcjJbxxEntity" />
+		<typeAlias alias="ryWffzjlEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.RyWffzjlEntity" />
+		<typeAlias alias="Combobox"
+				   type="com.zhixin.rd.rkjc.web.entity.ComboboxEntity" />
+		<typeAlias alias="InterfaceApplicationEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.InterfaceApplicationEntity"/>
+		<typeAlias alias="InterfaceApplicationDetailEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.InterfaceApplicationDetailEntity"/>
+		<typeAlias alias="TagTypeEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.TagTypeEntity"/>
+		<typeAlias alias="ColumnEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.ColumnEntity"/>
+		<typeAlias alias="TokenHistoryEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.TokenHistoryEntity" />
+		<typeAlias alias="AccessLogEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.AccessLogEntity" />
+
+		<typeAlias alias="SzryEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.SzryEntity" />
+
+
+		<typeAlias alias="ZtryEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.ZtryEntity" />
+				   
+	   <typeAlias alias="RKCXEntity"
+				   type="com.zhixin.rd.rkjc.web.entity.RkCXEntity" />
+
+		<!--<typeAlias alias="pqaWfryWs" type="com.zhixin.rd.rkjc.web.entity.PqaWfryWsMysqlEntity" />-->
+
+		<!--<typeAlias alias="pqaWfry" type="com.zhixin.rd.rkjc.web.entity.PqaWfryMysqlEntity" />-->
+		
+		<typeAlias alias="ajJbxx" type="com.zhixin.rd.rkjc.entity.mysql.AjJbxxMysqlEntity" />
+        <typeAlias alias="ajRyclcs" type="com.zhixin.rd.rkjc.entity.mysql.AjRyclcsMysqlEntity" />
+		<typeAlias alias="ajXyrxx" type="com.zhixin.rd.rkjc.entity.mysql.AjXyrxxMysqlEntity" />
+		<typeAlias alias="xxdy" type="com.zhixin.rd.rkjc.web.entity.XxdyEntity" />
+		<typeAlias alias="gzd" type="com.zhixin.rd.rkjc.web.entity.gzdEntity" />
+		
+		<typeAlias alias="Gj" type="com.zhixin.rd.rkjc.web.entity.GjEntity" />
+		<typeAlias alias="Bsh" type="com.zhixin.rd.rkjc.web.entity.BshEntity" />
+		<typeAlias alias="ajxx" type="com.zhixin.rd.rkjc.web.entity.Ajxx" />
+		<typeAlias alias="qkrya" type="com.zhixin.rd.rkjc.web.entity.QkryajEntity" />
+		<typeAlias alias="xm" type="com.zhixin.rd.memory.web.entity.XmEntity" />
+	   <typeAlias alias="xmsp" type="com.zhixin.rd.memory.web.entity.XmSpEntity" />
+	   <typeAlias alias="xmtk" type="com.zhixin.rd.memory.web.entity.XmTkEntity" />
+	</typeAliases>
+	
+</configuration>

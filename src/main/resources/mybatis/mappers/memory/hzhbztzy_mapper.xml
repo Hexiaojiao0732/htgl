@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.hzhb.IHzhbZtZyMapper">
+	<resultMap id="hzhbztzyMapper" type="hzhbztzy">
+    	<id property="id" column="id"/>
+    	<result property="wjmc" column="wjmc"/>
+    	<result property="sfr" column="sfr"/>
+    	<result property="cfr" column="cfr"/>
+    	<result property="pssj" column="pssj"/>
+    	<result property="gzry" column="gzry"/>
+    	<result property="psdd" column="psdd"/>
+    	<result property="zy" column="zy"/>
+    	<result property="glrw" column="glrw"/>
+    	<result property="gldd" column="gldd"/>
+    	<result property="zyDz" column="zy_dz"/>
+    	<result property="zyLx" column="zy_lx"/>
+    	<result property="hzhbZtId" column="hzhb_zt_id"/>
+    	<result property="zyZt" column="zy_zt"/>
+    	<result property="zp" column="zp"/>
+    	<result property="zybzfc" column="zybzfc"/>
+    	<result property="hzhbztmc" column="hzhbztmc"/>
+    </resultMap>
+
+	<select id="queryAllHzhbZtZy" resultMap="hzhbztzyMapper"  parameterType="java.util.HashMap">
+        	SELECT * ,(select zt_mc from hzhb_zt hzhb where hzhb.id  = a.hzhb_zt_id) hzhbztmc FROM hzhb_zt_zy  a 
+        	
+        	 <!-- where a.hzhb_zt_id= #{ID}  -->
+        	 <where>
+			<if test="ID != null">
+			a.hzhb_zt_id=${ID}
+			</if>
+			<if test="zyzt != null">
+			and	a.zy_zt=${zyzt}
+			</if>
+		</where>
+        	 limit ${pageIndex},${rows}
+    </select>
+    <select id="countHzhbZtZy" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+        	SELECT count(*) FROM hzhb_zt_zy a
+        	<where>
+			<if test="ID != null">
+			a.hzhb_zt_id=${ID}
+			</if>
+			<if test="zyzt != null">
+			and	a.zy_zt=${zyzt}
+			</if>
+		</where>
+    </select>
+	<update id="updateShZyById" parameterType="hzhbztzy">  
+            UPDATE hzhb_zt_zy SET 
+            zp=#{zp},
+             zybzfc=#{zybzfc},
+	    		zy_zt=1
+            WHERE 
+	    		id=#{id}
+    </update>
+	<update id="updateShZy" parameterType="hzhbztzy">  
+            UPDATE hzhb_zt_zy SET 
+        	 zybzfc=#{zybzfc},
+	    		zy_zt=1
+            WHERE 
+	    		id=#{id}
+    </update>
+	<delete id="deleteHzHbZtZy" parameterType="Long">  
+            delete from  hzhb_zt_zy 
+            WHERE 
+	    		id=#{id}
+    </delete>
+   <!--  
+	增加信息
+	<insert id="insertGxz" parameterType="gxz">
+		insert into gxz
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="xm != null">
+				xm,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="zp != null">
+				zp,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="xm!= null">
+				#{xm},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="zp != null">
+				#{zp},
+			</if>
+		</trim>
+	</insert>
+	
+	  <delete id="deleteGxz" parameterType="Long">  
+            DELETE FROM gxz WHERE id=#{id}
+    </delete> 
+    
+       <update id="updateGxz" parameterType="gxz">  
+            UPDATE gxz SET 
+	    		xm=#{xm},
+	    		jj=#{jj},
+	    		zp=#{zp}
+            WHERE 
+	    		id=#{id}
+    </update> -->
+</mapper>
+
+

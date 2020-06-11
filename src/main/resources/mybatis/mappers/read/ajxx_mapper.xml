@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.qk.IAjxxMapper">
+
+    <resultMap id="ajxxResultMapper" type="com.zhixin.rd.rkjc.web.entity.Ajxx">
+        <result column="AJBH" property="ajbh"/>
+        <result column="AJMC" property="jamc"/>
+        <result column="ZJLX" property="zjlx"/>
+        <result column="ZJLX_DM" property="zjlxDm"/>
+        <result column="AJSX" property="ajsx" />
+        <result column="AJXXBZ" property="ajxxbz"/>
+        <result column="JJ" property="jj"/>
+        <result column="JYAQ" property="jyaq"/>
+        <result column="AJFSD" property="ajfsd"/>
+        <result column="AJFSSJ" property="ajfssj"/>
+        <result column="M_DEPTTYPE" property="mDepttype"/>
+        <result column="M_CASEDEPT" property="mCasedept"/>
+        <result column="M_CASEMAN" property="mCaseman"/>
+        <result column="TPRQ" property="tprq"/>
+        <result column="TPFX_QH" property="tpfxQh"/>
+        <result column="LASJ" property="lasj"/>
+        <result column="LA_DWQH" property="laDwqh"/>
+        <result column="LA_DWDM" property="laDwdm"/>
+        <result column="LA_DWXC" property="laDwxc"/>
+        <result column="LA_DWXT_DM" property="laDwxtDm"/>
+        <result column="ZB_DWQH" property="zbDwqh"/>
+        <result column="ZB_DWDM" property="zbDwdm"/>
+        <result column="ZB_DWXC" property="zbDwxc"/>
+        <result column="ZB_LXR" property="zbLxr"/>
+        <result column="ZB_LXFS" property="zbLxfs"/>
+        <result column="DJ_TBR" property="djTbr"/>
+        <result column="DJ_RQ" property="djRq"/>
+        <result column="DJ_SPR" property="djSpr"/>
+        <result column="DBJB_DM" property="dbjbDm"/>
+        <result column="TJLBH" property="tjlbh"/>
+        <result column="BLYY" property="blyy"/>
+        <result column="BLBS" property="blbs"/>
+        <result column="SP" property="sp"/>
+        <result column="SPYY" property="spyy"/>
+        <result column="LR_DWDM" property="lrDwdm"/>
+        <result column="LRR" property="lrr"/>
+        <result column="LRSJ" property="lrsj"/>
+        <result column="XG_DWDM" property="xgDwdm"/>
+        <result column="XGR" property="xgr"/>
+        <result column="XGSJ" property="xgsj"/>
+        <result column="SC_DWDM" property="scDwdm"/>
+        <result column="SCR" property="scr"/>
+        <result column="SCSJ" property="scsj"/>
+        <result column="SC_DWXC" property="scDwxc"/>
+        <result column="SC_DWXT_DM" property="scDwxtDm"/>
+        <result column="SC_SPR" property="scSpr"/>
+        <result column="ZKBZ" property="zkbz"/>
+        <result column="RBKSJ_DJ" property="rbksjDj"/>
+        <result column="RBKSJ_CX" property="rbksjCx"/>
+        <result column="RBKSJ_SC" property="rbksjSc"/>
+        <result column="SY_DWDM" property="syDwdm"/>
+        <result column="SBSJ" property="sbsj"/>
+</resultMap>
+<select id="queryAjxxByYasr" parameterType="java.lang.String" resultType="com.zhixin.rd.rkjc.web.entity.Ajxx">
+select * from ajxx
+<where>
+    <if test="ajbh!=null and ajbh!=''">
+        and ajbh in
+    <foreach collection="ajbhList"  open="(" separator="," close=")" index="index" item="item">
+        #{item}
+    </foreach>
+</if>
+</where>
+</select>
+
+</mapper>
+

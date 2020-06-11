@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.xm.IXmSpMapper">
+	<resultMap id="xmSpMapper" type="xmsp">
+    	<id property="id" column="id"/>
+    	<result property="mc" column="mc"/>
+    	<result property="wyid" column="wyid"/>
+    	<result property="pssj" column="pssj"/>
+    	<result property="psdd" column="psdd"/>
+    	<result property="jj" column="jj"/>
+    	<result property="spzp" column="spzp"/>
+    	<result property="xmId" column="xm_id"/>
+    	<result property="cjsj" column="cjsj"/>
+		<result property="sjUrl" column="sj_url"/>
+    </resultMap>
+
+    <select id="queryAllXmSp" resultMap="xmSpMapper"  >
+        	SELECT * FROM xm_sp
+    </select>
+    <select id="countXmSp" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM xm_sp
+    </select>
+    <select id="queryAllXmSpList" resultMap="xmSpMapper" parameterType="java.util.Map" >
+        	SELECT * FROM xm_sp where xm_id = #{ID} ORDER BY id  desc  limit ${pageIndex},${rows}
+    </select>
+    <select id="countXmSplist" resultType="java.lang.Integer" parameterType="java.util.Map">
+        	SELECT count(*) FROM xm_sp where xm_id = #{ID}
+    </select>
+    
+      <delete id="deleteXmSpById" parameterType="java.lang.Long">  
+            DELETE FROM xm_sp WHERE id=#{id}
+    </delete> 
+	<!-- 增加信息 -->
+	<insert id="insertXmSp" parameterType="xmsp">
+		insert into xm_sp
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				mc,
+			</if>
+			<if test="wyid != null">
+				wyid,
+			</if>
+			<if test="pssj != null">
+				pssj,
+			</if>
+			<if test="psdd != null">
+				psdd,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="spzp != null">
+				spzp,
+			</if>
+			<if test="xmId != null">
+				xm_id,
+			</if>
+			<if test="cjsj != null">
+				cjsj,
+			</if>
+			<if test="sjUrl != null">
+				sj_url,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				#{mc},
+			</if>
+			<if test="wyid != null">
+				#{wyid},
+			</if>
+			<if test="pssj != null">
+				#{pssj},
+			</if>
+			<if test="psdd != null">
+				#{psdd},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="spzp != null">
+				#{spzp},
+			</if>
+			<if test="xmId != null">
+				#{xmId},
+			</if>
+			<if test="cjsj != null">
+				now(),
+			</if>
+			<if test="sjUrl != null">
+				#{sjUrl},
+			</if>
+		</trim>
+	</insert>
+	
+	 <update id="updateXmSp" parameterType="xmsp">  
+            UPDATE xm_sp SET 
+	    		mc=#{mc},
+	    		wyid=#{wyid},
+	    		cjsj=now(),
+	    		sj_url=#{sjUrl}
+            WHERE 
+	    		id=#{id}
+    </update>
+
+	<update id="updateXmSpImg" parameterType="xmsp">
+		UPDATE xm_sp SET
+		spzp=#{spzp}
+		WHERE
+		id=#{id}
+	</update>
+
+	<select id="getXmSpById" parameterType="java.lang.Long" resultMap="xmSpMapper">
+		select * from xm_sp where id = #{id}
+	</select>
+</mapper>
+
+

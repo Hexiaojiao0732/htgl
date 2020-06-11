@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.personinfo.IPersonInfoReadMapper">
+
+   <resultMap id="personInfoResultMap" type="com.zhixin.rd.rkjc.web.entity.PersonInfoEntity">
+      <id property="id" column="id"/>
+      <result column="GMSFHM" property="gmsfhm"/>
+      <result column="tXM" property="txm"/>
+      <result column="tCYM" property="tcym"/>
+      <result column="tBMCH" property="tbmch"/>
+      <result column="XB" property="xb"/>
+      <result column="tCSRQ" property="tcsrq"/>
+      <result column="tZZMM" property="tzzmm"/>
+      <result column="tQFJGMZWZ" property="tqfjgmzwz"/>
+      <result column="GJ" property="gj"/>
+      <result column="tJGSSXDM" property="tgssxdm"/>
+      <result column="tJGHZ" property="tjghz"/>
+      <result column="tHJD_XZQHDM" property="thjdXzqhdm"/>
+      <result column="HJD_XZQHMC" property="hjdXzqhmc"/>
+      <result column="tHJDXZ" property="thjdxz"/>
+      <result column="tHJ_GAJGMC" property="thjGajgmc"/>
+      <result column="tJZD_XZQHDM" property="tjzdXzqhdm"/>
+      <result column="JZDXZ" property="jzdxz"/>
+      <result column="tJUD2_XZQHDM" property="tjud2_xzqhdm"/>
+      <result column="tXZZXZ1" property="txzzxz1"/>
+      <result column="tHH" property="thh"/>
+      <result column="YHZGX" property="yhzgx"/>
+      <result column="tCSDSSXDM" property="tcsdssxdm"/>
+      <result column="tCSDQHXZ" property="tcsdqhzx"/>
+      <result column="tCSZ_QFRQ" property="tcszQfrq"/>
+      <result column="CSDGJ" property="csdgj"/>
+      <result column="tSFZ_QFRQ" property="tsfzQfrq"/>
+      <result column="ZJXY" property="zjxy"/>
+      <result column="tLXDH" property="tlxdh"/>
+      <result column="tLXDH2" property="tlxdh2"/>
+      <result column="tQQHM" property="tqqhm"/>
+      <result column="WXHM" property="wxhm"/>
+      <result column="tDZYXHM" property="tdzyxhm"/>
+      <result column="HDQR" property="hdqr"/>
+      <result column="tQLBSLB" property="tqlbslb"/>
+      <result column="tQLBS_RQ" property="tqlbsRq"/>
+      <result column="tQLBSYY" property="tqlbsyy"/>
+      <result column="QLBSSSQ" property="qlbsssq"/>
+      <result column="tQLBS_MLXXDZ" property="tqlbsMlxxdz"/>
+      <result column="tQLBZLB" property="tqlbzlb"/>
+      <result column="tQLBZ_RQ" property="tqlbzRq"/>
+      <result column="QLBZYY" property="qlbzyy"/>
+      <result column="tQLBZ_GAJGJGDM" property="tqlbzGajgjgdm"/>
+      <result column="tQLBZ_JLXDM" property="tqlbzJlxdm"/>
+      <result column="tQLBZ_MLPH" property="tglbzMlph"/>
+      <result column="CZR_BS" property="czrBs"/>
+      <result column="tHYZK" property="thyzk"/>
+      <result column="SG" property="sg"/>
+      <result column="tWHCD" property="twhcd"/>
+      <result column="tZY" property="tzy"/>
+      <result column="tGZ_DWMC" property="tgzDwmc"/>
+      <result column="ZW" property="zw"/>
+      <result column="tGRSF" property="tgrsf"/>
+      <result column="tTSSF" property="tfssf"/>
+      <result column="XMPY" property="xmpy"/>
+      <result column="BMPY" property="bmpy"/>
+      <result column="tBZ" property="tbz"/>
+      <result column="tTMTZMS" property="ttmtzms"/>
+      <result column="tKYTD" property="tkytd"/>
+      <result column="tFWCS" property="tfwcs"/>
+      <result column="tBD_RQ" property="tbd_rq"/>
+      <result column="BDYY" property="bdyy"/>
+      <result column="tBYZK" property="tbyzk"/>
+      <result column="tXX" property="txx"/>
+      <result column="tTX" property="ttx"/>
+      <result column="LX" property="lx"/>
+      <result column="tXPDZ" property="txpdz"/>
+      <result column="tCR_SJ" property="tcrSj"/>
+      <result column="CRLX" property="crlx"/>
+      <result column="tCRLYD" property="tcrlyd"/>
+      <result column="tag_info" property="tagInfo"/>
+      <result column="created_time" property="createdTime"/>
+      <result column="updated_time" property="updatedTime"/>
+   </resultMap>
+
+   <select id="list" parameterType="java.util.Map" resultMap="personInfoResultMap">
+      SELECT * FROM `person_info`
+      <where>
+         <if test="gmsfhm !=null and gmsfhm !=''">
+            and GMSFHM like '%${gmsfhm}%'
+         </if>
+         <if test="token !=null and token !=''">
+            and token like '%${token}%'
+         </if>
+
+      </where>
+      limit ${pageStart},${rows}
+   </select>
+
+   <select id="count" parameterType="java.util.Map" resultType="int">
+      SELECT count(*) FROM `person_info`
+      <where>
+         <if test="gmsfhm !=null and gmsfhm !=''">
+            and GMSFHM like '%${gmsfhm}%'
+         </if>
+         <if test="token !=null and token !=''">
+            and token like '%${token}%'
+         </if>
+
+      </where>
+   </select>
+
+   <select id="getPersonInfoById" parameterType="int" resultMap="personInfoResultMap">
+      SELECT * FROM `person_info` where id = #{id}
+   </select>
+
+   <!-- 按身份证号码，查询人号和所属省市县区代码-->
+   <select id="queryPersonRhAndSsssxqDmBySfzh" parameterType="java.lang.String" resultType="java.util.HashMap">
+      select rh,ssssxq_dm from rk_jcxx where gmsfhm = #{sfzh} order by lrrq desc limit 1
+   </select>
+</mapper>

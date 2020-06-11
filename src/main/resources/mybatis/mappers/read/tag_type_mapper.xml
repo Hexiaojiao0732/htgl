@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.tagtype.ITagTypeReadMapper">
+<resultMap id="TagTypeResultMap" type="TagTypeEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="tag_name" property="tagName" jdbcType="VARCHAR" />
+    <result column="tag_table_name" property="tagTableName" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime"/>
+</resultMap>
+
+<resultMap id="ColumnMap" type="ColumnEntity" >
+    <result column="column_comment" property="columnComment" jdbcType="VARCHAR" />
+    <result column="column_name" property="columnName" jdbcType="VARCHAR" />
+    <result column="table_name" property="tableName" jdbcType="VARCHAR" />
+</resultMap>
+    <!--查询全部-->
+    <select id="selectAll" resultMap="TagTypeResultMap" parameterType="java.util.Map">
+        select * FROM tag_type
+        <where>
+            <if test="tagTableName!=null and tagTableName!=''">
+                tag_table_name=#{tagTableName}
+            </if>
+        </where>
+
+    </select>
+    <!--根据tagName查询单个-->
+    <select id="selectOne" parameterType="java.lang.String" resultMap="TagTypeResultMap">
+        select * from tag_type where tag_name = #{tagName}
+    </select>
+    <!--根据tagName查询-->
+    <select id="selectByTagTableName" resultMap="ColumnMap">
+        select COLUMN_COMMENT,COLUMN_NAME from information_schema.`COLUMNS`
+        where TABLE_NAME = #{tagTableName} and TABLE_SCHEMA = 'population_db'
+        and COLUMN_NAME not in ('cr_sj','gx_sj','ry_bq','cr_ly')
+    </select>
+
+    <!--根据TableName查询批量查询-->
+    <select id="selectBatchByTagTableNames" resultMap="ColumnMap" parameterType="java.lang.String">
+        select column_comment,column_name,table_name from information_schema.`COLUMNS`
+       where table_name in (${_parameter})
+        and COLUMN_NAME not in ('cr_sj','gx_sj','ry_bq','cr_ly')
+    </select>
+
+    <!--根据申请记录标识和标签名称，查询所有符合权限的表名以及字段-->
+    <select id="selectTableNameAndCloum" parameterType="java.util.Map" resultType="java.util.HashMap">
+        SELECT a.tag_colunm_name,b.tag_table_name FROM interface_application_detail a,tag_type b
+        WHERE a.tag_id=b.id AND a.appliction_id=#{applicationId} AND b.tag_name=#{tagName}
+    </select>
+    <select id="selectByMap" resultType="java.util.HashMap" parameterType="java.util.Map">
+       select ${tableColunms} from ${tableName}
+       <where>
+           <if test="sfzh!=null and sfzh!=''">
+               gmsfhm = #{sfzh}
+           </if>
+           <if test="dhhm!=null and dhhm!=''">
+               dhhm = #{dhhm}
+           </if>
+       </where>
+       order by lrrq desc
+    </select>
+
+    <!-- 根据身份证号码查该身份证号的标签 -->
+    <select id="selectAllTagOfOnePerson" parameterType="java.lang.String" resultType="java.util.HashMap">
+       select ry_bq,count(ry_bq) num from rk_jcxx where gmsfhm = #{personSFZH} and ry_bq is not null
+       group by ry_bq
+    </select>
+    <!-- 根据身份证号码查该身份证的名字 -->
+    <select id="selectMsgSFZH" parameterType="String" resultType="com.zhixin.rd.rkjc.web.entity.PersonInfoEntity">
+      select xm from rk_jcxx  where GMSFHM = #{personSFZH} order by lrrq desc limit 1
+   </select>
+
+    <!-- 根据表名字查询所有的数量 -->
+    <select id="queryCount" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+        select count(*) from ${tablename}
+    </select>
+    <!-- 根据表名字查询有效的数量 -->
+    <select id="queryValidCount" resultType="java.lang.Integer" parameterType="java.util.HashMap">
+        select count(distinct PERSON_SFZH) FROM  ${tablename}
+    </select>
+
+    <!-- 根据Sfzh码查询扒窃 -->
+    <select id="queryPsBySfzh" resultType="java.util.HashMap" parameterType="java.util.Map">
+       select ${tableColunms} from ${tableName} WHERE sfzh=#{sfzh}
+
+    </select>
+
+
+</mapper>

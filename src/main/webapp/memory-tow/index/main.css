@@ -1,0 +1,44 @@
+
+/*map-main */
+.chinese-memory-con{  width:100%; height: 100%; position: relative; overflow-x: hidden;}
+.chinese-memory-con .banner{ width: 100%; height: 100%; overflow: hidden; position: absolute; top: 0; right: 0; z-index: 0;}
+.chinese-memory-con .banner img{transition: all 70s; }
+.chinese-memory-con .banner img:hover{  transform: scale(2); overflow-x:hidden;}
+.c-m-nr{ margin: 0 auto; width: 1100px; position: relative; background: #000000;}
+.c-m-nr-left{ position: absolute; top: 163px; left: 0;}
+.c-m-nr-left p{ width:400px; height: 77px; margin-bottom: 20px;}
+.c-m-nr-left a{ padding:8px 30px; font-size:18px; color: #bea281; border: 1px solid #bea281;}
+.c-m-nr-left a:hover{color: #fff; background: #bea281;}
+.c-m-nr-right{ position: absolute; top: 143px; right: 0;}
+.c-m-nr-right ul{ background: url(images/main05.png) repeat left top; width: 268px; padding: 20px 0; }
+.c-m-nr-right li{ height: 48px; width: 100%; padding: 10px 0; color: #acacac; text-align: right; line-height: 18px;}
+.c-m-nr-right li div{ width:192px; float: left;}
+.c-m-nr-right li div font{ font-size: 18px;}
+.c-m-nr-right li i{ width:48px; height: 48px;  margin-left:10px;display: block; float: left;}
+/*map-container */
+.map-container{ width: 1100px; margin:70px auto;}
+.map-serach{ height: 40px; padding-bottom: 25px;}
+.map-serach-box{ width: 522px; height: 38px; padding: 0 10px; border: 1px solid #bfbfbf; border-radius: 38px; background: #fff;}
+.map-serach-box .record-select{ height: 38px; border: 0; width: 80px; margin-right: 10px;}
+.search-text{ width:380px; height:20px; border: 0; border-left: 1px solid #bfbfbf; line-height: 20px; }
+.serach-btn{ width:30px;  height:20px;cursor: pointer; background: url(images/search.png) no-repeat center center; }
+.map-marker{ width: 1100px; min-height: 556px; background: #fff;}
+.map-written{ margin: 20px 0; color: #3e3a39;}
+.map-written h2{ font-size: 18px;}
+.map-abstract{ padding: 20px 0; color: #595757; line-height: 26px;}
+
+/*media-max-width: 1080px */
+@media (max-width: 1080px){
+.map-container{ width: 100%; margin:1.167rem auto;}
+.map-serach{ height: auto; padding:0.3rem 0.2rem 0;}
+.map-serach-box{ width: 100%; height: 0.63rem; padding: 0;border-radius: 0.63rem;float: none;margin-bottom: 0.3rem;}
+.map-serach-box .record-select{ height: 0.63rem;width: 20%; margin-right: 0.16rem;float: left;}
+.search-text{ width:66%; height:0.63rem;line-height: 0.63rem;float: left;padding-left: 0.2rem; }
+.serach-btn{ width:5%;  height:0.63rem;float: left; }
+.map-marker{ width: 100%; min-height: 5rem;font-size: 0.3rem;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;padding:0.16rem;}
+.map-written{ margin: 0.33rem 0;padding: 0.16rem}
+.map-written h2{ font-size: 0.3rem;}
+.map-written p{ font-size: 0.3rem;}
+.map-abstract{ padding: 0.33rem 0;line-height: 0.43rem;font-size: 0.3rem;}
+
+}

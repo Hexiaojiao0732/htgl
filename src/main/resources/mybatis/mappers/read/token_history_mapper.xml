@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.tokenhistory.ITokenHistoryReadMapper">
+	<resultMap id="tokenHistoryResultMap" type="TokenHistoryEntity">
+		<result property="id" column="id" />
+		<result column="application_id" property="applicationId" />
+		<result column="token_value" property="tokenValue" />
+		<result column="status" property="status" />
+		<result column="create_time" property="createTime" />
+		<result column="cancel_time" property="cancelTime" />
+	</resultMap>
+
+	<!-- 增加信息 -->
+	<insert id="insertHistory" parameterType="tokenHistoryEntity">
+		<!-- insert into token_history (application_id,token_value,status,create_time,cancel_time) values(#{applicationId},#{tokenValue},#{status},now(),now()) -->
+		insert into token_history
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="applicationId != null">
+				application_id,
+			</if>
+			<if test="tokenValue != null">
+				token_value,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			create_time,
+			cancel_time,
+
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="applicationId != null">
+				#{applicationId},
+			</if>
+			<if test="tokenValue != null">
+				#{tokenValue},
+			</if>
+			<if test="status != null">
+				#{status},
+			</if>
+			now(),
+			now(),
+		</trim>
+
+	</insert>
+	<update id="updateTime" parameterType="map">
+		update token_history
+		set
+		cancel_time = now()
+		where id=#{id}
+	</update>
+	<!--查询全部 -->
+	<select id="queryAllToken" parameterType="java.lang.Integer" resultMap="tokenHistoryResultMap">
+		select * FROM token_history where application_id=#{id}
+	</select>
+
+	<!--通过token和ip查询 -->
+	<select id="queryByTokenAndIp" parameterType="java.util.Map" resultMap="tokenHistoryResultMap">
+		select th.* from token_history th
+		LEFT JOIN interface_application ia on ia.application_ip=th.application_id
+		WHERE th.status=1 and th.token_value=#{tokenValue} and ia.application_ip=#{ip}
+		LIMIT 1
+
+	</select>
+</mapper>

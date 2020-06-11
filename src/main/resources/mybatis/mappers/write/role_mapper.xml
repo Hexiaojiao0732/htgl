@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.write.user.IRoleWriteMapper" >
+  <resultMap id="roleResultMap" type="ARole" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="data_auth" property="dataAuth" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap id="roleAuthorityResultMap" type="RoleAuthority" >
+    <id column="role_id" property="roleId" jdbcType="INTEGER" />
+    <id column="authority_id" property="authorityId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <select id="getAllRoleAuthority" resultMap="roleAuthorityResultMap"  >
+    select * from role_authority limit 100000
+  </select>
+  
+  <sql id="role_Column_List" >
+    id, name, data_auth, description, created_time, updated_time
+  </sql>
+  
+  <!-- 模糊匹配查询角色 -->
+  <select id="getRolesByLike" resultMap="roleResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="role_Column_List" />
+    from role
+    <where>
+    	<if test="id != null and id != ''">
+    		and id like '%${id}%'
+    	</if>
+    	<if test="name != null and name != ''">
+    		and name like '%${name}%'
+    	</if>
+    	<if test="start_date != null and start_date != ''">
+			and created_time &gt;=#{start_date}
+		</if>
+		<if test="end_date != null and end_date != ''">
+			and created_time &lt;=#{end_date}
+		</if>
+    </where>
+    order by id desc
+    limit ${pageStart},${rows} 
+  </select>
+  
+  <!-- 计算查询结果大小 -->
+  <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map" >
+    select count(1) from role
+    <where>
+    	<if test="id != null and id != ''">
+    		and id like '%${id}%'
+    	</if>
+    	<if test="name != null and name != ''">
+    		and name like '%${name}%'
+    	</if>
+    	<if test="start_date != null and start_date != ''">
+			and created_time &gt;=#{start_date}
+		</if>
+		<if test="end_date != null and end_date != ''">
+			and created_time &lt;=#{end_date}
+		</if>
+    </where>
+  </select>
+  
+   <!-- 根据用户id获取用户角色信息 -->
+  <select id="getUserRolesByUserIDMap" resultMap="roleResultMap" parameterType="java.util.Map">  
+        	select r.* from role r ,user_role ur where  r.id = ur.role_id and ur.user_id = #{id,jdbcType=INTEGER}
+        	limit ${pageStart},${rows}
+  </select>
+  
+  <!-- 根据用户id获取用户角色信息 -->
+  <select id="getUserRolesByUserID" resultMap="roleResultMap" parameterType="java.lang.Integer">  
+        	select r.* from role r,user_role ur 
+        	where  r.id = ur.role_id and ur.user_id = #{userID}
+  </select>
+  
+  <!-- 获取所有用户信息 -->
+  <select id="getAllRolesByMap" resultMap="roleResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="role_Column_List" />
+    from role 
+    limit ${pageStart},${rows} 
+  </select>
+  
+  <!-- 获取所有用户信息 -->
+  <select id="getAllRoles" resultMap="roleResultMap" >
+    select 
+    <include refid="role_Column_List" />
+    from role 
+    <!-- limit ${pageStart},${rows}  -->
+  </select>
+  
+  <!-- 根据id查询角色 -->
+  <select id="getRoleByID" resultMap="roleResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="role_Column_List" />
+    from role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 删除角色 -->
+  <delete id="deleteRoleByID" parameterType="java.lang.Integer" >
+    delete from role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <!-- 添加角色 -->
+  <insert id="insertRole" parameterType="ARole" >
+    insert into role ( name, data_auth, description, created_time)
+    values ( #{name,jdbcType=VARCHAR},#{dataAuth,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, now())
+  </insert>
+  
+  <!-- 根据id更新角色信息 -->
+  <update id="updateRoleByID" parameterType="ARole" >
+    update role
+    set name = #{name,jdbcType=VARCHAR},
+    data_auth = #{dataAuth,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      updated_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 判空添加角色 -->
+  <insert id="insertSelectiveRole" parameterType="ARole" >
+    insert into role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 判空根据id更新角色信息  -->
+  <update id="updateSelectiveRoleByID" parameterType="ARole" >
+    update role
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

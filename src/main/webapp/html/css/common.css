@@ -1,0 +1,88 @@
+*{margin:0; padding:0;}
+html{font-size:50px;-webkit-tap-highlight-color:transparent;height:100%;min-width:1200px;}
+body{color:#333;background:#0043a3 url(../images/bg.png) no-repeat center bottom;;font-size:14px;line-height:1.785;
+font-family: Arial,"微软雅黑","Microsoft yahei","Hiragino Sans GB","冬青黑体简体中文 w3","Microsoft Yahei","Hiragino Sans GB","冬青黑体简体中文 w3",STXihei,"华文细黑",SimSun,"宋体",Heiti,"黑体",sans-serif;
+}
+h1,h2,h3,h4,h5,h6{font-weight:normal;font-style:normal;}
+a{blr:expression(this.onFocus=this.blur());/*IE*/outline:none;/*火狐*/color:#333; text-decoration:none;}
+a:focus{outline: none;} 
+a:hover{color:#fff;}
+a:active{star:expression(this.onfocus=this.blur());} 
+input{outline:none}
+placeholder{ color:#c2c2c2;}
+button{outline:none;border:none;cursor:pointer;background:transparent;}
+pre{display:block;word-break: break-all;word-wrap: break-word;white-space: pre-wrap;}
+ul, ol{list-style: none;} 
+img, fieldset{border: 0 none; width:100%; height:100%;} 
+input, textarea{outline: none;} 
+table{border-collapse: collapse; border-spacing: 0;} 
+button, input, select, label{vertical-align:middle;} 
+input[type='checkbox'] {vertical-align: -14px;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.fr{float:right;}
+.fl{float:left}
+.clear{clear:both;height:0;overflow:hidden;}
+.clearfix{_zoom:1; /*height:1%;*/} 
+.clearfix:after{content:""; clear: both; display:block;} 
+.hide{display:none;}
+.show{display:block;}
+.cursor{cursor:pointer;}
+
+
+/* 主题内容样式 */
+.container {width:100%; margin:0 auto;min-height:600px;}
+/*头部*/
+.header{ width:100%; position:relative; background:#0068b7; color:#f1f1f1; text-align:center; height:50px; font-size:22px; line-height:50px;margin:0 auto; }
+.header p{ position:absolute; top:0px; right:56px; height:50px; font-size:15px;}
+.header a{ position:absolute; top:0px; left:0; display:block; font-size:90px;color:#fff; background:#00a0e9 url(../images/back_1.png) no-repeat center center; width:66px; height:50px; line-height:50px; text-align:center;}
+.header a:active{background:#edc31c url(../images/back.png) no-repeat center center;}
+/* 底部 */
+.footer{width:100%; height:50px; color:#fff; background:#1d2088; font-size:14px;line-height:50px; text-align:center;margin:0 auto; position:fixed; bottom:0px; left:0;}
+/*分页*/
+.page{ width:260px; height:44px; margin:25px auto;}
+.page a{ width:44px; height:44px; display:block; float:left; background:#448aca; border-radius:3px;}
+.page a:hover{background:#edc31c;}
+.page a:active{background:#edc31c;}
+.page a.zf{ background:#aaaaaa;}
+.page a i{width:17px; height:30px; display:block; margin:7px auto 0 auto;}
+.page span{ width:172px; display:block; height:44px; line-height:44px; text-align:center; font-size:22px; color:#ebebeb; float:left;}
+.page .pageleft i{ background:url(../images/jtleft.png) no-repeat center center; background-size:17px 30px;}
+.page .pageright i{background:url(../images/jtright.png) no-repeat center center; background-size:17px 30px;}	
+
+/*1920*/
+@media screen and (min-width: 1920px){
+.container{ height:950px;}
+.header{ width:100%; position:relative; background:#0068b7; color:#f1f1f1; text-align:center; height:80px; font-size:30px; line-height:80px;margin:0 auto; }
+.header p{ position:absolute; top:0px; right:56px; height:80px; font-size:24px;}
+.header a{ position:absolute; top:0px; left:0; display:block; font-size:90px;color:#fff; background:#00a0e9 url(../images/back.png) no-repeat center center; width:106px; height:80px; line-height:80px; text-align:center;}
+.header a:active{background:#edc31c url(../images/back.png) no-repeat center center;}
+.footer{width:100%; height:50px; color:#fff; background:#1d2088; font-size:18px;line-height:50px; text-align:center;margin:0 auto; position:fixed; bottom:0px; left:0;}
+/*分页*/
+.page{ width:412px; height:70px; margin:25px auto;}
+.page a{ width:70px; height:70px; display:block; float:left; background:#448aca; border-radius:6px;}
+.page a:hover{background:#edc31c;}
+.page a:active{background:#edc31c;}
+.page a.zf{ background:#aaaaaa;}
+.page a i{width:24px; height:47px; display:block; margin:12px auto 0 auto;}
+.page span{ width:272px; display:block; height:70px; line-height:70px; text-align:center; font-size:36px; color:#ebebeb; float:left;}
+.page .pageleft i{ background:url(../images/jtleft.png) no-repeat center center}
+.page .pageright i{background:url(../images/jtright.png) no-repeat center center}			
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

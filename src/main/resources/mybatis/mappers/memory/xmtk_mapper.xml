@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.xm.IXmTkMapper">
+	<resultMap id="xmTkMapper" type="xmtk">
+    	<id property="id" column="id"/>
+    	<result property="mc" column="mc"/>
+    	<result property="tpdz" column="tpdz"/>
+    	<result property="xmId" column="xm_id"/>
+    	<result property="cjsj" column="cjsj"/>
+    </resultMap>
+
+    <select id="queryAllXmTk" resultMap="xmTkMapper"  >
+        	SELECT * FROM xm_tk
+    </select>
+    <select id="countXmTk" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM xm_tk
+    </select>
+    <select id="queryAllXmTkList" resultMap="xmTkMapper" parameterType="java.util.Map" >
+        	SELECT * FROM xm_tk where xm_id = #{ID}  ORDER BY id  desc  limit ${pageIndex},${rows}
+    </select>
+    <select id="countXmTklist" resultType="java.lang.Integer" parameterType="java.util.Map">
+        	SELECT count(*) FROM xm_tk where xm_id = #{ID}
+    </select>
+    
+      <delete id="deleteXmTkById" parameterType="java.lang.Long">  
+            DELETE FROM xm_tk WHERE id=#{id}
+    </delete> 
+	<!-- 增加信息 -->
+	<insert id="insertXmTk" parameterType="xmtk">
+		insert into xm_tk
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				mc,
+			</if>
+			<if test="tpdz != null">
+				tpdz,
+			</if>
+			<if test="cjsj != null">
+				cjsj,
+			</if>
+			<if test="xmId != null">
+				xm_id,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				#{mc},
+			</if>
+			<if test="tpdz != null">
+				#{tpdz},
+			</if>
+			<if test="cjsj != null">
+				now(),
+			</if>
+			<if test="xmId != null">
+				#{xmId},
+			</if>
+		</trim>
+	</insert>
+	 <update id="updateXmTk" parameterType="xmtk">  
+            UPDATE xm_tk SET 
+	    		mc=#{mc}
+            WHERE id=#{id}
+    </update>
+
+	<update id="updateXmTkImg" parameterType="xmtk">
+		UPDATE xm_tk SET
+		tpdz=#{tpdz}
+		WHERE id=#{id}
+	</update>
+</mapper>
+
+

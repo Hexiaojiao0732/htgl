@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.user.IUserOrganizationReadMapper" >
+
+  <resultMap id="userOrganizationResultMap" type="UserOrganization" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="organization_id" property="organizationId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <resultMap id="organizationResultMap" type="Organization" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="organization" property="organization" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  
+  <resultMap id="userResultMap" type="AUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="job_title" property="jobTitle" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="certificate_type_id" property="certificateTypeId" jdbcType="INTEGER" />
+    <result column="certificate_no" property="certificateNo" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="is_active" property="isActive" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="certificate_name" property="certificateName" jdbcType="VARCHAR" />
+    <result column="organization_name" property="organizationName" jdbcType="VARCHAR" />
+    <result column="organization_type" property="organizationType" jdbcType="VARCHAR" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+    <result column="flog" property="flog" jdbcType="INTEGER" />
+    
+	    <result column="organizationId" property="organizationId" jdbcType="INTEGER" />
+  </resultMap>
+
+  <!--查询所有的部门用户关系-->
+  <select id="getAllUserOrg" resultMap="userOrganizationResultMap">
+    select * from user_organization
+  </select>
+  
+   <!-- 根据用户id获取单位信息 -->
+  <select id="getOrganizationByUserId" resultMap="organizationResultMap" parameterType="java.lang.Integer">
+        	select org.* from organization org ,user_organization userorg 
+        	where org.id=userorg.organization_id and userorg.user_id=#{userId,jdbcType=INTEGER}
+   </select>
+   
+    <!-- 根据获取用户信息（包含单位信息、证件信息）-->
+  <select id="getUserInfo" resultMap="userResultMap" parameterType="java.util.Map">
+	select u.*,org.`organization` organization_name ,org.`type` organization_type ,ct.`name` certificate_name,userorg.organization_id as organizationId
+	from user as u 
+	left join user_organization userorg on u.id=userorg.user_id
+	left join organization org on org.id=userorg.organization_id
+	left join certificate_type ct on u.certificate_type_id=ct.id
+	where 1=1
+		<if test="dataAuth!=null and dataAuth!=''">
+					and ${dataAuth}
+		</if>
+    	<if test="login_name != null and login_name != ''">
+    		and u.login_name like '%${login_name}%'
+    	</if>
+    	<if test="real_name != null and real_name != ''">
+    		and u.real_name like '%${real_name}%'
+    	</if>
+    	<if test="job_title != null and job_title != ''">
+    		and u.job_title like '%${job_title}%'
+    	</if>
+    	<if test="mobile != null and mobile != ''">
+    		and u.mobile like '%${mobile}%'
+    	</if>
+    	<if test="certificate_type_id != null and certificate_type_id != ''">
+    		and u.certificate_type_id like '%${certificate_type_id}%'
+    	</if>
+    	<if test="certificate_no != null and certificate_no != ''">
+    		and u.certificate_no like '%${certificate_no}%'
+    	</if>
+    	<if test="organization_name != null and organization_name != ''">
+    		and org.organization like '%${organization_name}%'
+    	</if>
+    	<if test="organization_type != null and organization_type != ''">
+    		and org.type like '%${organization_type}%'
+    	</if>
+    	<if test="is_active != null and is_active != ''">
+    		and u.is_active like '%${isActive}%'
+    	</if>
+    	<if test="start_date!=null and start_date!=''">
+			and u.created_time &gt;=#{start_date}
+		</if>
+		<if test="end_date!=null and end_date!=''">
+			and u.created_time &lt;=#{end_date}
+		</if>
+    order by created_time desc
+    limit ${pageStart},${rows}
+   </select>
+   
+   <!-- 根据获取用户信息（包含单位信息、证件信息）大小-->
+  <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map">
+	select count(1)
+	from user as u left join user_organization userorg on u.id =userorg.user_id
+	left join organization org on org.id=userorg.organization_id
+	left join certificate_type ct on u.certificate_type_id=ct.id
+	<where>
+		<if test="dataAuth!=null and dataAuth!=''">
+					and ${dataAuth}
+		</if>
+    	<if test="login_name != null and login_name != ''">
+    		and u.login_name like '%${login_name}%'
+    	</if>
+    	<if test="real_name != null and real_name != ''">
+    		and u.real_name like '%${real_name}%'
+    	</if>
+    	<if test="job_title != null and job_title != ''">
+    		and u.job_title like '%${job_title}%'
+    	</if>
+    	<if test="mobile != null and mobile != ''">
+    		and u.mobile like '%${mobile}%'
+    	</if>
+    	<if test="certificate_type_id != null and certificate_type_id != ''">
+    		and u.certificate_type_id like '%${certificate_type_id}%'
+    	</if>
+    	<if test="certificate_no != null and certificate_no != ''">
+    		and u.certificate_no like '%${certificate_no}%'
+    	</if>
+    	<if test="organization_name != null and organization_name != ''">
+    		and org.organization like '%${organization_name}%'
+    	</if>
+    	<if test="organization_type != null and organization_type != ''">
+    		and org.type like '%${organization_type}%'
+    	</if>
+    	<if test="is_active != null and is_active != ''">
+    		and u.is_active like '%${isActive}%'
+    	</if>
+    	<if test="start_date!=null and start_date!=''">
+			and u.created_time &gt;=#{start_date}
+		</if>
+		<if test="end_date!=null and end_date!=''">
+			and u.created_time &lt;=#{end_date}
+		</if>
+    </where>
+   </select>
+   
+  <!-- 根据用户id获取用户信息（包含单位信息）-->
+  <select id="getUserInfo1ByUserId" resultMap="userResultMap" parameterType="java.lang.Integer">
+  		select u.*,org.`organization` organization_name ,org.`type` organization_type
+    from user as u , organization org ,user_organization userorg 
+    where org.id=userorg.organization_id and userorg.user_id=#{userId,jdbcType=INTEGER} and u.id=#{userId,jdbcType=INTEGER}
+   </select>
+   
+   
+   <!-- 根据用户id获取用户信息（包含单位信息、证件信息）-->
+  <select id="getUserInfo2ByUserId" resultMap="userResultMap" parameterType="java.lang.Integer">
+  		select u.*,org.`organization` organization_name ,org.`type` organization_type, org.id organization_id, ct.`name` certificate_name 
+    from user as u , organization org ,user_organization userorg ,certificate_type ct 
+    where org.id=userorg.organization_id 
+    and u.certificate_type_id=ct.id
+    and userorg.user_id=#{userId,jdbcType=INTEGER} 
+    and u.id=#{userId,jdbcType=INTEGER}
+   </select>
+   
+  
+  <insert id="insert" parameterType="UserOrganization" >
+    insert into user_organization (user_id, organization_id)
+    values (#{userId,jdbcType=INTEGER}, #{organizationId,jdbcType=INTEGER})
+  </insert>
+  
+  
+  <delete id="deleteByUserOrganization" parameterType="UserOrganization" >
+    delete from user_organization
+    where user_id = #{userId,jdbcType=INTEGER}
+      and organization_id = #{organizationId,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteByUserId" parameterType="java.lang.Integer" >
+    delete from user_organization
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deleteByOrganizationId" parameterType="java.lang.Integer" >
+    delete from user_organization
+    where organization_id = #{organizationId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insertSelective" parameterType="UserOrganization" >
+    insert into user_organization
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="organizationId != null" >
+        organization_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="organizationId != null" >
+        #{organizationId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  
+  <!-- 添加用户部门关联信息w.xb -->
+  <insert id="insertoid" parameterType="UserOrganization" >
+      insert into user_organization (user_id, organization_id)
+    values (#{userId,jdbcType=INTEGER}, #{organizationId,jdbcType=INTEGER})
+  </insert>
+  
+  <!-- update user_organization -->
+  <select id="countOrg" parameterType="UserOrganization" resultType="java.lang.Integer">
+     select count(1) from user_organization where user_id=#{userId,jdbcType=INTEGER}
+  </select>
+  <update id="update" parameterType="UserOrganization">
+       update user_organization set organization_id=#{organizationId,jdbcType=INTEGER}
+       where user_id=#{userId,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 根据用户id获取组织 -->
+  <select id="getOrgByUserId" resultMap="userOrganizationResultMap" parameterType="java.lang.Integer">
+        	select * from user_organization where user_id=#{userId,jdbcType=INTEGER}
+   </select>
+   
+   <!-- 根据组织id获取用户 -->
+  <select id="getUsersByOrgId" resultMap="userResultMap" parameterType="java.lang.Integer">
+        	select u.*
+			from user_organization uo
+			left join `user` u on uo.user_id=u.id
+			where uo.organization_id=#{organizationId,jdbcType=INTEGER}
+   </select>
+   
+   <!-- 根据组织id获取用户 -->
+  <select id="getUsers" resultMap="userResultMap" parameterType="java.lang.String">
+        	select * from user where description=#{type}
+   </select>
+  
+   
+   <!-- 根据userid 删除用户单位表内容  -->
+      <delete id="deleteOrganizationByUserId" parameterType="java.lang.Integer" >
+DELETE FROM user_organization WHERE user_id = #{id}
+  </delete>
+  <!-- 更具serialId查询到办案中心的部门id   -->
+  <select id="queryOrgIdBySerialId" resultMap="userOrganizationResultMap" parameterType="java.lang.Integer">
+select uo.* from user_organization uo where uo.organization_id = (
+	select org.id from organization org where org.id = (
+	select inta.organization_id from interrogate_area inta where inta.id = (
+	select ints.interrogate_area_id  from interrogate_serial ints where ints.id = #{interrogateSerialId}
+		)
+	)
+) limit 1,1
+ </select>
+</mapper>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.zx.IZxMapper">
+	<resultMap id="zxMapper" type="zx">
+    	<id property="id" column="id"/>
+    	<result property="bt" column="bt"/>
+    	<result property="fssj" column="fssj"/>
+    	<result property="nr" column="nr"/>
+    	<result property="tp" column="tp"/>
+    	<result property="dlx" column="dlx"/>
+    	<result property="zlx" column="zlx"/>
+    	<result property="xsurl" column="xsurl"/>
+    </resultMap>
+
+    <select id="queryAllZx" resultMap="zxMapper"  >
+        	SELECT * FROM zx
+    </select>
+    <select id="countZx" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM zx
+    </select>
+    <select id="queryAllZxList" resultMap="zxMapper" parameterType="java.util.Map" >
+        	SELECT * FROM zx ORDER BY id  desc  limit ${pageIndex},${rows}
+    </select>
+    <select id="countZxlist" resultType="java.lang.Integer" parameterType="java.util.Map">
+        	SELECT count(*) FROM zx
+    </select>
+    
+      <delete id="deleteZxById" parameterType="Long">  
+            DELETE FROM zx WHERE id=#{id}
+    </delete> 
+	<!-- 增加信息 -->
+	<insert id="insertZx" parameterType="zx">
+		insert into zx
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="bt != null">
+				bt,
+			</if>
+			<if test="fssj != null">
+				fssj,
+			</if>
+			<if test="nr != null">
+				nr,
+			</if>
+			<if test="tp != null">
+				tp,
+			</if>
+			<if test="dlx != null">
+				dlx,
+			</if>
+			<if test="zlx != null">
+				zlx,
+			</if>
+			<if test="xsurl != null">
+				xsurl,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="bt != null">
+				#{bt},
+			</if>
+			<if test="fssj != null">
+				#{fssj},
+			</if>
+			<if test="nr != null">
+				#{nr},
+			</if>
+			<if test="tp != null">
+				#{tp},
+			</if>
+			<if test="dlx != null">
+				#{dlx},
+			</if>
+			<if test="zlx != null">
+				#{zlx},
+			</if>
+			<if test="xsurl != null">
+				#{xsurl},
+			</if>
+		</trim>
+	</insert>
+	
+	 <update id="updateZx" parameterType="zx">  
+            UPDATE zx SET 
+	    		bt=#{bt},
+	    		fssj=#{fssj},
+	    		nr=#{nr},
+	    		dlx=#{dlx},
+	    		xsurl=#{xsurl}
+            WHERE 
+	    		id=#{id}
+    </update>
+	 <update id="updateZxTp" parameterType="zx">  
+            UPDATE zx SET 
+	    		tp=#{tp}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

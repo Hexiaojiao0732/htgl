@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.wffzqk.IPtcxMapper">
+
+    <resultMap id="qkryajResultMapper" type="com.zhixin.rd.rkjc.web.entity.QkryajEntity">
+        <id column="id" property="id"/>
+        <result column="sfzh" property="sfzh"/>
+        <result column="xm" property="xm"/>
+        <result column="ajbh" property="ajbh"/>
+        <result column="xb" property="xb"/>
+        <result column="csrq" property="csrq"/>
+        <result column="mz" property="mz"/>
+        <result column="lad" property="lad"/>
+        <result column="hjd" property="hjd"/>
+        <result column="sjly" property="sjly"/>
+        <result column="sjlx" property="sjlx" />
+        <result column="rksj" property="rksj"/>
+        <result column="zhgxsj" property="zhgxsj"/>
+
+    </resultMap>
+    <resultMap id="regionMap" type="com.zhixin.rd.rkjc.web.entity.DmDzEntity">
+        <id property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="name" column="name"/>
+        <result property="level" column="level"/>
+    </resultMap>
+   <!-- <select id="queryQkyaj" parameterType="java.lang.String" resultType="com.zhixin.rd.rkjc.web.entity.QkryajEntity">
+        SELECT  * FROM  qkryaj
+         <where>
+             sfzh IN <foreach collection="sfzhList" item="item" index="index" open="(" separator="," close=")">#{item}</foreach>
+         </where>
+
+    </select>-->
+   <select id="queryQkyaj" parameterType="com.zhixin.rd.rkjc.web.form.ParamForm" resultType="com.zhixin.rd.rkjc.web.entity.QkryajEntity">
+       SELECT  xm,xb,csrq,sfzh,hjd from ${tableName}
+       <where>
+           <if test="gmsfhm !=null and gmsfhm !=''">
+               and sfzh = #{gmsfhm}
+           </if>
+       </where>
+   </select>
+
+    <!-- 获取区-->
+    <select id="quByDm" parameterType="String" resultMap="regionMap">
+        SELECT  name,parent_id from  dm_dz WHERE code = #{dm}
+    </select>
+
+    <!-- 获取市-->
+    <select id="shiByDm" parameterType="String" resultMap="regionMap">
+        SELECT  name,parent_id from  dm_dz WHERE code = #{dm}
+    </select>
+
+    <!-- 获取省-->
+    <select id="shengByDm" parameterType="String" resultMap="regionMap">
+        SELECT  name,parent_id from  dm_dz WHERE code = #{dm}
+    </select>
+  <!--  &lt;!&ndash; 获取市&ndash;&gt;
+    <select id="cityByDm" parameterType="String" resultType="String">
+        SELECT  name from  dm_dz
+        <where>
+            <if test="cityDm !=null and cityDm !=''">
+                and `code` = #{cityDm}
+            </if>
+        </where>
+    </select>
+
+    &lt;!&ndash; 获取县&ndash;&gt;
+    <select id="xianByDm" parameterType="String" resultType="String">
+        SELECT  name from  dm_dz
+        <where>
+            <if test="xianDm !=null and xianDm !=''">
+                and `code` = #{xianDm}
+            </if>
+        </where>
+    </select>-->
+</mapper>
+

@@ -1,0 +1,31 @@
+#ytsrInfo .label-font-style{
+    font-size: 18px;
+}
+.layui-elem-field {
+    margin-bottom: 10px;
+    padding: 0;
+    border: 1px solid #e2e2e2;
+}
+
+.layui-elem-field legend {
+    margin-left: 20px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 300
+}
+
+.layui-field-box {
+    padding: 0;
+}
+
+.layui-field-title .layui-field-box {
+    padding: 10px 0
+}
+
+.serch01 input{
+    line-height: 10px;
+    border:2px solid #424242;
+    padding:0 5px;
+    color:#666;
+    background:#fff;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>记录-详情</title>
+  <link type="text/css" rel="stylesheet" href="../css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="law.css"/>
+</head>
+<body>
+<!--begin：container -->
+<div class="container">
+	<div class="law-cont">
+		<h2>版权声明</h2>
+		<p>本网所有内容，包括但不限于文字、图片、视频等内容受著作权法的保护。本网站尊重著作权人的意愿。部分著作权人基于对其著作权的主张，可能不赞同本网站对其作品的使用；或者著作权人已对他方作出某种承诺；或者著作权人发表过某种声明，限制其作品的使用，但这部分作品却被本网站误用。对于涉及上述情况的作品本网站主办方在充分维护著作权人或相关权利人利益的基础上，根据双方协商的结果进行处理。</p>
+		<p class="pt30">本网站主办方希望与相关著作权人签订著作权使用协议，但无法逐一联系作品的著作权人，因此在本网站发布著作权人的作品后，请著作权人及时与本网站联系，告之作品所负载的权利状况，以便监督维护著作权人的权益。如著作权人不同意本网站使用，请速与本网站联系，本网站将停止该作品的使用，以减少双方的损失。否则，由此扩大的损失，由著作权人自负。</p>
+		<p class="pt30">联系电话：010-88544495</p>
+		<p>邮箱：cmp@nlc.cn</p>
+	</div>
+
+</div>
+<footer>
+	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="#" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
+</footer>
+<!--end:footer-->
+<!-- 回到顶部 -->
+<div id="tbox">
+	<a class="gotop"  id="gotop" title="回到顶部"></a>
+</div>
+<!-- 回到顶部 -->
+<!--js -->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/gotop.js"></script>
+<script>
+//简单jq tab   index从0开始
+$(function(){
+    $("#nav a").off("click").on("click",function(){
+       var index = $(this).index();
+       $(this).addClass("on").siblings().removeClass("on");
+       $("#contentBox .box").eq(index).addClass("active").siblings().removeClass("active");
+     });
+  }); 
+</script>
+</body>
+</html>

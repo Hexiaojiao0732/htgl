@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.xm.IXmMapper">
+	<resultMap id="xmMapper" type="xm">
+    	<id property="id" column="id"/>
+    	<result property="mc" column="mc"/>
+    	<result property="ccrxm" column="ccrxm"/>
+    	<result property="bh" column="bh"/>
+    	<result property="ccrbh" column="ccrbh"/>
+    	<result property="ccrxb" column="ccrxb"/>
+    	<result property="ccrcsrq" column="ccrcsrq"/>
+    	<result property="xmlb" column="xmlb"/>
+    	<result property="xmzp" column="xmzp"/>
+    	<result property="xmjs" column="xmjs"/>
+    	<result property="isTj" column="is_tj"/>
+    	<result property="cjsj" column="cjsj"/>
+    	<result property="sbdqhdw" column="sbdqhdw"/>
+    	<result property="ssqy" column="ssqy"/>
+		<result property="djl" column="djl"/>
+    </resultMap>
+
+    <select id="queryAllXm" resultMap="xmMapper">
+        	SELECT * FROM xm
+    </select>
+
+    <select id="countXm" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM xm where 1=1
+			<if test="xmlb !=null and xmlb !=''">
+				and xmlb=#{xmlb}
+			</if>
+			<if test="ssqy !=null and ssqy !=''">
+				and ssqy=#{ssqy}
+			</if>
+    </select>
+    <select id="queryAllXmList" resultMap="xmMapper" parameterType="java.util.Map" >
+        SELECT * FROM xm where 1=1
+		<if test="xmlb !=null and xmlb !=''">
+			and xmlb=#{xmlb}
+		</if>
+		<if test="ssqy !=null and ssqy !=''">
+			and ssqy=#{ssqy}
+		</if>
+		order by djl desc,id desc  limit ${pageIndex},${rows}
+    </select>
+    <select id="countXmlist" resultType="java.lang.Integer" parameterType="java.util.Map">
+        SELECT count(*) FROM xm where 1=1
+		<if test="xmlb !=null and xmlb !=''">
+			and xmlb=#{xmlb}
+		</if>
+		<if test="ssqy !=null and ssqy !=''">
+			and ssqy=#{ssqy}
+		</if>
+    </select>
+    <select id="queryAllXmById" parameterType="java.util.Map" resultMap="xmMapper">
+    	SELECT * FROM xm where 1=1 
+    	<if test="id !=null and id !=''">
+    		and id=#{id}
+    	</if>
+    </select>
+      <delete id="deleteXmById" parameterType="java.lang.Long">  
+            DELETE FROM xm WHERE id=#{id}
+    </delete> 
+	<!-- 增加信息 -->
+	<insert id="insertXm" parameterType="xm">
+		insert into xm
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				mc,
+			</if>
+			<if test="ccrxm != null">
+				ccrxm,
+			</if>
+			<if test="bh != null">
+				bh,
+			</if>
+			<if test="ccrbh != null">
+				ccrbh,
+			</if>
+			<if test="ccrxb != null">
+				ccrxb,
+			</if>
+			<if test="ccrcsrq != null">
+				ccrcsrq,
+			</if>
+			<if test="xmlb != null">
+				xmlb,
+			</if>
+			<if test="xmzp != null">
+				xmzp,
+			</if>
+			<if test="xmjs != null">
+				xmjs,
+			</if>
+			<if test="isTj != null">
+				is_tj,
+			</if>
+			<if test="cjsj != null">
+				cjsj,
+			</if>
+			<if test="sbdqhdw != null">
+				sbdqhdw,
+			</if>
+			<if test="ssqy != null">
+				ssqy,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="mc != null">
+				#{mc},
+			</if>
+			<if test="ccrxm != null">
+				#{ccrxm},
+			</if>
+			<if test="bh != null">
+				#{bh},
+			</if>
+			<if test="ccrbh != null">
+				#{ccrbh},
+			</if>
+			<if test="ccrxb != null">
+				#{ccrxb},
+			</if>
+			<if test="ccrcsrq != null">
+				#{ccrcsrq},
+			</if>
+			<if test="xmlb != null">
+				#{xmlb},
+			</if>
+			<if test="xmzp != null">
+				#{xmzp},
+			</if>
+			<if test="xmjs != null">
+				#{xmjs},
+			</if>
+			<if test="isTj != null">
+				#{isTj},
+			</if>
+			<if test="cjsj != null">
+				now(),
+			</if>
+			<if test="sbdqhdw != null">
+				#{sbdqhdw},
+			</if>
+			<if test="ssqy != null">
+				#{ssqy},
+			</if>
+		</trim>
+	</insert>
+	
+	 <update id="updateXm" parameterType="xm">  
+            UPDATE xm SET 
+	    		mc=#{mc},
+	    		ccrxm=#{ccrxm},
+	    		bh=#{bh},
+	    		ccrbh=#{ccrbh},
+	    		ccrxb=#{ccrxb},
+	    		ccrcsrq=#{ccrcsrq},
+	    		xmlb=#{xmlb},
+	    		xmjs=#{xmjs},
+	    		is_tj=#{isTj},
+	    		sbdqhdw=#{sbdqhdw},
+	    		ssqy=#{ssqy}
+            WHERE 
+	    		id=#{id}
+    </update>
+
+	<update id="updateXmImg" parameterType="xm">
+		UPDATE xm SET xmzp=#{xmzp} WHERE id=#{id}
+	</update>
+
+	<update id="updateXmDjlById" parameterType="java.util.Map">
+		update xm set djl=IFNULL(djl,0)+1 where id= #{id}
+	</update>
+
+	<select id="queryTjXm" resultMap="xmMapper"  >
+		SELECT * FROM xm where is_tj = 1 order by id desc
+	</select>
+</mapper>
+
+

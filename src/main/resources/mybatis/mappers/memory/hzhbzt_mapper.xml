@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.hzhb.IHzhbZtMapper">
+	<resultMap id="hzhbztMapper" type="hzhbzt">
+    	<id property="id" column="id"/>
+    	<result property="ztMc" column="zt_mc"/>
+    	<result property="xmMc" column="xm_mc"/>
+    	<result property="xmjj" column="xm_jj"/>
+    	<result property="xmFzr" column="xm_fzr"/>
+    	<result property="yx" column="yx"/>
+    	<result property="zt" column="zt"/>
+    	<result property="hzhbId" column="hzhb_id"/>
+    	<result property="zp" column="zp"/>
+    	<result property="hzhbmc" column="hzhbmc"/>
+		<result property="gzwjDz" column="gzwj_dz"/>
+    </resultMap>
+
+	<select id="queryAllHzhbZt" resultMap="hzhbztMapper"  parameterType="java.util.HashMap">
+        	SELECT * ,(select mc from hzhb hzhb where hzhb.id = a.hzhb_id) hzhbmc FROM hzhb_zt  a 
+        	
+        <!-- 	where a.hzhb_id=#{ID}  -->
+        	<where>
+			<if test="ID != null">
+			a.hzhb_id=${ID}
+			</if>
+			<if test="zt != null">
+		and	a.zt=${zt}
+			</if>
+		</where>
+        	
+        	
+        	limit ${pageIndex},${rows}
+    </select>
+    <select id="countHzhbZt" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM hzhb_zt a
+        	<where>
+			<if test="ID != null">
+			a.hzhb_id=${ID}
+			</if>
+			<if test="zt != null">
+		and	a.zt=${zt}
+			</if>
+		</where>
+    </select>
+<update id="updateShZtById" parameterType="hzhbzt">  
+            UPDATE hzhb_zt SET 
+            zp=#{zp},
+	    		zt=1
+            WHERE 
+	    		id=#{id}
+    </update>
+    
+      <delete id="deleteHzHbZt" parameterType="Long">  
+            DELETE FROM hzhb_zt WHERE id=#{id}
+    </delete> 
+    
+   <!--  
+	增加信息
+	<insert id="insertGxz" parameterType="gxz">
+		insert into gxz
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="xm != null">
+				xm,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="zp != null">
+				zp,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="xm!= null">
+				#{xm},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="zp != null">
+				#{zp},
+			</if>
+		</trim>
+	</insert>
+	
+	  <delete id="deleteGxz" parameterType="Long">  
+            DELETE FROM gxz WHERE id=#{id}
+    </delete> 
+    
+       <update id="updateGxz" parameterType="gxz">  
+            UPDATE gxz SET 
+	    		xm=#{xm},
+	    		jj=#{jj},
+	    		zp=#{zp}
+            WHERE 
+	    		id=#{id}
+    </update> -->
+</mapper>
+
+

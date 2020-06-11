@@ -1,0 +1,22 @@
+@charset "utf-8";/* CSS Document */
+/*********CSS reset ***********/
+*{margin:0;padding:0;}
+ul,li,ol{list-style:none; }
+img,a img{border:none;margin:0;padding:0;}
+a{ text-decoration:none;color:black; font-weight:bold;}
+a:hover{text-decoration:none;}
+.clear{ clear:both;}
+
+/*Function开始*/
+
+#Function_box{ width:100%; margin-top:60px;}
+.Function{width:180px;height:180px; background:url(../image/index/bkk.png) no-repeat;margin: 0 auto; float:left; margin-left:10%; margin-top:5%;}
+.Function:hover{ background:url(../image/index/bk.png) no-repeat;}
+.Function a{display:inline-block;text-align:center;line-height:50px; margin: 0 auto;width:180px;height:180px; margin-top:20%;} 
+
+.Function a img.icon-hover,.Function a img.icon-active{ display:none}
+.Function a.active img.icon-img,.Function a.active img.icon-hover{ display:none}
+.Function a.active img.icon-active{ display:inline}
+
+.Function a.hover img.icon-img,.Function a.hover img.icon-active{ display:none}
+.Function a.hover img.icon-hover{ display:inline}

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.rw.IRwGxRwMapper">
+	<resultMap id="rwgxMapper" type="rwgx">
+    	<id property="id" column="id"/>
+    	<result property="ssrwId" column="ssrw_id"/>
+    	<result property="sf" column="sf"/>
+    	<result property="xb" column="xb"/>
+    	<result property="nl" column="nl"/>
+    	<result property="yz" column="yz"/>
+    	<result property="mz" column="mz"/>
+    	<result property="xm" column="xm"/>
+    	<result property="pssj" column="pssj"/>
+    	<result property="psdd" column="psdd"/>
+    	<result property="jj" column="jj"/>
+    	<result property="wzjj" column="wzjj"/>
+    	<result property="nbbsh" column="nbbsh"/>
+    	<result property="szn" column="szn"/>
+    	<result property="gb" column="gb"/>
+    	<result property="qtxm" column="qtxm"/>
+    	<result property="jg" column="jg"/>
+    	<result property="ly" column="ly"/>
+    	<result property="zp" column="zp"/>
+    	<result property="rwzp" column="rwzp"/>
+    	<result property="xyrwgx" column="xyrwgx"/>
+    </resultMap>
+
+    <select id="queryAlljl" resultMap="rwgxMapper" >
+        	SELECT * FROM rwxgrw
+    </select>
+    
+    <select id="queryRwById" resultMap="rwgxMapper" parameterType="Long" >
+        	SELECT * FROM rwxgrw where ssrw_id =#{Id}
+    </select>
+    <select id="countJl" resultType="java.lang.Integer" >
+        	SELECT count(*) FROM jl
+    </select>
+	<!-- 增加信息 -->
+	<insert id="insertRwGxRw" parameterType="jl">
+		insert into rwxgrw
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="ssrwId != null">
+				ssrw_id,
+			</if>
+			<if test="sf != null">
+				sf,
+			</if>
+			<if test="xb != null">
+				xb,
+			</if>
+			<if test="nl != null">
+				nl,
+			</if>
+			<if test="yz != null">
+				yz,
+			</if>
+			<if test="mz != null">
+				mz,
+			</if>
+			<if test="xm != null">
+				xm,
+			</if>
+			<if test="pssj != null and pssj!=''">
+				pssj,
+			</if>
+			<if test="psdd != null">
+				psdd,
+			</if>
+			<if test="jj != null">
+				jj,
+			</if>
+			<if test="wzjj != null">
+				wzjj,
+			</if>
+			<if test="nbbsh != null">
+				nbbsh,
+			</if>
+			<if test="szn != null">
+				szn,
+			</if>
+			<if test="gb != null">
+				gb,
+			</if>
+			<if test="qtxm != null">
+				qtxm,
+			</if>
+			<if test="jg != null">
+				jg,
+			</if>
+			<if test="ly != null">
+				ly,
+			</if>
+			<if test="zp != null">
+				zp,
+			</if>
+			<if test="yrwgx != null">
+				yrwgx,
+			</if>
+			<if test="rwzp != null">
+				rwzp,
+			</if>
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="ssrwId != null">
+				#{ssrwId},
+			</if>
+			<if test="sf != null">
+				#{sf},
+			</if>
+			<if test="xb != null">
+				#{xb},
+			</if>
+			<if test="nl != null">
+				#{nl},
+			</if>
+			<if test="yz != null">
+				#{yz},
+			</if>
+			<if test="mz != null">
+				#{mz},
+			</if>
+			<if test="xm != null">
+				#{xm},
+			</if>
+			<if test="pssj != null and pssj!=''">
+				#{pssj},
+			</if>
+			<if test="psdd != null">
+				#{psdd},
+			</if>
+			<if test="jj != null">
+				#{jj},
+			</if>
+			<if test="wzjj != null">
+				#{wzjj},
+			</if>
+			<if test="nbbsh != null">
+				#{nbbsh},
+			</if>
+			<if test="szn != null">
+				#{szn},
+			</if>
+			<if test="gb != null">
+				#{gb},
+			</if>
+			<if test="qtxm != null">
+				#{qtxm},
+			</if>
+			<if test="jg != null">
+				#{jg},
+			</if>
+			<if test="ly != null">
+				#{ly},
+			</if>
+			<if test="zp != null">
+				#{zp},
+			</if>
+				<if test="yrwgx != null">
+				#{yrwgx},
+			</if>
+			<if test="rwzp != null">
+				#{rwzp},
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteRwgxById" parameterType="java.lang.Long">
+		delete from rwxgrw where id=#{id}
+	</delete>
+</mapper>
+
+

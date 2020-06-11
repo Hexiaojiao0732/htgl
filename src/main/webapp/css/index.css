@@ -1,0 +1,44 @@
+#hintdiv {
+	display: none;
+	position: absolute;
+	z-index: 500;
+}
+
+.top_kuang {
+	position: absolute;
+	visibility: visible;
+	width: 271px;
+	z-index: 501;
+}
+
+.top_info {
+	overflow: hidden;
+	zoom: 1;
+	padding: 3px 10px;
+	text-align: left;
+	word-break: break-all;
+	letter-break: break-all;
+	font: 12px/160% Tahoma, Verdana, snas-serif;
+	color: #6B6B6B;
+	background: #FFFFE1 no-repeat;
+	margin-top: -5px;
+	margin-bottom: -5px;
+	border: 1px solid #000000;
+	-moz-border-radius: 15px; /* Gecko browsers Firefox */
+	-webkit-border-radius: 15px; /* Webkit browsers Safari Chrome*/
+	border-radius: 10px; /* W3C syntax */
+}
+
+.top_table {
+	border: none;
+	width:300px;
+	text-align: left;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.top_table_td{
+	border: 1px solid #000000;
+	margin: 0px;
+	padding: 2px;
+}

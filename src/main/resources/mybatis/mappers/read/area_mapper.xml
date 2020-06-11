@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zhixin.rd.rkjc.web.dao.read.area.IAreaReadMapper" >
+  <resultMap id="BaseResultMap" type="com.zhixin.rd.rkjc.web.entity.AreaEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="organization_id" property="organizationId" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="postcode" property="postcode" jdbcType="VARCHAR" />
+    <result column="created_time" property="createdTime" jdbcType="TIMESTAMP" />
+    <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP" />
+    <result column="organization_name" property="organizationName"/>
+  </resultMap>
+
+ <select id="listAllArea" resultMap="BaseResultMap" parameterType="java.util.Map">
+		<!-- no ";" at the end -->
+		select ia.id id,ia.`name` name,ia.type type,ia.description description,ia.address address,ia.telephone telephone,ia.postcode postcode,ia.created_time created_time,ia.updated_time  updated_time
+			,o.organization  organization_name ,ia.organization_id 
+        from interrogate_area ia left join organization o on ia.organization_id=o.id 
+         where 1=1 
+         <if test="dataAuth!=null and dataAuth!=''">
+			and ${dataAuth}
+		 </if>
+		<if test="name!=null and name!=''">
+			and ia.name like '%${name}%'
+		</if>
+		<if test="type!=null and type!=''">
+			and ia.type ='${type}'
+		</if>
+       <if test="pageStart!=null and pageStart!='' and rows!=null and rows!=''">
+            limit ${pageStart},${rows}
+       </if>
+	</select>
+  <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map">
+    		select count(1)   from interrogate_area ia left join organization o on ia.organization_id=o.id
+    		<where> 
+    		<if test="dataAuth!=null and dataAuth!=''">
+				and ${dataAuth}
+		    </if>
+	        <if test="name!=null and name!=''">
+				and ia.name like '%${name}%'
+		    </if>
+		    <if test="type!=null and type!=''">
+				and ia.type ='${type}'
+		    </if>
+			</where>
+    </select>
+	<select id="getAreaById" resultMap="BaseResultMap" parameterType="Long">
+		select ia.* ,o.organization  organization_name 
+        from interrogate_area ia left join organization o on ia.organization_id=o.id 
+         where ia.id = #{id}
+	</select>
+
+    <select id="listAreaByOrgStr" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from interrogate_area where organization_id in (${orgStr})
+    </select>
+</mapper>
