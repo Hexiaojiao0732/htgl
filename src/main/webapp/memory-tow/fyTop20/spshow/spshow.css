@@ -5,6 +5,7 @@
 .law-cont .sparea{width: 100%;height: auto;}
 .law-cont p{color: #e7e5e4;line-height: 24px;font-size: 18px;padding: 20px 0;}
 .law-cont p.pt30{padding-top: 20px;}
+.law-cont p.jianjie{color: #e7e5e4;line-height: 24px;font-size: 14px;padding: 20px 0;}
 /*media-max-width: 1080px */
 @media (max-width: 1080px) {
 .container{padding-top: 1rem;}
