@@ -33,6 +33,7 @@ input[type='checkbox'] { vertical-align: -14px; }
 header { width: 100%;box-shadow: 4px 4px 15px rgba(15,17,17,.2);z-index: 999;position: fixed;  background-color: rgba(0,0,0,0.8);left: 0;top: 0;}
 .head { width: 1100px; height: 70px; margin: 0 auto; position: relative; z-index: 99999; }
 .head .font-index{font-size: 20px;color: #bea281;height: 61px;line-height: 61px;border-bottom:9px solid #cebc95;width: 76px;text-align: center;margin-left: 33px; }
+.head .font-index2{font-size: 20px;color: #bea281;height: 61px;line-height: 61px;border-bottom:9px solid #cebc95;width: 160px;text-align: center;margin-left: 13px; }
 .head .aap_navbar_icon{font-size: 20px;color: #bea281;height: 70px;line-height: 70px;margin-right: 40px;background: url("../images/list_icon5.png") no-repeat right center / 20px 16px;padding-right: 25px;}
 .head_mian { position: absolute; right: 0; top: 70px;width: 187px; height: auto; }
 /*banner */
