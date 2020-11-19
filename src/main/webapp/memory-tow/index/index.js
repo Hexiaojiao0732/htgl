@@ -13,7 +13,7 @@ function initXmtj(){
                 var sytjUlHtml = '';
                 for(var i=0; i<data.length; i++) {
                     var row = data[i];
-                    var imageUrl = "../../memory/common/imageshow.do?path="+escape(row.xmzp);
+                    var imageUrl = "../../memory/common/imageshowThumb.do?path="+escape(row.xmzp);
                     sytjUlHtml += '<li><a href="../record/record.html?xmId='+row.id+'"><p class="bg"></p><p class="img">' +
                         '<img src="'+imageUrl+'"/></p><p class="name">'+row.mc+'</p><p class="time">'+row.ccrxm+'</p>' +
                         '<p class="time">项目编号：'+row.bh+'</p><p class="tags">传承人编号：'+row.ccrbh+'</p></a></li>';

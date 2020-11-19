@@ -30,7 +30,7 @@ function queryXmList(lx,qy){
             var xmHtml = "";
             for(var i=0; i<rows.length; i++){
                 var row = rows[i];
-                var imageUrl = "../../memory/common/imageshow.do?path="+escape(row.xmzp);
+                var imageUrl = "../../memory/common/imageshowThumb.do?path="+escape(row.xmzp);
                 var xm = '<li><a href="../record/record.html?xmId='+row.id+'"><p class="bg"></p><p class="img"><img src="'+imageUrl+'"/>' +
                     '</p><p class="name">'+row.mc+'</p><p class="time">'+row.ccrxm+'</p><p class="time">项目编号：'+row.bh+'' +
                     '</p><p class="tags">传承人编号：'+row.ccrbh+'</p></a></li>';

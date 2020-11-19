@@ -3,6 +3,8 @@ package com.zhixin.rd.memory.web.controller.common;
 import com.zhixin.rd.memory.web.entity.XmEntity;
 import com.zhixin.rd.memory.web.service.spnew.ISpNewService;
 import com.zhixin.rd.memory.web.service.xm.IXmService;
+import com.zhixin.rd.memory.web.util.ImageUtil;
+
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +36,40 @@ public class CommonController {
 	@Autowired
 	ISpNewService spNewService;
 
+	@RequestMapping(value = "/imageshowThumb")
+	@ResponseBody
+	public void showImageThumb(@RequestParam String path, HttpServletResponse response) throws Exception {
+		try {
+			logger.info("======================params.get path========================" + path);
+			File file = new File(path);
+			if (!file.exists()) {
+				System.err.println("无此照片");
+			} else {
+				String thumbFilePath = file.getParent()+"/"+ImageUtil.DEFAULT_PREVFIX2+file.getName();
+				File thumbFile = new File(thumbFilePath);
+				if (!thumbFile.exists()) {
+					String thumbName = new ImageUtil().thumbnailImage(path, 202, 137, ImageUtil.DEFAULT_PREVFIX2, false);
+					thumbFile = new File(file.getParent() + "/" + thumbName);
+				}
+				
+				FileInputStream fis =null;
+				fis = new FileInputStream(thumbFile);
+				int i = fis.available(); // 得到文件大小
+				System.out.println(i);
+				byte data[] = new byte[i];
+				fis.read(data); // 读数据
+				fis.close();
+				response.setContentType("image"); // 设置返回的文件类型
+				OutputStream toClient = response.getOutputStream(); // 得到向客户端输出二进制数据的对象
+				toClient.write(data); // 输出数据
+				toClient.close();
+			}
+			
+		} catch (Exception e) {
+			logger.error("", e);
+		}
+	}
+	
 	@RequestMapping(value = "/imageshow")
 	@ResponseBody
 	public void showImage(@RequestParam String path, HttpServletResponse response) throws Exception {

@@ -24,7 +24,7 @@
     </select>
 
     <select id="countXm" resultType="java.lang.Integer" >
-        	SELECT count(*) FROM xm where 1=1
+        	SELECT count(*) FROM xm where id in (select xm_id from xm_sp)
 			<if test="xmlb !=null and xmlb !=''">
 				and xmlb=#{xmlb}
 			</if>
@@ -33,7 +33,7 @@
 			</if>
     </select>
     <select id="queryAllXmList" resultMap="xmMapper" parameterType="java.util.Map" >
-        SELECT * FROM xm where 1=1
+        SELECT * FROM xm where id in (select xm_id from xm_sp)
 		<if test="xmlb !=null and xmlb !=''">
 			and xmlb=#{xmlb}
 		</if>
@@ -43,7 +43,7 @@
 		order by djl desc,id desc  limit ${pageIndex},${rows}
     </select>
     <select id="countXmlist" resultType="java.lang.Integer" parameterType="java.util.Map">
-        SELECT count(*) FROM xm where 1=1
+        SELECT count(*) FROM xm where id in (select xm_id from xm_sp)
 		<if test="xmlb !=null and xmlb !=''">
 			and xmlb=#{xmlb}
 		</if>

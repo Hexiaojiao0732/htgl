@@ -59,7 +59,7 @@ function initXmSp(xmId){
                 var spUlHtml = '';
                 for(var i=0; i<data.length; i++) {
                     var row = data[i];
-                    var imageUrl = "../../memory/common/imageshow.do?path="+escape(row.spzp);
+                    var imageUrl = "../../memory/common/imageshowThumb.do?path="+escape(row.spzp);
                     spUlHtml += '<li><a href="../spshow/spshow.html?id='+row.id+'" class="aa"><div class="img"><img src="'+imageUrl+'" />' +
                         '</div><p class="name">'+row.mc+'</p></a></li>';
                 }
@@ -81,7 +81,7 @@ function initXmTk(xmId){
                 var tkUlHtml = '';
                 for(var i=0; i<data.length; i++) {
                     var row = data[i];
-                    var imageUrl = "../../memory/common/imageshow.do?path="+escape(row.tpdz);
+                    var imageUrl = "../../memory/common/imageshowThumb.do?path="+escape(row.tpdz);
                     tkUlHtml += '<li><div class="aa"><img src="'+imageUrl+'" alt="'+row.mc+'" class="img"  onclick="toImgShow(this);"/>' +
                         '<p class="name">'+row.mc+'</p></div></li>';
                 }
