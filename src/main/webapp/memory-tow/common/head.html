@@ -1,0 +1,32 @@
+<!-- 菜单收缩 -->
+<script type="text/javascript">
+/* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// 点击下拉菜单意外区域隐藏
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+  }
+}
+</script>
+<div class="head app_silde">
+		<a class="font-index fl" href="../index/index.html" target="_parent">首页</a>
+		<!-- nav展开 -->
+		<div class="dropdown aap_navbar_icon fr">
+		    <button class="dropbtn" onclick="myFunction()">项目列表</button>
+		    <div class="dropdown-content" id="myDropdown">
+		      <a href="../third/third.html">第三批成果展示</a>
+		      <a href="../second/second.html">第二批成果展示</a>
+		      <a href="../first/first.html">第一批成果展示</a>
+		      <a href="../fyTop20/index.html">非遗影像公开课</a>
+		      <a href="../qjfeiyi/index.html">全部成果展示</a>
+		    </div>
+	  </div> 
+		<!-- <a class="aap_navbar_icon fr" href="#"><span>全部项目列表</span></a> -->
+	</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1,width=device-width,initial-scale=1,user-scalable=no" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>年华易老 技•忆永存</title>
+  <link type="text/css" rel="stylesheet" href="../css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="../common/first.css"/>
+  <link type="text/css" rel="stylesheet" href="../index/swiper.min.css" />
+  <link type="text/css" rel="stylesheet" href="yz.css"/>
+</head>
+<body>
+<!--begin:header-->
+<header id="header"></header>
+<!--end:header-->
+<!--begin：container -->
+<div class="container">
+	<div class="index_main">
+	 <div class="crumb">首页<span>>></span>年华易老 技•忆永存——国家级非物质文化遗产代表性传承人记录工作成果展映简介</div>
+	 <div class="title">年华易老&nbsp;&nbsp;技•忆永存</div>
+	 <div class="desc descright">——国家级非物质文化遗产代表性传承人记录工作成果展映</div>
+	 <div class="content">年华易老&nbsp;&nbsp;技•忆永存——国家级非物质文化遗产代表性传承人记录工作成果展映旨在向公众推广及传播此项工作的成果，并为后续传承人记录工作提供示范，通过影像的方式面向公众展现非遗传承人们的技艺、记忆与生活故事。这是国家级非物质文化遗产代表性传承人记录工作成果的集中展示。国家图书馆将推动这些优秀资源长期有效地进行线上永久展示、放映，并运用新媒体和自媒体等大众传播手段，力求扩大传承人记录工作的社会影响力，为非遗记录作品找到观众，为非遗文献资料找到受众，为非遗影像记录与传播提供持续助力。</div>
+	 <div class="content_imgs">
+	 	<img src="../index/images/yz2/1.jpg">
+	 	<img src="../index/images/yz2/2.jpg">
+	 	<img src="../index/images/yz2/3.jpg" class="yz3img">
+	 </div>
+	</div>
+</div>
+<!--end：container -->
+<!--begin:footer-->
+<!--友情链接-->
+<div class="questionnaire clearfix">
+  <div class="links">
+		<ul class="clearfix">
+			<li><a href="#">中华人民共和国文化和旅游部</a></li>
+			<li><a href="#">国家图书馆</a></li>
+			<li><a href="#">中国非物质文化遗产网</a></li>
+			<li><a href="#">国家图书馆中国记忆项目中心</a></li>
+		</ul>
+	</div>
+</div>
+<footer>
+	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="../law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
+</footer>
+<!--end:footer-->
+<!-- 回到顶部 -->
+<div id="tbox">
+	<a class="gotop"  id="gotop" title="回到顶部"></a>
+</div>
+<!-- 回到顶部 -->
+<!-- 投票最多3个提示 -->
+<div id="votealert" class="votealert" style="display:none ;">
+	<div class="close"><img src="../index/images/close.png"></div>
+	<div class="title">您最多可以给3个项目投票<br>感谢您的参与！</div>
+</div>
+<!-- 投票最多3个提示 -->
+<!--js -->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/gotop.js"></script>
+<script src="../index/swiper.min.js"></script>
+<script> 
+		  //banner
+		    var swiper = new Swiper('.swiper-container', {
+		        pagination: '.swiper-pagination',
+		        paginationClickable: true,
+		        nextButton: '.swiper-button-next',
+		        prevButton: '.swiper-button-prev',
+		       	loop: true,
+		       	autoplay: 3000,
+		    });		 
+</script>
+<!-- 菜单收缩 -->
+<script type="text/javascript">
+$(function(){
+  	$(".mpicpoint").hover(
+  		function(){
+  			$(this).addClass('shubon');
+			$(this).parent().find('.mpicfont').show('fast');
+  		},
+  		function(){
+  			$(this).removeClass('shubon');
+			$(this).parent().find('.mpicfont').hide('fast');
+  		}
+  		
+  	);
+  	$("#header").load("../common/head.html");
+});
+</script>
+</body>
+</html>

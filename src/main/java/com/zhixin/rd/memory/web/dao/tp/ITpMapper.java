@@ -1,0 +1,21 @@
+package com.zhixin.rd.memory.web.dao.tp;
+
+import java.util.List;
+import java.util.Map;
+
+import com.zhixin.rd.memory.web.entity.TpEntity;
+
+public interface ITpMapper {
+
+	void insertTp(TpEntity entity);
+
+	List<TpEntity> queryTpList(Map<String, Object> param);
+
+	int countTplist(Map<String, Object> param);
+
+	void deleteTpById(Long id);
+
+	void updateTp(TpEntity entity);
+
+	List<Map<String, Object>> selectTpXm();
+}

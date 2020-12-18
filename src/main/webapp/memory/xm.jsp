@@ -177,6 +177,33 @@
 							</div>
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<div class="fitem">
+								展示批次:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<select type="text" class="easyui-validatebox" style="width:200px;" id="pc" name="pc" >
+										<option vlaue="">请选择</option>
+										<option value="1">第一批展示成果</option>
+										<option value="2">第二批展示成果</option>
+										<option value="3">第三批展示成果</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr id="dy_tr" style="display: none;">
+						<td>
+							<div class="fitem">
+								展示单元:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<select type="text" class="easyui-validatebox" style="width:200px;" id="dy" name="dy" >
+										<option vlaue="">请选择</option>
+										<option value="1">第一单元</option>
+										<option value="2">第二单元</option>
+										<option value="3">第三单元</option>
+										<option value="4">第四单元</option>
+								</select>
+							</div>
+						</td>
+					</tr>
 				</thead>
 			</table>
 		</form>
@@ -315,6 +342,33 @@
 					</div>
 				</td>
 			</tr>
+			<tr>
+						<td>
+							<div class="fitem">
+								展示批次:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<select type="text" class="easyui-validatebox" style="width:200px;" id="update_pc" name="pc">
+										<option vlaue="">请选择</option>
+										<option value="1">第一批展示成果</option>
+										<option value="2">第二批展示成果</option>
+										<option value="3">第三批展示成果</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr id="update_dy_tr" style="display: none;">
+						<td>
+							<div class="fitem">
+								展示单元:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<select type="text" class="easyui-validatebox" style="width:200px;" id="update_dy" name="dy">
+										<option vlaue="">请选择</option>
+										<option value="1">第一单元</option>
+										<option value="2">第二单元</option>
+										<option value="3">第三单元</option>
+										<option value="4">第四单元</option>
+								</select>
+							</div>
+						</td>
+					</tr>
 			</thead>
 		</table>
 	</form>

@@ -1,0 +1,182 @@
+.curtain {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999999999999999;
+    pointer-events: none;
+    animation-fill-mode: forwards;
+}
+.video {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 999999;
+}
+.video .index-loading {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  background: #f4e2ca url(../images/banner01.jpg) no-repeat;
+  background-size: cover;
+}
+.video .index-loading img {
+  position: absolute;
+  left: 50%;
+  top: calc(50% - 40px);
+  transform: translate(-50%, -50%);
+  width: 337px;
+  height: 335px;
+}
+.video .confirmMuted {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  z-index: 9999;
+  display: none;
+}
+.video .confirmMuted .confirmMuted-main {
+  position: absolute;
+  left: 50%;
+  top: calc(75% - 1rem);
+  transform: translateX(-50%);
+  color: #333;
+  font-size: 18px;
+  text-align: center;
+}
+.video .confirmMuted .confirmMuted-main img {
+  margin-bottom: 0.2rem;
+    width: 2.4rem;
+    height: 0.55rem;
+    display: initial;
+}
+.video .confirmMuted .confirmMuted-main .muted-off,
+.video .confirmMuted .confirmMuted-main .muted-on {
+  background: none;
+  border: 0;
+  outline: none;
+  object-fit: cover;
+}
+.video .confirmMuted .confirmMuted-main .muted-off {
+  margin-right: 20px;
+  background-color: none;
+}
+.video .confirmMuted .confirmMuted-main .muted-on {
+	background-color: none;
+}
+.video video {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  object-fit: fill;
+  left: 0;
+  top: 0;
+}
+.video .pass-tip {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  z-index: 999;
+  font-size: 16px;
+  color: white;
+  text-shadow: 0 0 5px black;
+  letter-spacing: 6px;
+}
+.video .music {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  outline: none;
+  right: 4%;
+  top: 6%;
+  z-index: 999;
+  border: none;
+  background: url(../images/mute.png);
+}
+#progressbar {
+  width: 100vw;
+  height: 4px;
+  background: transparent;
+  border: none;
+  position: fixed;
+  bottom: 0;
+  z-index: 999999999;
+}
+#progressbar .ui-progressbar-value {
+  margin: 0;
+  border: none;
+  background-color: #5e422b;
+}
+.progress-label {
+  position: absolute;
+  left: 50%;
+  bottom: 42%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  color: #FFFFFF;
+}
+.progress-label span {
+  font-size: 16px;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.curtain {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999999999999;
+  pointer-events: none;
+  animation-fill-mode: forwards;
+}
+
+@media (max-width: 768px) {
+    .muted-off {
+        margin-right: 0 !important;
+    }
+    .pass-tip {
+        letter-spacing: 0px !important;
+    }
+    .video .index-loading {
+	  width: inherit;
+	  height: inherit;
+	  position: absolute;
+	  left: 0;
+	  top: 0;
+	  z-index: 9999;
+	  background: #f4e2ca url(../images/bg.jpg) no-repeat;
+	  background-size: cover;
+	}
+}
+
+@media (max-width: 1200px) {
+    .video {
+        background: black;
+    }
+    .video video {
+        width: 100%;
+        height: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+.confirmMuted-main p {
+  max-width: 80vw;
+  width: max-content;
+  margin: 0 auto;
+}

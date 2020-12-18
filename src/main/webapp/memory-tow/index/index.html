@@ -9,86 +9,60 @@
   <link type="text/css" rel="stylesheet" href="index.css"/>
   
   <link type="text/css" rel="stylesheet" href="swiper.min.css" />
+  <link type="text/css" rel="stylesheet" href="../css/video.css" />
   <!--[if IE 8]>
   <link type="text/css" rel="stylesheet" href="idangerous.swiper.css" />
   <![endif]-->
-  
-  <style>
-/*重置样式*/
-	.nav>li{float: left;text-align: center;position: relative;}
-    .nav>li:hover{background-color: ;}
-    .subnav{position: absolute;left: 0;top: 70px;background-color: #a5a5a5;width: 180px;display: none;}
-    .subnav>li{line-height: 50px;height: 50px;font-size: 18px;position: relative;width: 180px;margin: auto;}
-	.subnav>li>p{width: 160px;margin: auto;border-bottom: 1px solid #c7c3d0;}
-	.subnav>li a{color: #fff}
-    .subnav>li:hover{background-color: #94bfe6;}
-	.subnav>li>p:hover{border-bottom: 1px solid #94bfe6;}
-    .nav>li:hover>.subnav{display: block;}
-    .subnav>li:hover>.subsubnav{display: block;}
-    .subnav>li:hover>.subsubnavask{display: block;}
-	.del_r{margin-right: 0px;}
-</style>
+
 </head>
 <body>
+<!-- 开屏MP4播放 -->
+<div class="curtain"></div>
+  <div class="video">
+    <div class="index-loading">
+        <!-- <img src="../images/loading-logo.png" alt=""> -->
+        <div id="progressbar"></div>
+        <div class="progress-label">0<span>%</span></div>
+    </div>
+    <div class="confirmMuted">
+      <div class="confirmMuted-main">
+        <!-- <img src="../images/headphones.png" alt="">
+        <p>本网站开启音效后浏览效果更加，是否开启声音？</p> -->
+        <button class="muted-off"><img src="images/muted-off.png"></button>
+        <button class="muted-on"><img src="images/muted-on.png"></button>
+      </div>
+    </div>
+     <video src="mp4/video.mp4" muted="" id="index-video">浏览器不支持video</video>
+    <p class="pass-tip">点击任意键可跳过视频</p>
+    <button class="music"></button>
+  </div>
 <!--begin:header-->
-<header>
-	<div class="head app_silde">
-		<a class="font-index fl" href="../index/index.html" target="_parent">首页</a>
-		<!-- <a class="font-index2 fl" href="../fyTop20/index.html" target="_parent"><span>非遗影像公开课</span></a> -->
-		<!-- nav展开 -->
-		<!-- <a class="aap_navbar_icon fr" href="../qjfeiyi/index.html"><span>全部项目列表</span></a> -->
-		<!-- <ul class="nav"> -->
-			<div class="aap_navbar_icon fr" ><ul class="nav"><li>全部项目列表
-				<ul class="subnav">
-	                <li><p><a target="_parent" href="">第一批成果展示</a></p></li>
-	                <li><p><a target="_parent" href="">第二批成果展示</a></p></li>
-	                <li><p><a target="_parent" href="">第三批成果展示</a></p></li>
-	   				<li><p><a target="_parent" href="../fyTop20/index.html">非遗影像公开课</a></p></li>
-            	</ul>
-            	</li>
-            	</ul>
-			</div>
-		<!-- </ul> -->
-	</div>
-</header>
+<header id="header"></header>
 <!--end:header-->
 <!--begin：banner -->
 <div class="banner">
-	<!-- Swiper -->
+  <!-- Swiper -->
 	<div class="swiper-container">
-		<!--<div class="swiper-wrapper">-->
-			<!--<div class="swiper-slide">-->
-				<!--<img src="images/banner01.jpg">-->
-				<!--<a href="http://cn.mikecrm.com/3cGza25" class="gopingx">点击评选</a>-->
-			<!--</div>-->
-			<!--<div class="swiper-slide">-->
-				<!--<a href="http://ich.nlc.cn/memory-tow/record/record.html?xmId=238"><img src="../images/banner02.jpg"></a>-->
-			<!--</div>-->
-			<!--<div class="swiper-slide">-->
-				<!--<a href=""><img src="../qjfeiyi/images/banner01.jpg"></a>-->
-			<!--</div>-->
-		<!--</div>-->
-		<div class="swiper-wrapper">
-			<div class="swiper-slide">
-				<a href="../fyTop20/index.html" target="_blank"><img src="../fyTop20/images/spshow.jpg"></a>
-			</div>
-			<div class="swiper-slide">
-				<a href=""><img src="images/banner03.jpg"></a>
-			</div>
-		</div>
-		<div class="swiper-pagination"></div>
-		<div class="j-swiperbtn">
-			<!-- Add Arrows -->
-			<div class="swiper-button-next"></div>
-			<div class="swiper-button-prev"></div>
-		</div>
+	    <div class="swiper-wrapper">
+	    	<div class="swiper-slide">
+	        	<a href=""><img src="../images/banner01.jpg"></a>
+	        </div>
+	        <div class="swiper-slide">
+	        	<a href=""><img src="../images/banner02.jpg"></a>
+	        </div>
+	        <div class="swiper-slide">
+	        	<a href=""><img src="../images/banner03.jpg"></a>
+	        </div>
+	    </div>
+	    <div class="swiper-pagination"></div>
+	        <div class="j-swiperbtn">
+	        	<!-- Add Arrows -->
+		        <div class="swiper-button-next"></div>
+		        <div class="swiper-button-prev"></div>
+	        </div>
 	</div>
-	<!-- Swiper End-->
+  <!-- Swiper End-->
 </div>
-<!--end：banner -->
-<!--begin：chinese-memory-banner -->
-<div class="chinese-memory-con"><img src="images/banner02.png"/></div>
-<!--end：chinese-memory-banner -->
 <!--begin：container -->
 <div class="container">
 	 <!--begin：index_main -->
@@ -200,90 +174,29 @@
  	   		</ul>
 	 	 </div>
 	 </div>
-	<!--end：index_main -->
-	<!--begin：index_main -->
-	<div class="mapshow">
-		<div class="mappic">
-			<div class="mpicont dotone">
-				<div class="mpicpoint">
-					<p>学津堂</p>
-					<span></span>
-				</div>
-				<div class="mpicfont">
-					<ul>
-						<li>
-							<h2>6月9日下午</h2>
-							<p>谁在讲述中国故事</p>
-						</li>
-						<li>
-							<h2>7月6日下午</h2>
-							<p>首批优秀成果推介活动</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!--新增数字图书馆体验区-->
-			<div class="mpicont dotfour">
-				<div class="mpicpoint">
-					<span class="fr"></span>
-					<p class="fr">数字图书馆体验区</p>
-				</div>
-			</div>
-			<div class="mpicont dottwo">
-				<div class="mpicpoint">
-					<p>综合楼演播室</p>
-					<span></span>
-				</div>
-				<div class="mpicfont">
-					<ul>
-						<li>
-							<h2>7月6日9点-12点</h2>
-							<p>和时间赛跑工作论坛</p>
-						</li>
-						<li>
-							<h2>7月7日9点-12点</h2>
-							<p>单元活动一“快乐非遗 健康生活”</p>
-						</li>
-						<li>
-
-
-							<h2>7月7日14点-17点</h2>
-							<p>单元活动二“多彩贵州”</p>
-						</li>
-						<li>
-							<h2>7月8日14点-17点</h2>
-							<p>单元活动三“刻刀·剪刀·砌砖刀——手艺人的故事”</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="mpicont dotthree">
-				<div class="mpicpoint">
-					<p>国图影院</p>
-					<span></span>
-				</div>
-				<div class="mpicfont">
-					<ul>
-						<li>
-							<h2>6月9日—7月8日</h2>
-							<p>每周末优秀项目影片放映</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!---->
-		<div class="app-mapp"><img src="images/mapp.jpg" alt=""></div>
-		<!---->
-	</div>
-	<!--end -->
 </div>
 <!--end：container -->
+<!--begin:影展-->
+<div class="mapshow">
+	<div class="video-pic">
+		<ul>
+			<li><div><a href="../yz/yz1.html"><img src="images/index-yz1.jpg"></a></div></li>
+			<li><div><a href="../yz/yz2.html"><img src="images/index-yz2.jpg"></a></div></li>
+			<li><div><a href="../yz/yz3.html"><img src="images/index-yz3.jpg"></a></div></li>
+		</ul>
+	</div>
+</div>
+<!--end:影展-->
 <!--begin:footer-->
-<!--调查问卷-->
+<!--友情链接-->
 <div class="questionnaire clearfix">
-	<div class="ques_main_right">
-		<p><img src="../images/gzh_ewm.jpg"/><span>公众号</span></p>
+  <div class="links">
+		<ul class="clearfix">
+			<li><a href="#">中华人民共和国文化和旅游部</a></li>
+			<li><a href="#">国家图书馆</a></li>
+			<li><a href="#">中国非物质文化遗产网</a></li>
+			<li><a href="#">国家图书馆中国记忆项目中心</a></li>
+		</ul>
 	</div>
 </div>
 <footer>
@@ -302,6 +215,7 @@
 <![endif]-->
 <script src="../js/gotop.js"></script>
 <script src="swiper.min.js"></script>
+<script src="../js/jquery-ui-1.10.3.min.js"></script>
 <!--[if IE 8]>
 <script src="idangerous.swiper.min.js"></script>
 <![endif]-->
@@ -330,8 +244,181 @@
 				}
 
 		);
+		$("#header").load("../common/head.html");
 	});
 </script>
+<script>
+	//写cookies
+            function setCookie(cname,cvalue,exdays)
+			{
+			  var d = new Date();
+			  d.setTime(d.getTime()+(exdays*1*1*60*1000));
+			  var expires = "expires="+d.toGMTString();
+			  document.cookie = cname + "=" + cvalue + "; " + expires;
+			}
+
+            //读取cookies 
+            function getCookie(cname)
+			{
+			  var name = cname + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i=0; i<ca.length; i++) 
+			  {
+			    var c = ca[i].trim();
+			    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+			  }
+			  return "";
+			}
+      // 视频元素2
+      var Video = document.getElementById("index-video");
+      // 取得浏览器的userAgent字符串
+      var userAgent = navigator.userAgent;
+      // 判断是否为火狐浏览器
+      var isFF = userAgent.indexOf("Firefox") > -1;
+      // 判断是否为谷歌浏览器
+      var isChrome = userAgent.indexOf("Chrome") > -1;
+      // 判断是否为苹果
+      var isIphone = userAgent.indexOf("iPhone") > -1;
+      var flag = !isChrome && !isFF && !isIphone;
+      // 转场限制
+      var throttle = true;
+      // 进度条
+      var progressbar = $("#progressbar"),
+        progressLabel = $(".progress-label");
+      // 进度条初始化
+      progressbar.progressbar({
+        value: false,
+        change: function () {
+          var val = progressbar.progressbar("value");
+          progressLabel.html(val + "<span>%</span>");
+        },
+      });
+      var videoplay_cookie = getCookie("videoplay");
+      if(isIphone==true && videoplay_cookie!='1'){
+      	  setCookie("videoplay", "1",1);
+	      progress();
+	      // 页面渲染完成
+	      window.onload = function () {
+	        progressbar.progressbar("value", 99);
+	      };
+		  //   1201修改
+	      $(".video").show();
+      }
+        // var isFirst = document.cookie;
+        //     if (!isFirst) {
+        //     $(".video").show();
+        //     document.cookie = "username=bjjy";
+        // }
+        // 1201修改
+      // 加载进度条
+      function progress() {
+        var val = progressbar.progressbar("value") || 0;
+        progressbar.progressbar("value", val + 1);
+        if (val < 99) {
+          setTimeout(progress, 100);
+        } else {
+          if (flag) {
+            curtain(false, function () {
+              Video.autoplay = true;
+              Video.muted = false;
+              music();
+            });
+          } else {
+            $(".confirmMuted").show();
+            progressLabel.hide();
+          }
+        }
+      }
+
+      document.getElementsByClassName("muted-off")[0].onclick = function () {
+        Video.play();
+        $(".index-loading").hide();
+        $(".confirmMuted").hide();
+        setTimeout(() => (document.onclick = () => curtain(true)), 300);
+      };
+
+      document.getElementsByClassName("muted-on")[0].onclick = function () {
+        Video.play();
+        Video.muted = false;
+        music();
+        $(".index-loading").hide();
+        $(".confirmMuted").hide();
+        setTimeout(() => (document.onclick = () => curtain(true)), 300);
+        // curtain(false, function () {
+        //   Video.muted = false;
+        //   music();
+        // });
+      };
+
+      // 音效按钮动画
+      function music() {
+        $(".music").css({
+          background: "url(../image/play.png)",
+          animation: "rotate 3s linear infinite",
+        });
+      }
+
+      // 幕布转场
+      function curtain(isEnd, callback) {
+       //   1201修改
+        // if (isFirst) return;
+        //   1201修改
+        if (!throttle) return;
+        $(".confirmMuted").hide();
+        if (isEnd) {
+          throttle = false;
+        }
+        $(".curtain")
+          .css("pointerEvents", "painted")
+          .animate({ backgroundColor: "black" }, 1500, function () {
+            $(this).animate({ backgroundColor: "transparent" }, 1500).css("pointerEvents", "none");
+            if (isEnd) {
+              Video.pause();
+              $(".video").hide();
+              document.onkeydown = null;
+              document.onclick = null;
+              window.location = "third.html"
+            } else {
+              // document.onclick = () => curtain(true);
+              // $(".index-loading").hide();
+              if (callback) {
+                callback();
+              }
+            }
+          });
+      }
+
+      // 视频播放结束自动关闭
+      Video.addEventListener("ended", function () {
+        curtain(true);
+      });
+
+      // 视频点击结束
+      // Video.onclick = function () {
+      //   curtain(true);
+      // };
+
+      // 键盘点击结束
+      Video.addEventListener("play", function () {
+        document.onkeydown = function () {
+          curtain(true);
+        };
+      });
+
+      // 音效按钮状态切换
+      $(".music").click(function () {
+        if (Video.muted) {
+          Video.muted = false;
+          music();
+        } else {
+          Video.muted = true;
+          $(this).css({
+            background: "url(../images/mute.png)",
+            animation: "none",
+          });
+        }
+      });
+    </script>
 <script src="index.js"></script>
 <script src="test.js"></script>
 </body>

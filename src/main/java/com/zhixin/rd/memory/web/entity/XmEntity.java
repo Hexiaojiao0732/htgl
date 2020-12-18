@@ -21,6 +21,20 @@ public class XmEntity implements Serializable{
 	private String ccrcsrq;
 	
 	private int xmlb;//项目类别
+	
+	private String pc;
+	
+	private String dy;
+	
+	private Integer tpCount = 0;
+
+	public Integer getTpCount() {
+		return tpCount;
+	}
+
+	public void setTpCount(Integer tpCount) {
+		this.tpCount = tpCount;
+	}
 
 	public String getSsqy() {
 		return ssqy;
@@ -159,4 +173,22 @@ public class XmEntity implements Serializable{
 	public void setDjl(int djl) {
 		this.djl = djl;
 	}
+
+	public String getPc() {
+		return pc;
+	}
+
+	public void setPc(String pc) {
+		this.pc = pc;
+	}
+
+	public String getDy() {
+		return dy;
+	}
+
+	public void setDy(String dy) {
+		this.dy = dy;
+	}
+	
+	
 }

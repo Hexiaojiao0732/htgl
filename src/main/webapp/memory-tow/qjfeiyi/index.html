@@ -11,20 +11,14 @@
 </head>
 <body>
 <!--begin:header-->
-<header>
-	<div class="head app_silde">
-		<a class="font-index fl" href="../index/index.html" target="_parent">首页</a>
-		<!-- nav展开 -->
-		<a class="aap_navbar_icon fr" href="#"><span>全部项目列表</span></a>
-	</div>
-</header>
+<header id="header"></header>
 <!--end:header-->
 <!--begin：banner -->
 <div class="banner">
 	<!-- Swiper -->
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide"><a href="http://cn.mikecrm.com/3cGza25"><img src="images/banner01.jpg"></a></div>
+			<div class="swiper-slide"><a href="#"><img src="../images/banner02.jpg"></a></div>
 		</div>
 		<div class="swiper-pagination"></div>
 	</div>
@@ -32,7 +26,7 @@
 </div>
 <!--end：banner -->
 <!--begin：chinese-memory-banner -->
-<div class="chinese-memory-con"><img src="images/banner02.png"/></div>
+<!-- <div class="chinese-memory-con"><img src="images/banner02.png"/></div> -->
 <!--end：chinese-memory-banner -->
 <!--begin：container -->
 <div class="container">
@@ -79,10 +73,15 @@
 </div>
 <!--end：container -->
 <!--begin:footer-->
-<!--调查问卷-->
+<!--友情链接-->
 <div class="questionnaire clearfix">
-	<div class="ques_main_right">
-		<p><img src="../images/gzh_ewm.jpg"/><span>公众号</span></p>
+  <div class="links">
+		<ul class="clearfix">
+			<li><a href="#">中华人民共和国文化和旅游部</a></li>
+			<li><a href="#">国家图书馆</a></li>
+			<li><a href="#">中国非物质文化遗产网</a></li>
+			<li><a href="#">国家图书馆中国记忆项目中心</a></li>
+		</ul>
 	</div>
 </div>
 <footer>
@@ -123,6 +122,7 @@
 				}
 
 		);
+		$("#header").load("../common/head.html");
 	});
 </script>
 <script src="index.js"></script>

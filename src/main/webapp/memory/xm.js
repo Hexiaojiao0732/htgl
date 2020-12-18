@@ -11,6 +11,31 @@ $(function() {
 		}
 	});
 	$('.panel-tool-close').hide();
+	
+	var initPcVal = $('#pc').val();
+	var initUpdVal = $('#update_pc').val();
+	if (initPcVal == "3") {
+		$('#dy_tr').show();
+	}
+	if (initUpdVal == "3") {
+		$('#update_dy_tr').show();
+	}
+	$('#pc').on('change',function(){
+		var selectVal = $(this).find('option:selected').val();
+        if (selectVal == "3") {
+        	$('#dy_tr').show();
+        }else {
+        	$('#dy_tr').hide();
+        }
+	});
+	$('#update_pc').on('change',function(){
+		var selectVal = $(this).find('option:selected').val();
+        if (selectVal == "3") {
+        	$('#update_dy_tr').show();
+        }else {
+        	$('#update_dy_tr').hide();
+        }
+	});
 });
 
 function initXmDataGrid(){
@@ -25,7 +50,7 @@ function initXmDataGrid(){
 		collapsible : false,
 		loadMsg : 'Loading...',
 		method : 'post',
-		url: '../memory/xm/selectXmList.do',
+		url: '../memory/xm/selectXmList.do?isAll=1',
 		remoteSort: false,
 		idField:'id',
 		singleSelect:true,
@@ -77,6 +102,41 @@ function initXmDataGrid(){
 			{field:'sbdqhdw', title:'申报地区或单位', width:100},
 			{field:'ssqy', title:'所属省份', width:80},
 			{field:'djl', title:'点击量', width:50},
+			{field:'pc', title:'展示批次', width:60,
+				formatter:function(value,row,index){
+					if(value==null || value==''){
+						return "";
+					}
+					if(value==1){
+						return "第一批展示成果";
+					}
+					if(value ==2){
+						return "第二批展示成果";
+					}
+					if(value ==3){
+						return "第三批展示成果";
+					}
+				}
+			},
+			{field:'dy', title:'展示单元', width:60,
+				formatter:function(value,row,index){
+					if(value==null || value==''){
+						return "";
+					}
+					if(value==1){
+						return "第一单元";
+					}
+					if(value ==2){
+						return "第二单元";
+					}
+					if(value ==3){
+						return "第三单元";
+					}
+					if(value ==4){
+						return "第四单元";
+					}
+				}
+			},
 			{field:'操作',title:'操作',width:200,
 				formatter : function(value, row, index) {
 					var a = '';

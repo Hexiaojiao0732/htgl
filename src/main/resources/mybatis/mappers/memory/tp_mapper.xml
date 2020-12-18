@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.zhixin.rd.memory.web.dao.tp.ITpMapper">
+	<resultMap id="tpMapper" type="tp">
+    	<id property="id" column="id"/>
+    	<result property="xmId" column="xm_id"/>
+    	<result property="ip" column="ip"/>
+    	<result property="createTime" column="create_time"/>
+    </resultMap>
+    <select id="queryTpList" resultMap="tpMapper" parameterType="java.util.Map" >
+        	SELECT * FROM tp 
+        	<where>
+        		<if test="ip !=null and ip!=''">
+        			ip = #{ip} and DATE_FORMAT(create_time, 'yyyy-mm-dd') = DATE_FORMAT(sysdate(),'yyyy-mm-dd')
+        		</if>
+        	</where>
+        	
+    </select>
+    <select id="countTplist" resultType="java.lang.Integer" parameterType="java.util.Map">
+        	SELECT count(*) FROM tp where xm_id = #{xmId}
+    </select>
+    
+    <select id="selectTpXm" resultType="java.util.Map">
+    	select xm_id xmId, count(*) count from tp group by xm_id
+    </select>
+      <delete id="deleteTpById" parameterType="Long">  
+            DELETE FROM tp WHERE id=#{id}
+    </delete> 
+	<!-- 增加信息 -->
+	<insert id="insertTp" parameterType="tp">
+		insert into tp
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="xmId != null">
+				xm_id,
+			</if>
+			<if test="ip != null">
+				ip,
+			</if>
+			create_time,
+		</trim>
+
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+				<if test="xmId != null">
+				#{xmId},
+			</if>
+			<if test="ip != null">
+				#{ip},
+			</if>
+			SYSDATE(),
+		</trim>
+	</insert>
+	
+	 <update id="updateTp" parameterType="tp">  
+            UPDATE tp SET 
+	    		xm_id=#{xmId},
+	    		ip=#{ip},
+	    		create_time=#{createTime}
+            WHERE 
+	    		id=#{id}
+    </update>
+</mapper>
+
+

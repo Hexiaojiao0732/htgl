@@ -2,7 +2,7 @@
 /*index_main*/
 .index_main{ width: 1100px; margin: 0 auto; padding-top:60px;}
 .index_box{ width:100%;height:auto;padding-bottom: 100px;}
-.index_box .title{ width:345px;height: 84px; clear: both;margin: 0 auto;padding-bottom: 70px;}
+.index_box .title{ width:247px;height: 84px; clear: both;margin: 0 auto;padding-bottom: 70px;}
 .title .more{ position:absolute; top: 12px; right: 0; color: #3e3a39;}
 .title .more:hover{ color: #bea281;}
 .title p{ height: 36px; font-size: 14px; color: #3e3a39;}

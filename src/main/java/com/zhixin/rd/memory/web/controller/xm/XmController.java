@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.URLDecoder;
 import java.text.ParseException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +26,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.ideal.rd.web.framework.entity.MessageEntity;
 import com.zhixin.rd.memory.web.entity.XmEntity;
+import com.zhixin.rd.memory.web.service.tp.ITpService;
+import com.zhixin.rd.memory.web.service.tp.TpServiceImpl;
 import com.zhixin.rd.memory.web.service.xm.IXmService;
 import com.zhixin.rd.rkjc.web.common.PropertyUtil;
 
@@ -33,6 +37,9 @@ public class XmController {
 
 	@Autowired
 	IXmService xmService;
+	@Autowired
+	ITpService tpService;
+	
 	
 	@RequestMapping(value = "/addXm")
 	@ResponseBody
@@ -52,11 +59,13 @@ public class XmController {
 	@RequestMapping(value = "/selectXmList")
 	@ResponseBody
 	public Map<String, Object> queryAllXm(@RequestParam Map<String, Object> param) throws Exception {
-		int page = Integer.valueOf((String) param.get("page"));
-		int row = Integer.valueOf((String) param.get("rows"));
-		int pageIndex = (page - 1) * row;
-		param.put("rows", row);
-		param.put("pageIndex", pageIndex);
+		if (param.get("page") !=null && param.get("rows")!=null) {
+			int page = Integer.valueOf((String) param.get("page"));
+			int row = Integer.valueOf((String) param.get("rows"));
+			int pageIndex = (page - 1) * row;
+			param.put("rows", row);
+			param.put("pageIndex", pageIndex);
+		}
 		if(param.get("qy")!=null){
 			String qy = URLDecoder.decode(param.get("qy")+"", "UTF-8");
 			param.put("ssqy", qy);
@@ -64,10 +73,39 @@ public class XmController {
 		if(param.get("lx")!=null){
 			param.put("xmlb", param.get("lx"));
 		}
+		if (param.get("isAll")!=null) {
+			param.put("isAll", param.get("isAll"));
+		}
 		Map<String, Object> map = new HashMap<>();
 		List<XmEntity> list = xmService.queryAllXm(param);
 		int count=xmService.countXm(param);
-		System.err.println("list=======" + list);
+		if (param.get("pc") != null && param.get("pc").equals("3")) {
+			List<Map<String, Object>> tpXmList = tpService.selectTpXm();
+			if (!tpXmList.isEmpty()) {
+				Map<String, Object> tpXmMap = new HashMap<String, Object>();
+				for (Map<String, Object> tpxm : tpXmList) {
+					tpXmMap.put(tpxm.get("xmId").toString(), tpxm.get("count"));
+				}
+				for (XmEntity xm : list) {
+					if (tpXmMap.get(xm.getId().toString()) != null) {
+						xm.setTpCount(Integer.parseInt(tpXmMap.get(xm.getId().toString()).toString()));
+					}
+				}
+				
+				Collections.sort(list, new Comparator<XmEntity>() {
+					@Override
+					public int compare(XmEntity u1, XmEntity u2) {
+						int diff = u2.getTpCount() - u1.getTpCount();
+						if (diff > 0) {
+							return 1;
+						} else if (diff < 0) {
+							return -1;
+						}
+						return 0;
+					}
+				});
+			}
+		}
 		try {
 			map.put("rows", list);
 			map.put("total", count);

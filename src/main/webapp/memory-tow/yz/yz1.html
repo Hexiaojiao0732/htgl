@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1,width=device-width,initial-scale=1,user-scalable=no" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>他们鉴证了文明</title>
+  <link type="text/css" rel="stylesheet" href="../css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="../common/first.css"/>
+  <link type="text/css" rel="stylesheet" href="../index/swiper.min.css" />
+  <link type="text/css" rel="stylesheet" href="yz.css"/>
+</head>
+<body>
+<!--begin:header-->
+<header id="header"></header>
+<!--end:header-->
+<!--begin：container -->
+<div class="container">
+	<div class="index_main">
+	 <div class="crumb">首页<span>>></span>他们鉴证了文明——非遗影像公开课简介</div>
+	 <div class="title">他们鉴证了文明</div>
+	 <div class="desc descright">——非遗影像公开课</div>
+	 <div class="content">在2020年“文化和自然遗产日”到来之际，国家图书馆中国记忆项目中心特别策划推出《他们鉴证了文明——非遗影像公开课》系列课程，创新性地采用“纪录片+公开课”的形态，从国家级非遗代表性传承人记录工作优秀成果中精选20部非遗纪录片，邀请著名非遗专家实时解读纪录片。以“陪同观看、伴随讲解”为理念，从学术角度对影片中所涉及的非遗知识和传承故事进行点评讲解，使观众在欣赏纪录片的同时，更深一层地理解非物质文化遗产的要领和内涵，更进一步领会非遗保护的精神和意义。本次系列课程是国家级非遗代表性传承人记录工作成果创新性转化的重要成果，也是 “文化和自然遗产日”非遗宣传展示全国主会场活动——“2020非遗影像展”的重要展示部分。</div>
+	 <div class="content_img"><img src="../index/images/yz1/1.jpg"></div>
+	</div>
+</div>
+<!--end：container -->
+<!--begin:footer-->
+<!--友情链接-->
+<div class="questionnaire clearfix">
+  <div class="links">
+		<ul class="clearfix">
+			<li><a href="#">中华人民共和国文化和旅游部</a></li>
+			<li><a href="#">国家图书馆</a></li>
+			<li><a href="#">中国非物质文化遗产网</a></li>
+			<li><a href="#">国家图书馆中国记忆项目中心</a></li>
+		</ul>
+	</div>
+</div>
+<footer>
+	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="../law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
+</footer>
+<!--end:footer-->
+<!-- 回到顶部 -->
+<div id="tbox">
+	<a class="gotop"  id="gotop" title="回到顶部"></a>
+</div>
+<!-- 回到顶部 -->
+<!-- 投票最多3个提示 -->
+<div id="votealert" class="votealert" style="display:none ;">
+	<div class="close"><img src="../index/images/close.png"></div>
+	<div class="title">您最多可以给3个项目投票<br>感谢您的参与！</div>
+</div>
+<!-- 投票最多3个提示 -->
+<!--js -->
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script src="../js/gotop.js"></script>
+<script src="../index/swiper.min.js"></script>
+<script> 
+		  //banner
+		    var swiper = new Swiper('.swiper-container', {
+		        pagination: '.swiper-pagination',
+		        paginationClickable: true,
+		        nextButton: '.swiper-button-next',
+		        prevButton: '.swiper-button-prev',
+		       	loop: true,
+		       	autoplay: 3000,
+		    });		 
+</script>
+<!-- 菜单收缩 -->
+<script type="text/javascript">
+$(function(){
+  	$(".mpicpoint").hover(
+  		function(){
+  			$(this).addClass('shubon');
+			$(this).parent().find('.mpicfont').show('fast');
+  		},
+  		function(){
+  			$(this).removeClass('shubon');
+			$(this).parent().find('.mpicfont').hide('fast');
+  		}
+  		
+  	);
+  	$("#header").load("../common/head.html");
+});
+
+</script>
+</body>
+</html>
