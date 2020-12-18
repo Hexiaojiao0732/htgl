@@ -11,7 +11,7 @@
         	SELECT * FROM tp 
         	<where>
         		<if test="ip !=null and ip!=''">
-        			ip = #{ip} and DATE_FORMAT(create_time, 'yyyy-mm-dd') = DATE_FORMAT(sysdate(),'yyyy-mm-dd')
+        			ip = #{ip} and DATE_FORMAT(create_time, '%Y-%m-%d') = DATE_FORMAT(sysdate(),'%Y-%m-%d')
         		</if>
         	</where>
         	

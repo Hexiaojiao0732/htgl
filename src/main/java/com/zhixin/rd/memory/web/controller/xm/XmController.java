@@ -47,6 +47,9 @@ public class XmController {
 			throws ParseException {
 		System.err.println("2----=="+entity);
 		try {
+			if (entity.getPc().equals("1") || entity.getPc().equals("2")) {
+				entity.setDy(null);
+			}
 			xmService.insertXm(entity);
 		} catch (Exception e) {
 		System.out.println(e);
@@ -92,7 +95,7 @@ public class XmController {
 					}
 				}
 				
-				Collections.sort(list, new Comparator<XmEntity>() {
+				/*Collections.sort(list, new Comparator<XmEntity>() {
 					@Override
 					public int compare(XmEntity u1, XmEntity u2) {
 						int diff = u2.getTpCount() - u1.getTpCount();
@@ -103,7 +106,7 @@ public class XmController {
 						}
 						return 0;
 					}
-				});
+				});*/
 			}
 		}
 		try {
@@ -143,6 +146,9 @@ public class XmController {
 	public MessageEntity editXm(@RequestBody XmEntity entity) {
 		System.err.println("111-----==="+entity);
 		try {
+			if (entity.getPc().equals("1") || entity.getPc().equals("2")) {
+				entity.setDy(null);
+			}
 			this.xmService.updateXm(entity);
 		} catch (Exception e) {
 			return new MessageEntity().addCode(1).addIsError(true).addTitle("错误").addContent("Add failure!");

@@ -12,14 +12,6 @@ $(function() {
 	});
 	$('.panel-tool-close').hide();
 	
-	var initPcVal = $('#pc').val();
-	var initUpdVal = $('#update_pc').val();
-	if (initPcVal == "3") {
-		$('#dy_tr').show();
-	}
-	if (initUpdVal == "3") {
-		$('#update_dy_tr').show();
-	}
 	$('#pc').on('change',function(){
 		var selectVal = $(this).find('option:selected').val();
         if (selectVal == "3") {
@@ -36,6 +28,7 @@ $(function() {
         	$('#update_dy_tr').hide();
         }
 	});
+	
 });
 
 function initXmDataGrid(){
@@ -564,6 +557,11 @@ function toXmUpdate(index){
 	var row = $('#xmdata').datagrid('getRows')[index];
 	showDialog('#xm_update_dialog', '项目内容编辑');
 	$('#xm_update_form').form('load', row);
+	if (row.pc == "3") {
+		$("#update_dy_tr").show();
+	}else {
+		$("#update_dy_tr").hide();
+	}
 	$("#update_ssqy option").each(function(){
 		if($(this).text()==row.ssqy){
 			$(this).attr("selected",true);
