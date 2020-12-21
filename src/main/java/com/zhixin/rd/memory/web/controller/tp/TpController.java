@@ -49,7 +49,6 @@ public class TpController {
 	@RequestMapping(value = "/selectTpList")
 	@ResponseBody
 	public Map<String, Object> selectTpList(HttpServletRequest request) throws Exception {
-		System.out.println("ip:"+IpUtils.getIp(request));
 		Map<String,Object> param = new HashMap<String,Object>();
 		param.put("ip", IpUtils.getIpAddress(request));
 		List<TpEntity> list = tpService.queryTpList(param);
