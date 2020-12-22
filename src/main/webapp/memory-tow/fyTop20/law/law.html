@@ -5,10 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>记录-详情</title>
-  <link type="text/css" rel="stylesheet" href="../css/common.css"/>
+  <link type="text/css" rel="stylesheet" href="../../css/common.css"/>
   <link type="text/css" rel="stylesheet" href="law.css"/>
+  <link rel="import" href="../../common/footer.html" id="foot1">
 </head>
 <body>
+<header id="header">
+	<div class="head app_silde">
+		<a class="font-index fl" href="../index/index.html" target="_parent">首页</a>
+		<!-- nav展开 -->
+		<div class="dropdown aap_navbar_icon fr">
+		    <button class="dropbtn" onclick="myFunction()">项目列表</button>
+		    <div class="dropdown-content" id="myDropdown">
+		      <a href="../../third/third.html">第三批成果展示</a>
+		      <a href="../../second/second.html">第二批成果展示</a>
+		      <a href="../../first/first.html">第一批成果展示</a>
+		      <a href="../../fyTop20/index.html">非遗影像公开课</a>
+		      <a href="../../qjfeiyi/index.html">全部成果展示</a>
+		    </div>
+	  </div> 
+		<!-- <a class="aap_navbar_icon fr" href="#"><span>全部项目列表</span></a> -->
+	</div>
+</header>
 <!--begin：container -->
 <div class="container">
 	<div class="law-cont">
@@ -20,18 +38,13 @@
 	</div>
 
 </div>
-<footer>
-	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="#" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
-</footer>
-<!--end:footer-->
-<!-- 回到顶部 -->
-<div id="tbox">
-	<a class="gotop"  id="gotop" title="回到顶部"></a>
-</div>
+<script type="text/javascript">
+    document.write(foot1.import.body.innerHTML);
+</script>
 <!-- 回到顶部 -->
 <!--js -->
-<script src="../js/jquery-1.11.3.min.js"></script>
-<script src="../js/gotop.js"></script>
+<script src="../../js/jquery-1.11.3.min.js"></script>
+<script src="../../js/gotop.js"></script>
 <script>
 //简单jq tab   index从0开始
 $(function(){
@@ -41,6 +54,23 @@ $(function(){
        $("#contentBox .box").eq(index).addClass("active").siblings().removeClass("active");
      });
   }); 
+</script>
+<!-- 菜单收缩 -->
+<script type="text/javascript">
+/* 点击按钮，下拉菜单在 显示/隐藏 之间切换 */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// 点击下拉菜单意外区域隐藏
+window.onclick = function(e) {
+  if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+  }
+}
 </script>
 </body>
 </html>

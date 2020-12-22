@@ -60,7 +60,7 @@
 		<if test="dy !=null and dy !=''">
 			and dy=#{dy}
 		</if>
-		<if test="pageIndex !=null and pageIndex !=''">
+		<if test="rows !=null and rows !=''">
 			order by djl desc,id desc  limit ${pageIndex},${rows}
 		</if>
     </select>

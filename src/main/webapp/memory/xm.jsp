@@ -196,10 +196,10 @@
 								展示单元:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<select type="text" class="easyui-validatebox" style="width:200px;" id="dy" name="dy" >
 										<option vlaue="">请选择</option>
-										<option value="1">第一单元</option>
-										<option value="2">第二单元</option>
-										<option value="3">第三单元</option>
-										<option value="4">第四单元</option>
+										<option value="1">乐舞·情韵</option>
+										<option value="2">腔调·故事</option>
+										<option value="3">手艺·匠心</option>
+										<option value="4">吉祥·人生</option>
 								</select>
 							</div>
 						</td>
@@ -361,10 +361,10 @@
 								展示单元:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<select type="text" class="easyui-validatebox" style="width:200px;" id="update_dy" name="dy">
 										<option vlaue="" selected="selected">请选择</option>
-										<option value="1">第一单元</option>
-										<option value="2">第二单元</option>
-										<option value="3">第三单元</option>
-										<option value="4">第四单元</option>
+										<option value="1">乐舞·情韵</option>
+										<option value="2">腔调·故事</option>
+										<option value="3">手艺·匠心</option>
+										<option value="4">吉祥·人生</option>
 								</select>
 							</div>
 						</td>

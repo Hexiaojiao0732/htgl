@@ -53,9 +53,9 @@
 .index_boxlist li a{ display: block; background: #fff; position: relative; width: 202px; border: 1px solid #f3f2f2;}
 .index_boxlist a .img{ width:100%; height:137px;}
 .index_boxlist a .bg{ display:none;width:100%; height:170px ;background: #000; opacity: .6; position: absolute; top: 0; left: 0;}
-.index_boxlist a .name{ width:96%;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0 auto;border-bottom: 1px solid #dcdddd; padding: 16px 0 5px 0; font-size: 14px; color: #3e3a39;}
-.index_boxlist a .time{ width:96%; margin:0 auto;border-bottom: 1px solid #dcdddd;font-size: 8px; color: #3e3a39;padding: 5px 0;}
-.index_boxlist a .tags{width:96%; margin:0 auto; font-size: 11px; color: #3e3a39; padding:9px 0;}
+.index_boxlist a .name{ width:96%;height:14px;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin:0 auto;border-bottom: 1px solid #dcdddd; padding: 16px 0 5px 0; font-size: 14px; color: #3e3a39;}
+.index_boxlist a .time{ width:96%;height:11px; margin:0 auto;border-bottom: 1px solid #dcdddd;font-size: 8px; color: #3e3a39;padding: 5px 0;}
+.index_boxlist a .tags{width:96%;height:14px; margin:0 auto; font-size: 11px; color: #3e3a39; padding:9px 0;}
 .index_boxlist .vote{
 background-color: #cebc95;
 height: 40px;
@@ -212,7 +212,7 @@ position: fixed;
 	.title .more{top:0.2rem;right: 0.2rem;}
 	.index_boxlist li{width: 50%;padding-right: 0;}
 	.index_boxlist li a{ width: auto;border: 1px solid #f3f2f2;padding: 0.1rem 0.05rem;}
-	.index_boxlist a .img {width: 100%;height: auto;}
+	.index_boxlist a .img {width: 100%;height: 2.2rem;}
 	.news_list {height: 3.56rem;width: 100%;padding: 0.16rem 0 0 0;overflow: hidden;}
 	.scrollArea {width: 4.9rem;height: 3.56rem;padding: 0 1rem;}
 	.scrollArea li {width: 5rem;height: 3.56rem;padding-right: 0;}
@@ -229,9 +229,9 @@ position: fixed;
     .contributor .title{width: 100%;}
 
     .index_boxlist a .bg{width:100%;height:auto;}
-    .index_boxlist a .name{ width:96%;padding: 0.26rem 0 0.083rem 0; font-size: 0.23rem;}
-    .index_boxlist a .time{ width:96%; font-size: 0.13rem;padding: 0.083rem 0;}
-    .index_boxlist a .tags{width:96%; font-size: 0.18rem;padding:0.15rem 0;}
+    .index_boxlist a .name{ width:96%;padding: 0.26rem 0 0.083rem 0; font-size: 0.23rem;height: 0.32rem;}
+    .index_boxlist a .time{ width:96%; font-size: 0.13rem;padding: 0.083rem 0;height: 0.2rem;}
+    .index_boxlist a .tags{width:96%; font-size: 0.18rem;padding:0.15rem 0;height: 0.26rem;}
 	.icon_list {height: 0.46rem;padding-top: 0.13rem; padding-left: 0.16rem;}
 	.icon_list i {width: 0.33rem;height: 0.33rem;margin-right: 0.083rem;background-size: 0.33rem 0.66rem;}
 	/*0607*/

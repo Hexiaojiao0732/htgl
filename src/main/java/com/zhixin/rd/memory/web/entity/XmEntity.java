@@ -27,6 +27,17 @@ public class XmEntity implements Serializable{
 	private String dy;
 	
 	private Integer tpCount = 0;
+	
+	private String flag;
+	
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 
 	public Integer getTpCount() {
 		return tpCount;

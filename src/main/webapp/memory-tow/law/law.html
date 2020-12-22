@@ -7,16 +7,11 @@
   <title>记录-详情</title>
   <link type="text/css" rel="stylesheet" href="../css/common.css"/>
   <link type="text/css" rel="stylesheet" href="law.css"/>
+  <link rel="import" href="../common/footer.html" id="foot1">
 </head>
 <body>
 <!--begin:header-->
-<header>
-	<div class="head app_silde">
-		<a class="font-index fl" href="../index/index.html" target="_parent">首页</a>
-		<!-- nav展开 -->
-		<a class="aap_navbar_icon fr" href="../qjfeiyi/index.html"><span>全部项目列表</span></a>
-	</div>
-</header>
+<header id="header"></header>
 <!--end:header-->
 <!--begin：container -->
 <div class="container">
@@ -29,14 +24,9 @@
 	</div>
 
 </div>
-<footer>
-	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="#" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
-</footer>
-<!--end:footer-->
-<!-- 回到顶部 -->
-<div id="tbox">
-	<a class="gotop"  id="gotop" title="回到顶部"></a>
-</div>
+<script type="text/javascript">
+    document.write(foot1.import.body.innerHTML);
+</script>
 <!-- 回到顶部 -->
 <!--js -->
 <script src="../js/jquery-1.11.3.min.js"></script>
@@ -44,6 +34,7 @@
 <script>
 //简单jq tab   index从0开始
 $(function(){
+	$("#header").load("../common/head.html");
     $("#nav a").off("click").on("click",function(){
        var index = $(this).index();
        $(this).addClass("on").siblings().removeClass("on");

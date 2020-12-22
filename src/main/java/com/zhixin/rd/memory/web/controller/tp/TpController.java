@@ -69,4 +69,27 @@ public class TpController {
 		result.put("num", num);
 		return result;
 	}
+	
+	
+	@RequestMapping(value = "/selectTpConfig")
+	@ResponseBody
+	public Map<String, Object> selectTpConfig(HttpServletRequest request) throws Exception {
+		List<Map<String, Object>> tpConfig = tpService.selectTpConfig();
+		String flag = "2";
+		if (!tpConfig.isEmpty()) {
+			Map<String, Object> config = tpConfig.get(0);
+			flag = config.get("flag") == null ? "2" : config.get("flag").toString();
+		}
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("flag", flag);
+		return result;
+	}
+	
+	@RequestMapping(value = "/updateTpConfig")
+	@ResponseBody
+	public Map<String, Object> updateTpConfig(@RequestParam String flag, HttpServletRequest request) throws Exception {
+		int num = tpService.updateTpConfig(flag);
+		Map<String, Object> result = new HashMap<String, Object>();
+		return result;
+	}
 }

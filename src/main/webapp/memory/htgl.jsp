@@ -87,6 +87,9 @@
 						<li>
 							<a href="#" onclick="load(17)"><div><i class="icon icon-menu9"></i><span>项目管理</span></div></a>
 						</li> 
+						<li>
+							<a href="#" onclick="load(18)"><div><i class="icon icon-menu9"></i><span>投票设置</span></div></a>
+						</li> 
 					</ul>
 			</div>
 		</div>
@@ -164,6 +167,9 @@
 				break; 
 			case 17:
 				url = 'xm.jsp';
+				break;
+			case 18:
+				url = 'tp.jsp';
 				break; 
 			default:
 				break;

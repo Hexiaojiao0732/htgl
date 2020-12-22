@@ -422,7 +422,7 @@ cursor: pointer;
 	footer { height: auto; width: 100%; }
 	.footer_main { width: 100%; line-height: 1.08rem; }
 	.footer_main p { width: 100%; clear: both; }
-	.footer_main a { font-size: 0.23rem; padding-right: 0; width: 50%; text-align: center; display: block; float: left; }
+	.footer_main a { font-size: 0.23rem; padding-right: 0; width: 100%; text-align: center; display: block; float: left; }
 	.footer_main span { position: static; font-size: 0.23rem; width: 100%; text-align: center; display: block; }
 	#tbox { width: 0.83rem; right: 0.16rem; bottom: 2rem; }
 	.gotop { width: 0.84rem; height: 0.83rem; }
@@ -644,7 +644,6 @@ cursor: pointer;
 	.banner {
 	    padding-top: 1.167rem;
 	    background: #eee;
-	    height: 300px;
 	    overflow: hidden;
 	}
 }

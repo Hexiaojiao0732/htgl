@@ -20,6 +20,14 @@
         	SELECT count(*) FROM tp where xm_id = #{xmId}
     </select>
     
+    <select id="selectTpConfig" resultType="java.util.Map">
+    	select id,flag from tp_config
+    </select>
+    
+    <update id="updateTpConfig" parameterType="java.lang.String">
+    	update tp_config set flag = #{flag}
+    </update>
+    
     <select id="selectTpXm" resultType="java.util.Map">
     	select xm_id xmId, count(*) count from tp group by xm_id
     </select>

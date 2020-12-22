@@ -8,6 +8,7 @@
   <link type="text/css" rel="stylesheet" href="../css/common.css"/>
   <link type="text/css" rel="stylesheet" href="index.css"/>
   <link type="text/css" rel="stylesheet" href="swiper.min.css" />
+  <link rel="import" href="../common/footer.html" id="foot1">
 </head>
 <body>
 <!--begin:header-->
@@ -19,7 +20,7 @@
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide1">
-				<a href=""><img src="images/spshow.jpg"></a>
+				<a href=""><img src="../images/banner02.jpg"></a>
 			</div>
 		</div>
 		<div class="swiper-pagination"></div>
@@ -32,7 +33,7 @@
 	<!-- Swiper End-->
 </div>
 <!--end：banner -->
-<div class="chinese-memory-con"><img src="images/spshow_banner.jpg"/></div>
+<!-- <div class="chinese-memory-con"><img src="images/spshow_banner.jpg"/></div> -->
 <!--begin：container -->
 <div class="container" id="mydivcontainer" > 
 	 <!--begin：index_main -->
@@ -54,14 +55,7 @@
 		<p><img src="../images/gzh_ewm.jpg"/><span>公众号</span></p>
 	</div>
 </div> -->
-<footer>
-	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
-</footer>
-<!--end:footer-->
-<!-- 回到顶部 -->
-<div id="tbox">
-	<a class="gotop"  id="gotop" title="回到顶部"></a>
-</div>
+<div id="foot"></div>
 <!-- 回到顶部 -->
 <!--js -->
 <script src="../js/jquery-1.11.3.min.js"></script>
@@ -75,7 +69,7 @@
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
 		loop: true,
-		autoplay: 5000
+		autoplay: false
 	});
 </script>
 <!-- 菜单收缩 -->
@@ -94,6 +88,7 @@
 
 		);
 		$("#header").load("../common/head.html");
+		$("#foot").load("../common/footer.html");
 	});
 </script>
 <script src="index.js"></script>

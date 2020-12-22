@@ -8,6 +8,7 @@
   <link type="text/css" rel="stylesheet" href="../css/common.css"/>
   <link type="text/css" rel="stylesheet" href="../common/first.css"/>
   <link type="text/css" rel="stylesheet" href="../index/swiper.min.css" />
+  <link rel="import" href="../common/footer.html" id="foot1">
 </head>
 <body>
 <!--begin:header-->
@@ -41,10 +42,10 @@
 	 	 	<div class="title"><img src="../index/images/new-pic.png"/></div>
 	 	 	<div class="stage">
 	 	 		<ul class="clearfix">
-	 	 			<li class="noselect"><a href="third.html">第一单元</a></li>
-	 	 			<li class="noselect"><a href="third_2.html">第二单元</a></li>
-	 	 			<li class="select"><a href="third_3.html">第三单元</a></li>
-	 	 			<li class="noselect"><a href="third_4.html">第四单元</a></li>
+	 	 			<li class="noselect"><a href="third.html">乐舞·情韵</a></li>
+	 	 			<li class="noselect"><a href="third_2.html">腔调·故事</a></li>
+	 	 			<li class="select"><a href="third_3.html">手艺·匠心</a></li>
+	 	 			<li class="noselect"><a href="third_4.html">吉祥·人生</a></li>
 	 	 		</ul>
 	 	 	</div>
  	   		<ul id="xmList" class="index_boxlist clearfix">
@@ -57,24 +58,9 @@
 <!--end：container -->
 <!--begin:footer-->
 <!--友情链接-->
-<div class="questionnaire clearfix">
-  <div class="links">
-		<ul class="clearfix">
-			<li><a href="#">中华人民共和国文化和旅游部</a></li>
-			<li><a href="#">国家图书馆</a></li>
-			<li><a href="#">中国非物质文化遗产网</a></li>
-			<li><a href="#">国家图书馆中国记忆项目中心</a></li>
-		</ul>
-	</div>
-</div>
-<footer>
-	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="../law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
-</footer>
-<!--end:footer-->
-<!-- 回到顶部 -->
-<div id="tbox">
-	<a class="gotop"  id="gotop" title="回到顶部"></a>
-</div>
+<script type="text/javascript">
+    document.write(foot1.import.body.innerHTML);
+</script>
 <!-- 回到顶部 -->
 <!-- 投票最多3个提示 -->
 <div id="votealert" class="votealert" style="display:none ;">
@@ -94,7 +80,7 @@
 		        nextButton: '.swiper-button-next',
 		        prevButton: '.swiper-button-prev',
 		       	loop: true,
-		       	autoplay: 30000000,
+		       	autoplay: false,
 		    });		 
 </script>
 <!-- 菜单收缩 -->

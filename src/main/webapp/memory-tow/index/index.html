@@ -13,7 +13,7 @@
   <!--[if IE 8]>
   <link type="text/css" rel="stylesheet" href="idangerous.swiper.css" />
   <![endif]-->
-
+	<link rel="import" href="../common/footer.html" id="foot1">
 </head>
 <body>
 <!-- 开屏MP4播放 -->
@@ -45,13 +45,16 @@
 	<div class="swiper-container">
 	    <div class="swiper-wrapper">
 	    	<div class="swiper-slide">
-	        	<a href=""><img src="../images/banner01.jpg"></a>
+	        	<a href="../third/third.html"><img src="../images/banner01.jpg"></a>
 	        </div>
 	        <div class="swiper-slide">
-	        	<a href=""><img src="../images/banner02.jpg"></a>
+	        	<a href="../second/second.html"><img src="../images/banner03.jpg"></a>
 	        </div>
 	        <div class="swiper-slide">
-	        	<a href=""><img src="../images/banner03.jpg"></a>
+	        	<a href="../first/first.html"><img src="../images/banner04.png"></a>
+	        </div>
+	        <div class="swiper-slide">
+	        	<a href="../fyTop20/index.html"><img src="../images/banner02.jpg"></a>
 	        </div>
 	    </div>
 	    <div class="swiper-pagination"></div>
@@ -180,42 +183,27 @@
 <div class="mapshow">
 	<div class="video-pic">
 		<ul>
-			<li><div><a href="../yz/yz1.html"><img src="images/index-yz1.jpg"></a></div></li>
+			<li><div><a href="../yz/yz3.html"><img src="images/index-yz1.jpg"></a></div></li>
 			<li><div><a href="../yz/yz2.html"><img src="images/index-yz2.jpg"></a></div></li>
-			<li><div><a href="../yz/yz3.html"><img src="images/index-yz3.jpg"></a></div></li>
+			<li><div><a href="../yz/yz1.html"><img src="images/index-yz3.jpg"></a></div></li>
 		</ul>
 	</div>
 </div>
 <!--end:影展-->
 <!--begin:footer-->
 <!--友情链接-->
-<div class="questionnaire clearfix">
-  <div class="links">
-		<ul class="clearfix">
-			<li><a href="#">中华人民共和国文化和旅游部</a></li>
-			<li><a href="#">国家图书馆</a></li>
-			<li><a href="#">中国非物质文化遗产网</a></li>
-			<li><a href="#">国家图书馆中国记忆项目中心</a></li>
-		</ul>
-	</div>
-</div>
-<footer>
-	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="../law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
-</footer>
-<!--end:footer-->
-<!-- 回到顶部 -->
-<div id="tbox">
-	<a class="gotop"  id="gotop" title="回到顶部"></a>
-</div>
+<script type="text/javascript">
+    document.write(foot1.import.body.innerHTML);
+</script>
 <!-- 回到顶部 -->
 <!--js -->
 <script src="../js/jquery-1.11.3.min.js"></script>
 <!--[if IE 8]>
 <script src="../js/jquery-1.9.1.min.js"></script>
 <![endif]-->
-<script src="../js/gotop.js"></script>
 <script src="swiper.min.js"></script>
 <script src="../js/jquery-ui-1.10.3.min.js"></script>
+<script src="../js/gotop.js"></script>
 <!--[if IE 8]>
 <script src="idangerous.swiper.min.js"></script>
 <![endif]-->
@@ -227,7 +215,7 @@
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
 		loop: true,
-		autoplay: 5000
+		autoplay: 3000
 	});
 </script>
 <!-- 菜单收缩 -->

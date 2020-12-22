@@ -45,10 +45,10 @@ public class CommonController {
 			if (!file.exists()) {
 				System.err.println("无此照片");
 			} else {
-				String thumbFilePath = file.getParent()+"/"+ImageUtil.DEFAULT_PREVFIX2+file.getName();
+				String thumbFilePath = file.getParent()+"/"+ImageUtil.DEFAULT_PREVFIX3+file.getName();
 				File thumbFile = new File(thumbFilePath);
 				if (!thumbFile.exists()) {
-					String thumbName = new ImageUtil().thumbnailImage(path, 202, 137, ImageUtil.DEFAULT_PREVFIX2, false);
+					String thumbName = new ImageUtil().thumbnailImage(path, 306, 205, ImageUtil.DEFAULT_PREVFIX3, false);
 					thumbFile = new File(file.getParent() + "/" + thumbName);
 				}
 				

@@ -83,6 +83,12 @@ public class XmController {
 		List<XmEntity> list = xmService.queryAllXm(param);
 		int count=xmService.countXm(param);
 		if (param.get("pc") != null && param.get("pc").equals("3")) {
+			List<Map<String, Object>> tpConfig = tpService.selectTpConfig();
+			String flag = "2";
+			if (!tpConfig.isEmpty()) {
+				Map<String, Object> config = tpConfig.get(0);
+				flag = config.get("flag") == null ? "2" : config.get("flag").toString();
+			}
 			List<Map<String, Object>> tpXmList = tpService.selectTpXm();
 			if (!tpXmList.isEmpty()) {
 				Map<String, Object> tpXmMap = new HashMap<String, Object>();
@@ -93,6 +99,7 @@ public class XmController {
 					if (tpXmMap.get(xm.getId().toString()) != null) {
 						xm.setTpCount(Integer.parseInt(tpXmMap.get(xm.getId().toString()).toString()));
 					}
+					xm.setFlag(flag);
 				}
 				
 				/*Collections.sort(list, new Comparator<XmEntity>() {

@@ -20,10 +20,12 @@ function queryXmList(){
                 var xm = '<li><a href="../record/record.html?xmId='+row.id+'"><p class="bg"></p><p class="img"><img src="'+imageUrl+'"/>' +
                     '</p><p class="name">'+row.mc+'</p><p class="time">'+row.ccrxm+'</p><p class="time">项目编号：'+row.bh+'' +
                     '</p><p class="tags">传承人编号：'+row.ccrbh+'</p></a>';
-                if (row.tpCount > 0) {
-                	xm += '<p class="votealerdy"><input id="xmId" type="hidden" value="'+row.id+'"/><span class="num">'+row.tpCount+'</span><span class="voted">投票</span></p>';
-                }else {
-                	xm += '<p class="vote"><input id="xmId" type="hidden" value="'+row.id+'"/><span class="num">0</span><span class="voted">投票</span></p>';
+                if (row.flag == "2") {
+                	if (row.tpCount > 0) {
+                    	xm += '<p class="votealerdy"><input id="xmId" type="hidden" value="'+row.id+'"/><span class="num">'+row.tpCount+'</span><span class="voted">投票</span></p>';
+                    }else {
+                    	xm += '<p class="vote"><input id="xmId" type="hidden" value="'+row.id+'"/><span class="num">0</span><span class="voted">投票</span></p>';
+                    }
                 }
                 xm += '</li>';
                 xmHtml += xm;

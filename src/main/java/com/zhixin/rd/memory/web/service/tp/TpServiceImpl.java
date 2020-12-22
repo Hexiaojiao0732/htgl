@@ -51,4 +51,16 @@ public class TpServiceImpl implements ITpService{
 		return tpMapper.selectTpXm();
 	}
 
+	@Override
+	public List<Map<String, Object>> selectTpConfig() {
+		// TODO Auto-generated method stub
+		return tpMapper.selectTpConfig();
+	}
+
+	@Override
+	public int updateTpConfig(String flag) {
+		// TODO Auto-generated method stub
+		return tpMapper.updateTpConfig(flag);
+	}
+
 }

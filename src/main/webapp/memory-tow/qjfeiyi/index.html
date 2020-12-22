@@ -8,6 +8,7 @@
   <link type="text/css" rel="stylesheet" href="../css/common.css"/>
   <link type="text/css" rel="stylesheet" href="index.css"/>
   <link type="text/css" rel="stylesheet" href="swiper.min.css" />
+  <link rel="import" href="../common/footer.html" id="foot1">
 </head>
 <body>
 <!--begin:header-->
@@ -18,9 +19,25 @@
 	<!-- Swiper -->
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide"><a href="#"><img src="../images/banner02.jpg"></a></div>
-		</div>
-		<div class="swiper-pagination"></div>
+	    	<div class="swiper-slide">
+	        	<a href="../third/third.html"><img src="../images/banner01.jpg"></a>
+	        </div>
+	        <div class="swiper-slide">
+	        	<a href="../second/second.html"><img src="../images/banner03.jpg"></a>
+	        </div>
+	        <div class="swiper-slide">
+	        	<a href="../first/first.html"><img src="../images/banner04.png"></a>
+	        </div>
+	        <div class="swiper-slide">
+	        	<a href="../fyTop20/index.html"><img src="../images/banner02.jpg"></a>
+	        </div>
+	    </div>
+	    <div class="swiper-pagination"></div>
+	        <div class="j-swiperbtn">
+	        	<!-- Add Arrows -->
+		        <div class="swiper-button-next"></div>
+		        <div class="swiper-button-prev"></div>
+	        </div>
 	</div>
 	<!-- Swiper End-->
 </div>
@@ -53,7 +70,7 @@
 				 	</select>
 
 				 	<select id="dqS" class="record-select" name="sel" onchange="change()">
-				 		<option vlaue="">省份</option><option value="11">北京市</option><option value="12">天津市</option><option value="13">河北省</option><option value="14">山西</option><option value="15">内蒙古自治区</option><option value="21">辽宁省</option><option value="22">吉林省</option><option value="23">黑龙江省</option><option value="31">上海市</option><option value="32">江苏省</option><option value="33">浙江省</option><option value="34">安徽省</option><option value="35">福建省</option><option value="36">江西省</option><option value="37">山东省</option><option value="41">河南省</option><option value="42">湖北省</option><option value="43">湖南省</option><option value="44">广东省</option><option value="45">广西壮族自治区</option><option value="46">海南省</option><option value="50">重庆市</option><option value="51">四川省</option><option value="52">贵州省</option><option value="53">云南省</option><option value="54">西藏自治区</option><option value="61">陕西省</option><option value="62">甘肃省</option><option value="63">青海省</option><option value="64">宁夏回族自治区</option><option value="65">新疆维吾尔自治区</option><option value="71">台湾省</option><option value="81">香港特别行政区</option><option value="82">澳门特别行政区</option>
+				 		<option vlaue="">省份</option><option value="11">北京市</option><option value="12">天津市</option><option value="13">河北省</option><option value="14">山西省</option><option value="15">内蒙古自治区</option><option value="21">辽宁省</option><option value="22">吉林省</option><option value="23">黑龙江省</option><option value="31">上海市</option><option value="32">江苏省</option><option value="33">浙江省</option><option value="34">安徽省</option><option value="35">福建省</option><option value="36">江西省</option><option value="37">山东省</option><option value="41">河南省</option><option value="42">湖北省</option><option value="43">湖南省</option><option value="44">广东省</option><option value="45">广西壮族自治区</option><option value="46">海南省</option><option value="50">重庆市</option><option value="51">四川省</option><option value="52">贵州省</option><option value="53">云南省</option><option value="54">西藏自治区</option><option value="61">陕西省</option><option value="62">甘肃省</option><option value="63">青海省</option><option value="64">宁夏回族自治区</option><option value="65">新疆维吾尔自治区</option><option value="71">台湾省</option><option value="81">香港特别行政区</option><option value="82">澳门特别行政区</option>
 				 	</select>	 			
 	 	 		</div>
 			</div>
@@ -66,7 +83,7 @@
 	<!--begin：index_main -->
 	<div class="page">
 	  	<span onclick="topPage()">&lt;</span>
-		<span id="currPage" class="active">0</span>/<span id="totalPage">0</span>
+		<span id="currPage" class="active">0</span><span>/</span><span id="totalPage">0</span>
 		<span onclick="nextPage()">&gt;</span>
 	</div>
 	<!--end -->
@@ -74,24 +91,9 @@
 <!--end：container -->
 <!--begin:footer-->
 <!--友情链接-->
-<div class="questionnaire clearfix">
-  <div class="links">
-		<ul class="clearfix">
-			<li><a href="#">中华人民共和国文化和旅游部</a></li>
-			<li><a href="#">国家图书馆</a></li>
-			<li><a href="#">中国非物质文化遗产网</a></li>
-			<li><a href="#">国家图书馆中国记忆项目中心</a></li>
-		</ul>
-	</div>
-</div>
-<footer>
-	<div class="footer_main"><p><a href="#" target="_parent">联系方式</a> <a href="../law/law.html" target="_parent">法律条款</a> </p><span>京ICP备05014420号国家图书馆版权所有</span></div>
-</footer>
-<!--end:footer-->
-<!-- 回到顶部 -->
-<div id="tbox">
-	<a class="gotop"  id="gotop" title="回到顶部"></a>
-</div>
+<script type="text/javascript">
+    document.write(foot1.import.body.innerHTML);
+</script>
 <!-- 回到顶部 -->
 <!--js -->
 <script src="../js/jquery-1.11.3.min.js"></script>
@@ -105,7 +107,7 @@
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
 		loop: true,
-		autoplay: false,
+		autoplay: 3000,
 	});
 </script>
 <!-- 菜单收缩 -->

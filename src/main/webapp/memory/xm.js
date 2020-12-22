@@ -117,16 +117,16 @@ function initXmDataGrid(){
 						return "";
 					}
 					if(value==1){
-						return "第一单元";
+						return "乐舞·情韵";
 					}
 					if(value ==2){
-						return "第二单元";
+						return "腔调·故事";
 					}
 					if(value ==3){
-						return "第三单元";
+						return "手艺·匠心";
 					}
 					if(value ==4){
-						return "第四单元";
+						return "吉祥·人生";
 					}
 				}
 			},

@@ -18,4 +18,8 @@ public interface ITpMapper {
 	void updateTp(TpEntity entity);
 
 	List<Map<String, Object>> selectTpXm();
+	
+	List<Map<String, Object>> selectTpConfig();
+	
+	int updateTpConfig(String flag);
 }

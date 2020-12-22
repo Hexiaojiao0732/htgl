@@ -21,6 +21,7 @@ public class ImageUtil {
 
 	public static String DEFAULT_PREVFIX = "thumb_";
 	public static String DEFAULT_PREVFIX2 = "thumb2_";
+	public static String DEFAULT_PREVFIX3 = "thumb3_";
 	private static Boolean DEFAULT_FORCE = false;// 建议该值为false
 
 	/**
@@ -161,6 +162,7 @@ public class ImageUtil {
 	}
 
 	public static void main(String[] args) throws Exception {
-		System.out.println(new ImageUtil().thumbnailImage2("E:\\1.jpg", 1334, DEFAULT_PREVFIX));
+		//F:\邓\htgl\htgl\src\main\webapp\memory-tow\fyTop20\thumbs
+		new ImageUtil().thumbnailImage("F:\\邓\\htgl\\htgl\\src\\main\\webapp\\memory-tow\\fyTop20\\thumbs\\20-denghong.JPG", 576, 384, ImageUtil.DEFAULT_PREVFIX2, false);
 	}
 }
