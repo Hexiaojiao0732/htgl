@@ -7,7 +7,6 @@
   <title>记录-详情</title>
   <link type="text/css" rel="stylesheet" href="../css/common.css"/>
   <link type="text/css" rel="stylesheet" href="law.css"/>
-  <link rel="import" href="../common/footer.html" id="foot1">
 </head>
 <body>
 <!--begin:header-->
@@ -24,9 +23,7 @@
 	</div>
 
 </div>
-<script type="text/javascript">
-    document.write(foot1.import.body.innerHTML);
-</script>
+<div id="foot"></div>
 <!-- 回到顶部 -->
 <!--js -->
 <script src="../js/jquery-1.11.3.min.js"></script>
@@ -35,6 +32,7 @@
 //简单jq tab   index从0开始
 $(function(){
 	$("#header").load("../common/head.html");
+	$("#foot").load("../common/footer.html");
     $("#nav a").off("click").on("click",function(){
        var index = $(this).index();
        $(this).addClass("on").siblings().removeClass("on");

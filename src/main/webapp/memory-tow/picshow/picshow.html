@@ -23,9 +23,7 @@
 		<p>雷雨霖</p>
 	</div>
 </div>
-<script type="text/javascript">
-    document.write(foot1.import.body.innerHTML);
-</script>
+<div id="foot"></div>
 <!-- 回到顶部 -->
 <!--js -->
 <script src="../js/jquery-1.11.3.min.js"></script>
@@ -39,6 +37,7 @@ $(function(){
        $("#contentBox .box").eq(index).addClass("active").siblings().removeClass("active");
      });
     $("#header").load("../common/head.html");
+    $("#foot").load("../common/footer.html");
   }); 
 </script>
 </body>

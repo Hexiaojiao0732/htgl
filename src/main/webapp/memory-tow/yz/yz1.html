@@ -9,7 +9,6 @@
   <link type="text/css" rel="stylesheet" href="../common/first.css"/>
   <link type="text/css" rel="stylesheet" href="../index/swiper.min.css" />
   <link type="text/css" rel="stylesheet" href="yz.css"/>
-  <link rel="import" href="../common/footer.html" id="foot1">
 </head>
 <body>
 <!--begin:header-->
@@ -28,9 +27,7 @@
 <!--end：container -->
 <!--begin:footer-->
 <!--友情链接-->
-<script type="text/javascript">
-    document.write(foot1.import.body.innerHTML);
-</script>
+<div id="foot"></div>
 <!-- 回到顶部 -->
 <!-- 投票最多3个提示 -->
 <div id="votealert" class="votealert" style="display:none ;">
@@ -68,6 +65,7 @@ $(function(){
   		
   	);
   	$("#header").load("../common/head.html");
+  	$("#foot").load("../common/footer.html");
 });
 
 </script>
