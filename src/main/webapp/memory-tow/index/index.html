@@ -309,7 +309,8 @@
 		    }(),
 		    language: (navigator.browserLanguage || navigator.language).toLowerCase()
 		};
-      if((browser.versions.mobile || browser.versions.android || browser.versions.ios) && videoplay_cookie!='1' && GetQueryString('sign')!=1){
+	  var referrer=document.referrer;
+      if((browser.versions.mobile || browser.versions.android || browser.versions.ios) && GetQueryString('sign')!=1){
       	  setCookie("videoplay", "1",1);
 	      progress();
 	      // 页面渲染完成
@@ -318,6 +319,8 @@
 	      };
 		  //   1201修改
 	      $(".video").show();
+      }else if (GetQueryString('sign')!=1){
+    	  window.location = "../third/third.html";
       }
         // var isFirst = document.cookie;
         //     if (!isFirst) {
