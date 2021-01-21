@@ -1,0 +1,15 @@
+/*record*/
+/*reco_boxlist 0607*/
+.container{background-color: #282828;padding-top: 100px;}
+.law-cont{width: 872px;margin:0 auto;height:100%;padding:100px 0 300px;}
+.law-cont h2{width:100%;/* text-align:center; */font-size: 24px;color: #e7e5e4;padding-bottom: 20px;}
+.law-cont p{color: #e7e5e4;line-height: 24px;font-size: 14px;padding-bottom: 30px;}
+.law-cont p.pt30{padding-top: 20px;}
+/*media-max-width: 1080px */
+@media (max-width: 1080px) {
+.container{padding-top: 1rem;}
+.law-cont{width: 80%;margin:0 auto;height:100%;padding:1rem 0;}
+.law-cont h2{font-size: 0.4rem;padding-bottom: 0.3rem;}
+.law-cont p{line-height: 0.4rem;font-size: 0.23rem;padding-bottom: 0.46rem;}
+.law-cont p.pt30{padding-top: 0.33rem;}
+}

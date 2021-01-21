@@ -188,6 +188,9 @@ position: fixed;
 .mpicont.dotthree .mpicfont{position: absolute;left: 760px;top:295px;padding:6px 0 6px 15px;border-left: 1px solid #333;}
 .app-mapp{display: none;}
 
+.infoDiv{text-align:center;margin:0 auto;height: 70px;}
+.infoDivNav{background-color: #bea281;height: 30px;width: 190px;line-height: 30px;margin: 0 auto;border-radius: 5px;font-size: 14px;font-weight: 600;}
+
 
 /*media-max-width: 1080px */
 @media (max-width: 1080px){
@@ -250,6 +253,9 @@ position: fixed;
 	.votealert{
 	    width: 68%;
 	}
+	.infoDiv{text-align:center;margin:0 auto;height: 1.0rem;}
+	.infoDivNav{background-color: #bea281;height: 0.5rem;width: 3.1rem;line-height: 0.5rem;margin: 0 auto;border-radius: 0.06rem;font-size: 0.23rem;}
+	
 }
 @media (max-width: 480px){
 	.index_box .stage ul li {

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="maximum-scale=1,width=device-width,initial-scale=1,user-scalable=no" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link type="text/css" rel="stylesheet" href="spshow.css"/>
+</head>
+<body>
+<div class="sparea" id="videoShowDiv"></div>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="video_cfg/swfobject.js"></script>		<!-- swf嵌入类 -->
+<script type="text/javascript">
+$(function(){
+	var mmsURL = "http://202.106.125.173/mms4.6/";  //播控应用路径，如：http://92.168.0.182:8080/mms4
+    var params = escape("9920#PC#123152#1113161745#");  //从对外节目引用组件获得的字符
+    var playerPath = "video_cfg/videoCaptionOverlyingPlayer.swf"; //播放器swf路径
+    playerPath += "?" + "mmsURL=" + mmsURL;
+    playerPath += "&" + "params=" + params;
+    playerPath += "&" + "isAutoPlay=true";
+
+    swfobject.embedSWF( playerPath,
+            "videoShowDiv",
+            940, 450, "10.1.0", "", {},
+            {
+                allowScriptAccess:"always",
+                allowFullScreen:"true",
+                wmode:"transparent"
+            }
+    );
+});
+
+</script>
+</body>
+</html>
