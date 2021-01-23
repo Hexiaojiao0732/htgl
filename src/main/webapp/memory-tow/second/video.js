@@ -23,7 +23,7 @@ function GoToVideo(){
 }
 
 function initAppVideo(){
-	var sjUrl = "http://video.nlc.cn:80/video5/memory/ICH/2021/01/05/DB482C5482C0449694493C2E6AB5FABB5.m3u8";
+	var sjUrl = "http://video.nlc.cn:80/video5/memory/ICH/2021/01/18/E85BF21B61154d7a8CC415F3E6DEB8C15.m3u8";
 	if(sjUrl){
 	    window.location.href = sjUrl;
 	}else{
